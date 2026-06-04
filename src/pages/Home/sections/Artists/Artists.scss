@@ -1,0 +1,71 @@
+@use '../../../../styles/variables' as *;
+
+.artists {
+  position: relative;
+  padding: 5rem 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.artists__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba($background, 0.97) 0%,
+    rgba($background, 0.92) 45%,
+    rgba($background, 0.75) 100%
+  );
+}
+
+.artists__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) 2fr;
+  gap: 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.artists__title {
+  color: $primary-1;
+  margin-bottom: 1.25rem;
+}
+
+.artists__text {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: $gray-500;
+}
+
+.artists__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.artists__logo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background-color: $gray-200;
+}
+
+@media (max-width: 900px) {
+  .artists__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .artists__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .artists__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,65 @@
+@use '../../../../styles/variables' as *;
+
+.team {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 5rem 2rem 6rem;
+}
+
+.team__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.team__title {
+  color: $gray-100;
+  margin-bottom: 3rem;
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.team__member {
+  h3 {
+    margin: 1.25rem 0 0.35rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $gray-300;
+  }
+}
+
+.team__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.team__social {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $primary-2;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  &:hover {
+    color: $gray-100;
+  }
+}
+
+@media (max-width: 900px) {
+  .team__grid {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+  }
+}

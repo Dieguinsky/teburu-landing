@@ -1,0 +1,66 @@
+@use '../../../../styles/variables' as *;
+
+.welcome {
+  position: relative;
+  padding: 5rem 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba($primary-1, 0.88);
+}
+
+.welcome__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  color: $gray-100;
+}
+
+.welcome__title {
+  text-align: center;
+  color: $gray-100;
+}
+
+.welcome__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.welcome__item {
+  text-align: center;
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: $gray-200;
+  }
+}
+
+.welcome__icon {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-size: 2rem;
+  color: $gray-100;
+}
+
+@media (max-width: 900px) {
+  .welcome__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

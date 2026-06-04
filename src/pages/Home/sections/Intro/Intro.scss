@@ -1,0 +1,34 @@
+@use '../../../../styles/variables' as *;
+
+.intro {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 5rem 2rem;
+}
+
+.intro__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro__title {
+  color: $gray-100;
+}
+
+.intro__text {
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $gray-200;
+
+  strong {
+    color: $gray-100;
+    font-weight: 600;
+  }
+}
+
+.intro__welcome {
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+}

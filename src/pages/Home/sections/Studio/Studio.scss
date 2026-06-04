@@ -1,0 +1,65 @@
+@use '../../../../styles/variables' as *;
+
+.studio {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 5rem 2rem;
+}
+
+.studio__header {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  gap: 3rem;
+  max-width: 72rem;
+  margin: 0 auto 3rem;
+  align-items: start;
+}
+
+.studio__title {
+  color: $gray-100;
+  margin-bottom: 0;
+}
+
+.studio__text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: $gray-200;
+}
+
+.studio__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  max-width: 72rem;
+  margin: 0 auto 2.5rem;
+}
+
+.studio__figure {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.studio__cta {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .studio__header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .studio__gallery {
+    grid-template-columns: 1fr;
+  }
+}
