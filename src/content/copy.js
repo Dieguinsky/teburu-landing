@@ -42,7 +42,7 @@ export const SERVICIOS_INTRO = {
 export const STUDIO_SERVICES = [
   {
     id: 'hora-estudio',
-    title: 'Sesión de estudio (3 horas',
+    title: 'Sesión de estudio (3 horas)',
     description:
       'Reserva el estudio por hora con acceso a sala de grabación, preamps Apollo y monitoreo profesional. Ideal para overdubs y sesiones puntuales.',
     imageKey: 'horaEstudio',
