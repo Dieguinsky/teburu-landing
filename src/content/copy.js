@@ -2,6 +2,8 @@ export const BRAND = 'Estudio Teburu'
 
 export const BRAND_SHORT = 'Teburu'
 
+export const HERO_TAGLINE = 'Dale vida a tu idea'
+
 export const LOREM_SHORT = 'Lorem ipsum dolor sit amet.'
 
 export const LOREM_MEDIUM =

@@ -1,5 +1,5 @@
 import { homeImages } from '../../../../assets/homeImages'
-import { BRAND_SHORT, LOREM_SHORT } from '../../../../content/copy'
+import { BRAND_SHORT, HERO_TAGLINE } from '../../../../content/copy'
 import './Hero.scss'
 
 export default function Hero() {
@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="hero__content">
         <h1 className="hero__title">{BRAND_SHORT}</h1>
         <div className="hero__rule" />
-        <p className="hero__tagline">{LOREM_SHORT}</p>
+        <p className="hero__tagline">{HERO_TAGLINE}</p>
       </div>
       <span className="hero__scroll" aria-hidden="true">
         ⌄
