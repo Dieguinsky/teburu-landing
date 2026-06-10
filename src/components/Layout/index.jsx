@@ -7,8 +7,7 @@ const navItems = [
   { to: '/servicios', label: 'Servicios' },
   { to: '/nosotros', label: 'Nosotros' },
   { to: '/estudio', label: 'Estudio' },
-  { to: '/artistas', label: 'Artistas' },
-  { to: '/escuela', label: 'Escuela' },
+  // Artistas y Escuela: ocultos hasta completar contenido
   { to: '/contacto', label: 'Contacto' },
   { to: '/reservar', label: 'Reservar' },
   { to: '/portafolio', label: 'Portafolio' },

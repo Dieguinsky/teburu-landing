@@ -1,1 +1,275 @@
-// Servicios-specific styles → .servicios-page
+@use '../../styles/variables' as *;
+
+.servicios-page {
+  padding: 0;
+  margin: 0;
+}
+
+.servicios-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(18rem, 45vh, 28rem);
+  background-size: cover;
+  background-position: center;
+}
+
+.servicios-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($primary-1, 0.55) 0%,
+    rgba($gray-700, 0.78) 100%
+  );
+}
+
+.servicios-hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2rem;
+  font-family: $font-display;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: $gray-100;
+  text-align: center;
+}
+
+.servicios-intro {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+}
+
+.servicios-intro__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.servicios-intro__title {
+  color: $gray-100;
+}
+
+.servicios-intro__text {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $gray-200;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.servicios-catalog {
+  background-color: $background;
+  padding: 4.5rem 2rem 5rem;
+}
+
+.servicios-catalog__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.servicios-catalog__heading {
+  text-align: center;
+  color: $primary-1;
+  margin-bottom: 2.5rem;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+
+  &--pair {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: calc((100% / 3) * 2 + 0.35rem);
+    margin: 0.35rem auto 0;
+  }
+}
+
+.servicios-divider {
+  border: 0;
+  height: 1px;
+  margin: 0.35rem 0;
+  background-color: rgba($primary-1, 0.2);
+}
+
+.servicios-card {
+  position: relative;
+  min-height: 28rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: default;
+
+  &:hover,
+  &:focus-within {
+    .servicios-card__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba($gray-700, 0.45) 0%,
+        rgba($primary-1, 0.92) 100%
+      );
+    }
+
+    .servicios-card__title {
+      transform: translateY(-1.75rem);
+    }
+
+    .servicios-card__rule {
+      opacity: 1;
+      transform: scaleX(1);
+      margin: 0.85rem 0;
+    }
+
+    .servicios-card__desc {
+      opacity: 1;
+      max-height: 10rem;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+.servicios-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($gray-700, 0.35) 0%,
+    rgba($primary-1, 0.85) 100%
+  );
+  transition: background 0.35s ease;
+}
+
+.servicios-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 28rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: $gray-100;
+}
+
+.servicios-card__title {
+  margin: 0;
+  font-family: $font-display;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  transition: transform 0.35s ease;
+}
+
+.servicios-card__rule {
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin: 0;
+  background-color: $gray-100;
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease;
+}
+
+.servicios-card__desc {
+  margin: 0;
+  max-width: 16rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: $gray-200;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.35s ease,
+    max-height 0.35s ease,
+    margin 0.35s ease;
+}
+
+.servicios-cta {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+  text-align: center;
+}
+
+.servicios-cta__inner {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.servicios-cta__title {
+  margin: 0 0 1rem;
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.servicios-cta__email {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: $gray-200;
+}
+
+.servicios-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    &--pair {
+      max-width: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .servicios-intro,
+  .servicios-catalog,
+  .servicios-cta {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .servicios-grid,
+  .servicios-grid--pair {
+    grid-template-columns: 1fr;
+  }
+
+  .servicios-card,
+  .servicios-card__content {
+    min-height: 22rem;
+  }
+}
