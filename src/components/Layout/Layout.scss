@@ -32,6 +32,7 @@
     letter-spacing: 0.14em;
     text-decoration: none;
     text-transform: uppercase;
+    transition: all 2s ease-in-out;
 
     &:hover {
       color: $gray-300;
@@ -43,6 +44,50 @@
       text-underline-offset: 0.35em;
     }
   }
+}
+
+.nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 1em;
+}
+
+.nav-link--jp {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.nav-link--es {
+  position: relative;
+}
+
+.nav-link--fade-in {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+  pointer-events: auto;
+}
+
+.nav-link--fade-out {
+  opacity: 0;
+  transform: rotateY(20deg) scale(0.95);
+  pointer-events: none;
+}
+
+.nav-link--jp.nav-link--fade-in {
+  transform: translateY(-50%) rotateY(0deg) scale(1);
+}
+
+.nav-link--jp.nav-link--fade-out {
+  transform: translateY(-50%) rotateY(20deg) scale(0.95);
 }
 
 .spacer {

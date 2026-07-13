@@ -4,6 +4,30 @@ export const BRAND_SHORT = 'Teburu'
 
 export const HERO_TAGLINE = 'Dale vida a tu idea'
 
+export const BRAND_SHORT_JP = 'テブル'
+
+export const HERO_TAGLINE_JP = 'あなたのアイデアに命を吹き込む'
+
+export const NAV_ITEMS_ES = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/servicios', label: 'Servicios' },
+  { to: '/nosotros', label: 'Nosotros' },
+  { to: '/estudio', label: 'Estudio' },
+  { to: '/contacto', label: 'Contacto' },
+  { to: '/reservar', label: 'Reservar' },
+  { to: '/portafolio', label: 'Portafolio' },
+]
+
+export const NAV_ITEMS_JP = [
+  { to: '/', label: 'ホーム', end: true },
+  { to: '/servicios', label: 'サービス' },
+  { to: '/nosotros', label: 'について' },
+  { to: '/estudio', label: 'スタジオ' },
+  { to: '/contacto', label: 'お問い合わせ' },
+  { to: '/reservar', label: '予約' },
+  { to: '/portafolio', label: 'ポートフォリオ' },
+]
+
 export const LOREM_SHORT = 'Lorem ipsum dolor sit amet.'
 
 export const LOREM_MEDIUM =

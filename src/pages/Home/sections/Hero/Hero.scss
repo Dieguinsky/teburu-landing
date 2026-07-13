@@ -28,6 +28,10 @@
   padding: 2rem;
 }
 
+.hero__text-container {
+  position: relative;
+}
+
 .hero__title {
   margin: 0;
   font-family: $font-display;
@@ -36,6 +40,68 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 0.95;
+  transition: opacity 2s ease-in-out;
+  transform-origin: center;
+}
+
+.hero__title--japanese {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero__title--spanish {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  width: auto;
+}
+
+.hero__title--fade-out {
+  opacity: 0;
+}
+
+.hero__title--fade-in {
+  opacity: 1;
+}
+
+.hero__tagline {
+  margin: 0;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  letter-spacing: 0.08em;
+  transition: all 2s ease-in-out;
+  transform-origin: center;
+}
+
+.hero__tagline--japanese {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+  pointer-events: auto;
+}
+
+.hero__tagline--spanish {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transform: translateX(-50%) rotateY(-20deg) scale(0.95);
+  pointer-events: none;
+  white-space: nowrap;
+  width: auto;
+}
+
+.hero__tagline--fade-out {
+  opacity: 0;
+  transform: rotateY(20deg) scale(0.95);
+}
+
+.hero__tagline--fade-in {
+  opacity: 1;
+  transform: translateX(-50%) rotateY(0deg) scale(1);
 }
 
 .hero__rule {
@@ -43,12 +109,6 @@
   height: 2px;
   margin: 1.25rem auto;
   background-color: $gray-100;
-}
-
-.hero__tagline {
-  margin: 0;
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
-  letter-spacing: 0.08em;
 }
 
 .hero__scroll {

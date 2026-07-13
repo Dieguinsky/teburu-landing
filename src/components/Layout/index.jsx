@@ -1,30 +1,47 @@
+import { useState, useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import logo from '../../assets/img/logos/plano/blanco.png'
+import { NAV_ITEMS_ES, NAV_ITEMS_JP } from '../../content/copy'
 import './Layout.scss'
 
-const navItems = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/servicios', label: 'Servicios' },
-  { to: '/nosotros', label: 'Nosotros' },
-  { to: '/estudio', label: 'Estudio' },
-  // Artistas y Escuela: ocultos hasta completar contenido
-  { to: '/contacto', label: 'Contacto' },
-  { to: '/reservar', label: 'Reservar' },
-  { to: '/portafolio', label: 'Portafolio' },
-]
-
 export default function Layout() {
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTransitioning(true)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <div className="nav-container">
         <img src={logo} alt="Studio Teburu" className="logo" />
 
         <nav className="nav">
-          {navItems.map(({ to, label, end }) => (
-            <NavLink key={to} to={to} end={end}>
-              {label}
-            </NavLink>
-          ))}
+          {NAV_ITEMS_JP.map(({ to, label, end }, index) => {
+            const esItem = NAV_ITEMS_ES[index]
+            return (
+              <div key={to} className="nav-item">
+                <NavLink
+                  to={to}
+                  end={end}
+                  className={`nav-link nav-link--jp ${isTransitioning ? 'nav-link--fade-out' : 'nav-link--fade-in'}`}
+                >
+                  {label}
+                </NavLink>
+                <NavLink
+                  to={esItem.to}
+                  end={esItem.end}
+                  className={`nav-link nav-link--es ${isTransitioning ? 'nav-link--fade-in' : 'nav-link--fade-out'}`}
+                >
+                  {esItem.label}
+                </NavLink>
+              </div>
+            )
+          })}
         </nav>
 
         <div className="spacer" />
