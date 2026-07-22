@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { serviciosImages } from '../../assets/serviciosImages'
-import { BRAND, SERVICIOS_INTRO, STUDIO_SERVICES } from '../../content/copy'
+import { BRAND, SERVICIOS_INTRO, STUDIO_SERVICES, PODCAST_SERVICES } from '../../content/copy'
 import './Servicios.scss'
 
 function ServiceCard({ title, description, image }) {
@@ -20,10 +20,6 @@ function ServiceCard({ title, description, image }) {
 }
 
 export default function Servicios() {
-  const recordingServices = STUDIO_SERVICES.slice(0, 3)
-  const productionServices = STUDIO_SERVICES.slice(3, 6)
-  const extraServices = STUDIO_SERVICES.slice(6)
-
   return (
     <main className="servicios-page">
       <section
@@ -49,10 +45,10 @@ export default function Servicios() {
 
       <section className="servicios-catalog">
         <div className="servicios-catalog__inner">
-          <h2 className="section-title servicios-catalog__heading">Grabación</h2>
+          <h2 className="section-title servicios-catalog__heading">Sesión de estudio</h2>
 
           <div className="servicios-grid">
-            {recordingServices.map(({ id, title, description, imageKey }) => (
+            {STUDIO_SERVICES.map(({ id, title, description, imageKey }) => (
               <ServiceCard
                 key={id}
                 title={title}
@@ -64,19 +60,10 @@ export default function Servicios() {
 
           <hr className="servicios-divider" />
 
-          <div className="servicios-grid">
-            {productionServices.map(({ id, title, description, imageKey }) => (
-              <ServiceCard
-                key={id}
-                title={title}
-                description={description}
-                image={serviciosImages[imageKey]}
-              />
-            ))}
-          </div>
+          <h2 className="section-title servicios-catalog__heading">Podcast</h2>
 
-          <div className="servicios-grid servicios-grid--pair">
-            {extraServices.map(({ id, title, description, imageKey }) => (
+          <div className="servicios-grid">
+            {PODCAST_SERVICES.map(({ id, title, description, imageKey }) => (
               <ServiceCard
                 key={id}
                 title={title}

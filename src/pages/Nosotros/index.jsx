@@ -1,9 +1,87 @@
+import { Link } from 'react-router-dom'
+import { pageImages } from '../../assets/pageImages'
+import {
+  BRAND,
+  NOSOTROS_INTRO,
+  TEAM_MEMBERS,
+  NOSOTROS_JOIN,
+} from '../../content/copy'
 import './Nosotros.scss'
 
 export default function Nosotros() {
   return (
-    <main className="page nosotros-page">
-      <h1>Nosotros</h1>
+    <main className="nosotros-page">
+      <section
+        className="nosotros-hero"
+        style={{ backgroundImage: `url(${pageImages.nosotrosHero})` }}
+      >
+        <div className="nosotros-hero__overlay" />
+        <h1 className="nosotros-hero__title">Nosotros</h1>
+      </section>
+
+      <section className="nosotros-intro">
+        <div className="nosotros-intro__inner">
+          {NOSOTROS_INTRO.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 28)} className="nosotros-intro__text">
+              {paragraph}
+            </p>
+          ))}
+          <Link to="/contacto" className="button">
+            ¡Hablemos!
+          </Link>
+        </div>
+      </section>
+
+      <section className="nosotros-team">
+        <div className="nosotros-team__inner">
+          <h2 className="section-title nosotros-team__title">El equipo</h2>
+          <div className="nosotros-team__grid">
+            {TEAM_MEMBERS.map(({ id, name, alias, role, bio, imageKey }) => (
+              <article key={id} className="nosotros-team__member">
+                <img
+                  src={pageImages.team[imageKey]}
+                  alt={name}
+                  className="nosotros-team__photo"
+                />
+                <h3 className="nosotros-team__name">
+                  {name}
+                  {alias && <span className="nosotros-team__alias"> · {alias}</span>}
+                </h3>
+                <p className="nosotros-team__role">{role}</p>
+                <p className="nosotros-team__bio">{bio}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="nosotros-join"
+        style={{ backgroundImage: `url(${pageImages.contactoBg})` }}
+      >
+        <div className="nosotros-join__overlay" />
+        <div className="nosotros-join__inner">
+          <h2 className="section-title nosotros-join__title">{NOSOTROS_JOIN.title}</h2>
+          <p className="nosotros-join__subtitle">{NOSOTROS_JOIN.subtitle}</p>
+          <div className="nosotros-join__roles">
+            {NOSOTROS_JOIN.roles.map((role) => (
+              <article key={role} className="nosotros-join__role">
+                <span className="nosotros-join__icon" aria-hidden="true">
+                  ◆
+                </span>
+                <h3>{role}</h3>
+              </article>
+            ))}
+          </div>
+          <Link to="/contacto" className="button">
+            Escríbenos
+          </Link>
+        </div>
+      </section>
+
+      <footer className="nosotros-footer">
+        <p>Copyright © {new Date().getFullYear()} {BRAND}</p>
+      </footer>
     </main>
   )
 }

@@ -18,4 +18,11 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // Node-side code: serverless API handlers + build/dev config.
+    files: ['api/**/*.js', 'vite.config.js', 'vite-plugin-api.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])

@@ -1,1 +1,240 @@
-// Contacto-specific styles → .contacto-page
+@use '../../styles/variables' as *;
+
+.contacto-page {
+  padding: 0;
+  margin: 0;
+}
+
+.contacto-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  min-height: calc(100vh - 4rem);
+}
+
+.contacto-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.contacto-info__panel {
+  position: relative;
+  z-index: 1;
+  max-width: 22rem;
+  padding: 2.5rem 2rem;
+  background-color: rgba($gray-800, 0.95);
+  color: $gray-100;
+  text-align: center;
+}
+
+.contacto-info__title {
+  margin: 0;
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contacto-info__rule {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin: 1.25rem auto;
+  background-color: $gray-100;
+}
+
+.contacto-info__subtitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contacto-info__desc {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: $gray-300;
+}
+
+.contacto-info__email {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: $gray-200;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-2;
+  }
+}
+
+.contacto-info__social-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: $gray-300;
+}
+
+.contacto-info__social {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $primary-2;
+  text-decoration: none;
+
+  &:hover {
+    color: $gray-100;
+  }
+}
+
+.contacto-form-section {
+  background-color: $gray-600;
+  padding: 3rem 2.5rem;
+  overflow-y: auto;
+}
+
+.contacto-form {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.contacto-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contacto-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+
+  span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: $gray-100;
+  }
+
+  input,
+  textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba($gray-100, 0.15);
+    border-radius: 4px;
+    background-color: rgba($gray-700, 0.6);
+    color: $gray-100;
+    font-family: $font-body;
+    font-size: 0.9rem;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-2;
+      outline-offset: 1px;
+    }
+  }
+
+  &--narrow {
+    grid-column: span 1;
+  }
+
+  &--wide {
+    grid-column: span 1;
+  }
+}
+
+.contacto-fieldset {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border: 0;
+
+  legend {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $gray-100;
+  }
+}
+
+.contacto-radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.contacto-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: $gray-200;
+  cursor: pointer;
+}
+
+.contacto-form__submit {
+  margin-top: 0.5rem;
+  border: none;
+}
+
+.contacto-success {
+  max-width: 28rem;
+  margin: 4rem auto;
+  text-align: center;
+  color: $gray-100;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-family: $font-display;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-300;
+  }
+}
+
+.contacto-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .contacto-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-info {
+    min-height: 20rem;
+  }
+
+  .contacto-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacto-form-section {
+    padding: 2rem 1.25rem;
+  }
+}

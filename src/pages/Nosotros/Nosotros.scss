@@ -1,1 +1,209 @@
-// Nosotros-specific styles → .nosotros-page
+@use '../../styles/variables' as *;
+
+.nosotros-page {
+  padding: 0;
+  margin: 0;
+}
+
+.nosotros-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(18rem, 45vh, 28rem);
+  background-size: cover;
+  background-position: center;
+}
+
+.nosotros-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($primary-1, 0.55) 0%,
+    rgba($gray-700, 0.78) 100%
+  );
+}
+
+.nosotros-hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2rem;
+  font-family: $font-display;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: $gray-100;
+  text-align: center;
+}
+
+.nosotros-intro {
+  background-color: $gray-700;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+  text-align: center;
+}
+
+.nosotros-intro__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.nosotros-intro__text {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $gray-200;
+
+  &:last-of-type {
+    margin-bottom: 2rem;
+  }
+}
+
+.nosotros-team {
+  background-color: $background;
+  padding: 4.5rem 2rem 5rem;
+}
+
+.nosotros-team__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.nosotros-team__title {
+  text-align: center;
+  color: $primary-1;
+  margin-bottom: 3rem;
+}
+
+.nosotros-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.nosotros-team__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.nosotros-team__name {
+  margin: 1.25rem 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: $primary-1;
+}
+
+.nosotros-team__alias {
+  font-weight: 400;
+  color: $primary-2;
+}
+
+.nosotros-team__role {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $gray-500;
+}
+
+.nosotros-team__bio {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: $gray-500;
+}
+
+.nosotros-join {
+  position: relative;
+  padding: 5rem 2rem;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: $gray-100;
+}
+
+.nosotros-join__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba($primary-1, 0.88);
+}
+
+.nosotros-join__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.nosotros-join__title {
+  color: $gray-100;
+  margin-bottom: 1rem;
+}
+
+.nosotros-join__subtitle {
+  margin: 0 0 2.5rem;
+  font-size: 1rem;
+  color: $gray-300;
+}
+
+.nosotros-join__roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.nosotros-join__role {
+  h3 {
+    margin: 0.75rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
+.nosotros-join__icon {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: $primary-2;
+}
+
+.nosotros-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .nosotros-team__grid,
+  .nosotros-join__roles {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .nosotros-intro,
+  .nosotros-team,
+  .nosotros-join {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

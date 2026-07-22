@@ -1,1 +1,226 @@
-// Portafolio-specific styles → .portafolio-page
+@use '../../styles/variables' as *;
+
+.portafolio-page {
+  padding: 0;
+  margin: 0;
+}
+
+.portafolio-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(18rem, 45vh, 28rem);
+  background-size: cover;
+  background-position: center;
+}
+
+.portafolio-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($primary-1, 0.55) 0%,
+    rgba($gray-700, 0.78) 100%
+  );
+}
+
+.portafolio-hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2rem;
+  font-family: $font-display;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: $gray-100;
+  text-align: center;
+}
+
+.portafolio-music {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+}
+
+.portafolio-music__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portafolio-music__title {
+  color: $gray-100;
+}
+
+.portafolio-music__desc {
+  margin: 0 0 2.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-300;
+}
+
+.portafolio-spotify {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba($gray-800, 0.4);
+
+  iframe {
+    display: block;
+    border: 0;
+  }
+}
+
+.portafolio-av {
+  background-color: $background;
+  padding: 4.5rem 2rem 5rem;
+}
+
+.portafolio-av__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.portafolio-av__title {
+  text-align: center;
+  color: $primary-1;
+}
+
+.portafolio-av__desc {
+  max-width: 40rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-500;
+}
+
+.portafolio-av__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+}
+
+.portafolio-av__card {
+  position: relative;
+  min-height: 24rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  &:hover {
+    .portafolio-av__card-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba($gray-700, 0.4) 0%,
+        rgba($primary-1, 0.92) 100%
+      );
+    }
+
+    .portafolio-av__rule {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    p {
+      opacity: 1;
+      max-height: 8rem;
+    }
+  }
+}
+
+.portafolio-av__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($gray-700, 0.3) 0%,
+    rgba($primary-1, 0.82) 100%
+  );
+  transition: background 0.35s ease;
+}
+
+.portafolio-av__card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 24rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: $gray-100;
+
+  h3 {
+    margin: 0;
+    font-family: $font-display;
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    max-width: 16rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: $gray-200;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 0.35s ease,
+      max-height 0.35s ease;
+  }
+}
+
+.portafolio-av__rule {
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin: 0.85rem 0;
+  background-color: $gray-100;
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.portafolio-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .portafolio-av__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .portafolio-music,
+  .portafolio-av {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .portafolio-av__card,
+  .portafolio-av__card-content {
+    min-height: 20rem;
+  }
+}

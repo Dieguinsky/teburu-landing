@@ -5,8 +5,8 @@ import portrait44 from './img/oficials/image00144.jpeg'
 import studio from './img/samples/studio.jpg'
 import keyboard from './img/samples/keyboard.jpg'
 import midi from './img/samples/midi.jpg'
-import gentleman from './img/samples/gentleman.jpg'
 import microphone from './img/samples/microphone.jpg'
+import podcastAudio from './img/samples/podcast.jpg'
 
 export const serviciosImages = {
   hero: heroBg,
@@ -16,6 +16,7 @@ export const serviciosImages = {
   produccion: keyboard,
   mezcla: midi,
   mastering: portrait44,
-  escucha: gentleman,
-  voiceover: microphone,
+  podcastAudio: podcastAudio,
+  podcastVideo: portrait44,
+  podcastReels: microphone,
 }
