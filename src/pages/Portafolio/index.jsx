@@ -43,22 +43,36 @@ export default function Portafolio() {
           </h2>
           <p className="portafolio-av__desc">{PORTAFOLIO_AUDIOVISUAL.description}</p>
           <div className="portafolio-av__grid">
-            {PORTAFOLIO_AUDIOVISUAL.items.map(({ id, title, text, imageKey }) => (
-              <article
-                key={id}
-                className="portafolio-av__card"
-                style={{
-                  backgroundImage: `url(${pageImages.audiovisual[imageKey]})`,
-                }}
-              >
-                <div className="portafolio-av__card-overlay" />
-                <div className="portafolio-av__card-content">
-                  <h3>{title}</h3>
-                  <span className="portafolio-av__rule" aria-hidden="true" />
-                  <p>{text}</p>
-                </div>
-              </article>
-            ))}
+            {PORTAFOLIO_AUDIOVISUAL.items.map(({ id, title, text, imageKey }) => {
+              const loopSrc = pageImages.audiovisualVideo[imageKey]
+              return (
+                <article key={id} className="portafolio-av__card">
+                  {loopSrc ? (
+                    <video
+                      className="portafolio-av__card-media"
+                      src={loopSrc}
+                      poster={pageImages.audiovisual[imageKey]}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      className="portafolio-av__card-media"
+                      src={pageImages.audiovisual[imageKey]}
+                      alt={title}
+                    />
+                  )}
+                  <div className="portafolio-av__card-overlay" />
+                  <div className="portafolio-av__card-content">
+                    <h3>{title}</h3>
+                    <span className="portafolio-av__rule" aria-hidden="true" />
+                    <p>{text}</p>
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>

@@ -107,8 +107,6 @@
 .portafolio-av__card {
   position: relative;
   min-height: 24rem;
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
 
   &:hover {
@@ -130,6 +128,15 @@
       max-height: 8rem;
     }
   }
+}
+
+.portafolio-av__card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .portafolio-av__card-overlay {

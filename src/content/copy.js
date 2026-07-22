@@ -246,8 +246,8 @@ export const PORTAFOLIO_AUDIOVISUAL = {
   items: [
     {
       id: 'av-podcast',
-      title: 'Podcast',
-      text: 'Sesiones de audio con edición y master para Spotify, Apple Podcasts y más.',
+      title: 'Sesiones en Vivo',
+      text: 'Grabación en vivo de sesiones musicales con captura multicámara y audio en alta calidad.',
       imageKey: 'podcast',
     },
     {
