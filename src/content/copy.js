@@ -132,6 +132,16 @@ export const PODCAST_SERVICES = [
   },
 ]
 
+export const AB_COMPARATOR = {
+  title: 'Escucha la diferencia',
+  description: 'Compara el antes y el después de una masterización real hecha en Teburu.',
+}
+
+export const AB_COMPARATOR_TRACKS = [
+  { id: 'demo', title: 'Track de muestra' },
+  { id: 'triangulo', title: 'Onda triangular (prueba)' },
+]
+
 export const NOSOTROS_INTRO = {
   paragraphs: [
     `En ${BRAND} somos un estudio de grabación ubicado en Chile, conformado por productores, ingenieros y artistas con trayectoria en la industria musical nacional.`,

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { serviciosImages } from '../../assets/serviciosImages'
 import { BRAND, SERVICIOS_INTRO, STUDIO_SERVICES, PODCAST_SERVICES } from '../../content/copy'
+import ABMasterComparator from '../../components/ABMasterComparator'
 import './Servicios.scss'
 
 function ServiceCard({ title, description, image }) {
@@ -74,6 +75,8 @@ export default function Servicios() {
           </div>
         </div>
       </section>
+
+      <ABMasterComparator />
 
       <section className="servicios-cta">
         <div className="servicios-cta__inner">
