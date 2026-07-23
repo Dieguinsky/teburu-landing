@@ -1,14 +1,7 @@
 import { Link } from 'react-router-dom'
-import { homeImages } from '../../../../assets/homeImages'
-import { LOREM_LONG, LOREM_SHORT } from '../../../../content/copy'
+import { albumCovers, homeImages } from '../../../../assets/homeImages'
+import { ARTISTS_SECTION } from '../../../../content/copy'
 import './Artists.scss'
-
-const portfolioLogos = Object.entries(
-  import.meta.glob('../../../../assets/img/logos/plano/*.png', {
-    eager: true,
-    import: 'default',
-  }),
-).map(([path, src]) => ({ key: path, src }))
 
 export default function Artists() {
   return (
@@ -19,15 +12,15 @@ export default function Artists() {
       <div className="artists__overlay" />
       <div className="artists__layout">
         <div className="artists__copy">
-          <h2 className="section-title artists__title">{LOREM_SHORT}</h2>
-          <p className="artists__text">{LOREM_LONG}</p>
-          <Link to="/artistas" className="button button--accent">
-            {LOREM_SHORT}
+          <h2 className="section-title artists__title">{ARTISTS_SECTION.title}</h2>
+          <p className="artists__text">{ARTISTS_SECTION.text}</p>
+          <Link to="/portafolio" className="button button--accent">
+            {ARTISTS_SECTION.cta}
           </Link>
         </div>
         <div className="artists__grid">
-          {portfolioLogos.map(({ key, src }) => (
-            <img key={key} src={src} alt="" className="artists__logo" />
+          {albumCovers.map(({ key, title, src }) => (
+            <img key={key} src={src} alt={title} className="artists__cover" />
           ))}
         </div>
       </div>

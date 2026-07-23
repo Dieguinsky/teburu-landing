@@ -15,6 +15,17 @@ import portrait23 from './img/oficials/image00123.jpeg'
 import portrait31 from './img/oficials/image00131.jpeg'
 import portrait44 from './img/oficials/image00144.jpeg'
 
+const albumCoverModules = import.meta.glob('./img/caratulas/*.jpg', {
+  eager: true,
+  import: 'default',
+})
+
+export const albumCovers = Object.entries(albumCoverModules).map(([path, src]) => ({
+  key: path,
+  title: path.split('/').pop().replace(/\.jpg$/i, '').replace(/^\d+\.\s*/, ''),
+  src,
+}))
+
 export const homeImages = {
   hero: heroBg,
   welcomeBg: landscapeBg,

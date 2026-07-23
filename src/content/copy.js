@@ -143,6 +143,7 @@ export const TEAM_MEMBERS = [
   {
     id: 'diego',
     name: 'Diego Novoa',
+    alias: 'Panda',
     role: 'Fundador · Ingeniero de sonido · Productor musical',
     bio: 'Licenciado en Teoría Musical y Literatura UC. Fundador de Estudio Teburu.',
     imageKey: 'diego',
@@ -233,6 +234,12 @@ export const BOOKING_EXTRAS = [
   { id: 'mezcla', label: 'Mezcla', price: 150000 },
   { id: 'mezcla-master', label: 'Mezcla + Master', price: 200000 },
 ]
+
+export const ARTISTS_SECTION = {
+  title: 'Artistas y lanzamientos',
+  text: 'Parte de la música producida, grabada y masterizada en Teburu: proyectos de artistas independientes listos para streaming.',
+  cta: 'Ver portafolio',
+}
 
 export const PORTAFOLIO_MUSIC = {
   title: 'Música',
