@@ -331,7 +331,16 @@ export default function ABMasterComparator() {
               onClick={togglePlay}
               title="Play / Pause"
             >
-              {isPlaying ? "⏸" : "▶"}
+              {isPlaying ? (
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <rect x="2" y="1" width="4" height="14" rx="0.5" />
+                  <rect x="10" y="1" width="4" height="14" rx="0.5" />
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M3 1.5v13l11-6.5-11-6.5z" />
+                </svg>
+              )}
             </button>
             <div className="ab-seek-wrap">
               <div className="ab-seek-track" onClick={seek}>
@@ -343,7 +352,20 @@ export default function ABMasterComparator() {
               </div>
             </div>
             <div className="ab-volume-row">
-              <span style={{ color: "rgba(232,232,232,0.4)", fontSize: 16 }}>🔉</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="rgba(232,232,232,0.4)"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M1 6h2.5L8 3v10L3.5 10H1z" fill="rgba(232,232,232,0.4)" stroke="none" />
+                <path d="M10.5 5.5a3.5 3.5 0 0 1 0 5" />
+              </svg>
               <input
                 type="range"
                 min={0}
