@@ -278,4 +278,15 @@
   .servicios-card__content {
     min-height: 22rem;
   }
+
+  .servicios-card__rule {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .servicios-card__desc {
+    opacity: 1;
+    max-height: none;
+    margin-top: 0.75rem;
+  }
 }

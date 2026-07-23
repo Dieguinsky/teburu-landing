@@ -230,4 +230,14 @@
   .portafolio-av__card-content {
     min-height: 20rem;
   }
+
+  .portafolio-av__rule {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .portafolio-av__card-content p {
+    opacity: 1;
+    max-height: none;
+  }
 }
