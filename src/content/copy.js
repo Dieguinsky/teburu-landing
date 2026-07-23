@@ -68,7 +68,7 @@ export const STUDIO_SERVICES = [
     id: 'hora-estudio',
     title: 'Sesión de estudio (3 horas)',
     description:
-      'Reserva el estudio por hora con acceso a sala de grabación, preamps Apollo y monitoreo profesional. Ideal para overdubs y sesiones puntuales.',
+      'Reserva el estudio por  3 horas con acceso a sala de grabación, preamps Apollo y monitoreo profesional. Ideal para vocales, overdubs o sesiones puntuales.',
     imageKey: 'horaEstudio',
   },
   {
@@ -188,7 +188,8 @@ export const CONTACT_INFO = {
     'Completa el formulario y te responderemos a la brevedad con cotización y disponibilidad para tu proyecto.',
   email: 'contacto@estudioteburu.cl',
   socialLabel: '¡Búscanos en redes sociales!',
-  instagram: 'https://instagram.com/estudioteburu',
+  instagram: 'https://www.instagram.com/estudio.teburu/',
+  whatsapp: '+56 9 6899 8905',
 }
 
 export const BOOKING_STEPS = [

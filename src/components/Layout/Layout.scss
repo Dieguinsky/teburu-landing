@@ -95,9 +95,28 @@
   transform: translateY(-50%) rotateY(20deg) scale(0.95);
 }
 
-.spacer {
-  width: clamp(7rem, 12vw, 10rem);
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  min-width: clamp(7rem, 12vw, 10rem);
   flex-shrink: 0;
+}
+
+.instagram-link {
+  display: inline-flex;
+  color: $gray-100;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $gray-300;
+  }
+
+  svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
 }
 
 .nav-toggle {
@@ -141,8 +160,9 @@
     padding: 0.75rem 1rem;
   }
 
-  .spacer {
-    display: none;
+  .nav-actions {
+    min-width: auto;
+    gap: 0.75rem;
   }
 
   .nav-toggle {
