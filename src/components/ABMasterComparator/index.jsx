@@ -15,19 +15,18 @@ function rmsLevel(buffer) {
   return Math.sqrt(sum / data.length);
 }
 
+const VU_BAR_COUNT = 32;
+
 export default function ABMasterComparator() {
   const [current, setCurrent] = useState("A");
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(0.85);
   const [selectedTrackId, setSelectedTrackId] = useState(null);
   const [isLoadingTrack, setIsLoadingTrack] = useState(false);
   const [trackMeta, setTrackMeta] = useState({ name: "Elige un track", sub: "Selecciona una pista para comparar" });
   const [statusText, setStatusText] = useState("elige un track para comenzar");
   const [loudnessText, setLoudnessText] = useState("");
-  const [vuLevels, setVuLevels] = useState(new Array(32).fill(0));
 
   const audioCtxRef = useRef(null);
   const gainNodeRef = useRef(null);
@@ -43,6 +42,10 @@ export default function ABMasterComparator() {
   const currentRef = useRef("A");
   const animateVURef = useRef(null);
   const updateProgressRef = useRef(null);
+  const progressBarRef = useRef(null);
+  const seekFillRef = useRef(null);
+  const currentTimeElRef = useRef(null);
+  const vuBarRefs = useRef([]);
 
   useEffect(() => {
     audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -90,16 +93,43 @@ export default function ABMasterComparator() {
     }
   }, []);
 
+  const vuBarColor = useCallback((v) => {
+    if (v > 0.85) return "#ff4444";
+    if (v > 0.6) return "#d48212";
+    if (v > 0.1) return "#148474";
+    return "rgba(232,232,232,0.1)";
+  }, []);
+
+  const resetVUBars = useCallback(() => {
+    vuBarRefs.current.forEach((el) => {
+      if (el) el.style.background = vuBarColor(0);
+    });
+  }, [vuBarColor]);
+
+  // Progress/time and VU-meter visuals are written straight to the DOM via
+  // refs instead of React state: they update up to 60x/sec while playing,
+  // and routing that through setState re-renders the whole component tree
+  // every frame, which drops frames on real devices and makes the bar look
+  // stuck until playback stops and the render backlog clears.
+  const renderProgress = useCallback((elapsed) => {
+    const dur = durationRef.current;
+    const pct = dur ? Math.min(elapsed / dur, 1) * 100 : 0;
+    if (progressBarRef.current) progressBarRef.current.style.left = `${pct}%`;
+    if (seekFillRef.current) seekFillRef.current.style.width = `${pct}%`;
+    if (currentTimeElRef.current) currentTimeElRef.current.textContent = formatTime(Math.max(elapsed, 0));
+  }, []);
+
   const animateVU = useCallback(() => {
     if (!analyserRef.current) return;
     const data = new Uint8Array(analyserRef.current.frequencyBinCount);
     analyserRef.current.getByteFrequencyData(data);
-    const bars = 32;
-    const step = Math.floor(data.length / bars);
-    const levels = Array.from({ length: bars }, (_, i) => data[i * step] / 255);
-    setVuLevels(levels);
+    const step = Math.floor(data.length / VU_BAR_COUNT);
+    for (let i = 0; i < VU_BAR_COUNT; i++) {
+      const bar = vuBarRefs.current[i];
+      if (bar) bar.style.background = vuBarColor(data[i * step] / 255);
+    }
     vuRafRef.current = requestAnimationFrame(() => animateVURef.current());
-  }, []);
+  }, [vuBarColor]);
   useEffect(() => { animateVURef.current = animateVU; }, [animateVU]);
 
   const stopPlayback = useCallback(() => {
@@ -109,38 +139,44 @@ export default function ABMasterComparator() {
     cancelAnimationFrame(rafRef.current);
     cancelAnimationFrame(vuRafRef.current);
     setIsPlaying(false);
-    setProgress(0);
-    setCurrentTime(0);
-    setVuLevels(new Array(32).fill(0));
-  }, []);
+    renderProgress(0);
+    resetVUBars();
+  }, [renderProgress, resetVUBars]);
 
   const updateProgress = useCallback(() => {
     const elapsed = audioCtxRef.current.currentTime - startTimeRef.current + pauseOffsetRef.current;
     const dur = durationRef.current;
-    const pct = dur ? Math.min(elapsed / dur, 1) : 0;
-    setProgress(pct * 100);
-    setCurrentTime(elapsed);
+    renderProgress(elapsed);
     if (elapsed >= dur) { stopPlayback(); return; }
     rafRef.current = requestAnimationFrame(() => updateProgressRef.current());
-  }, [stopPlayback]);
+  }, [stopPlayback, renderProgress]);
   useEffect(() => { updateProgressRef.current = updateProgress; }, [updateProgress]);
 
   const playBuffer = useCallback((which, offset) => {
     const buf = buffersRef.current[which];
     if (!buf) return;
     const ctx = audioCtxRef.current;
-    if (ctx.state === "suspended") ctx.resume();
-    const src = ctx.createBufferSource();
-    src.buffer = buf;
-    src.connect(analyserRef.current);
-    src.start(0, offset);
-    sourceRef.current = src;
-    startTimeRef.current = ctx.currentTime;
-    durationRef.current = buf.duration;
-    setDuration(buf.duration);
-    setIsPlaying(true);
-    animateVU();
-    updateProgress();
+    const start = () => {
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(analyserRef.current);
+      src.start(0, offset);
+      sourceRef.current = src;
+      startTimeRef.current = ctx.currentTime;
+      durationRef.current = buf.duration;
+      setDuration(buf.duration);
+      setIsPlaying(true);
+      animateVU();
+      updateProgress();
+    };
+    // Wait for resume() to actually take effect before reading ctx.currentTime:
+    // it stays frozen while suspended, and starting the offset baseline early
+    // (before the context is really running) throws elapsed-time tracking off.
+    if (ctx.state === "suspended") {
+      ctx.resume().then(start);
+    } else {
+      start();
+    }
   }, [animateVU, updateProgress]);
 
   const togglePlay = useCallback(() => {
@@ -156,19 +192,19 @@ export default function ABMasterComparator() {
       cancelAnimationFrame(rafRef.current);
       cancelAnimationFrame(vuRafRef.current);
       setIsPlaying(false);
-      setVuLevels(new Array(32).fill(0));
+      renderProgress(pauseOffsetRef.current);
+      resetVUBars();
     } else {
       playBuffer(currentRef.current, pauseOffsetRef.current);
     }
-  }, [isPlaying, playBuffer]);
+  }, [isPlaying, playBuffer, renderProgress, resetVUBars]);
 
   const seek = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const pct = (e.clientX - rect.left) / rect.width;
+    const pct = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
     const newOffset = pct * (durationRef.current || 0);
     pauseOffsetRef.current = newOffset;
-    setProgress(pct * 100);
-    setCurrentTime(newOffset);
+    renderProgress(newOffset);
     if (isPlaying) {
       if (sourceRef.current) try { sourceRef.current.stop(); } catch { /* already stopped */ }
       sourceRef.current = null;
@@ -176,7 +212,7 @@ export default function ABMasterComparator() {
       cancelAnimationFrame(vuRafRef.current);
       playBuffer(currentRef.current, newOffset);
     }
-  }, [isPlaying, playBuffer]);
+  }, [isPlaying, playBuffer, renderProgress]);
 
   const handleFlipToggle = useCallback(() => {
     const which = currentRef.current === "A" ? "B" : "A";
@@ -190,7 +226,7 @@ export default function ABMasterComparator() {
       cancelAnimationFrame(rafRef.current);
       cancelAnimationFrame(vuRafRef.current);
       setIsPlaying(false);
-      setVuLevels(new Array(32).fill(0));
+      resetVUBars();
     }
     setCurrent(which);
     currentRef.current = which;
@@ -201,12 +237,11 @@ export default function ABMasterComparator() {
       pauseOffsetRef.current = newOffset;
       durationRef.current = dur;
       setDuration(dur);
-      setProgress(dur ? (newOffset / dur) * 100 : 0);
-      setCurrentTime(newOffset);
+      renderProgress(newOffset);
       setStatusText(which === "A" ? "escuchando — original sin masterizar" : "escuchando — master teburu");
       if (wasPlaying) playBuffer(which, newOffset);
     }
-  }, [isPlaying, drawWaveform, playBuffer]);
+  }, [isPlaying, drawWaveform, playBuffer, renderProgress, resetVUBars]);
 
   const loadTrack = useCallback((trackId) => {
     const pair = audioTracks[trackId];
@@ -231,8 +266,7 @@ export default function ABMasterComparator() {
         currentRef.current = "A";
         durationRef.current = antesBuf.duration;
         setDuration(antesBuf.duration);
-        setProgress(0);
-        setCurrentTime(0);
+        renderProgress(0);
         const track = AB_COMPARATOR_TRACKS.find((t) => t.id === trackId);
         setTrackMeta({
           name: track ? track.title : trackId,
@@ -254,7 +288,7 @@ export default function ABMasterComparator() {
         setIsLoadingTrack(false);
       }
     });
-  }, [selectedTrackId, stopPlayback, drawWaveform]);
+  }, [selectedTrackId, stopPlayback, drawWaveform, renderProgress]);
 
   useEffect(() => {
     if (AB_COMPARATOR_TRACKS.length > 0) loadTrack(AB_COMPARATOR_TRACKS[0].id);
@@ -265,13 +299,6 @@ export default function ABMasterComparator() {
     const v = parseFloat(e.target.value);
     setVolume(v);
     if (gainNodeRef.current) gainNodeRef.current.gain.value = v;
-  };
-
-  const vuBarColor = (v) => {
-    if (v > 0.85) return "#ff4444";
-    if (v > 0.6) return "#d48212";
-    if (v > 0.1) return "#148474";
-    return "rgba(232,232,232,0.1)";
   };
 
   return (
@@ -314,13 +341,15 @@ export default function ABMasterComparator() {
             <div className="ab-waveform-label">
               {current === "A" ? "forma de onda — original" : "forma de onda — master teburu"}
             </div>
-            <canvas ref={wfCanvasRef} style={{ width: "100%", height: 80, display: "block" }} />
-            <div className="ab-progress-bar" style={{ left: `${progress}%` }} />
+            <div className="ab-waveform-seek" onClick={seek}>
+              <canvas ref={wfCanvasRef} style={{ width: "100%", height: 80, display: "block" }} />
+              <div className="ab-progress-bar" ref={progressBarRef} />
+            </div>
           </div>
 
           <div className="ab-vu-row">
-            {vuLevels.map((v, i) => (
-              <div key={i} className="ab-vu-bar" style={{ background: vuBarColor(v) }} />
+            {Array.from({ length: VU_BAR_COUNT }).map((_, i) => (
+              <div key={i} ref={(el) => (vuBarRefs.current[i] = el)} className="ab-vu-bar" />
             ))}
           </div>
           <div className="ab-loudness">{loudnessText}</div>
@@ -344,10 +373,10 @@ export default function ABMasterComparator() {
             </button>
             <div className="ab-seek-wrap">
               <div className="ab-seek-track" onClick={seek}>
-                <div className="ab-seek-fill" style={{ width: `${progress}%` }} />
+                <div className="ab-seek-fill" ref={seekFillRef} />
               </div>
               <div className="ab-time-row">
-                <span>{formatTime(currentTime)}</span>
+                <span ref={currentTimeElRef}>0:00</span>
                 <span>{formatTime(duration)}</span>
               </div>
             </div>
