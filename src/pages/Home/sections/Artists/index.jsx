@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../../../../components/Reveal'
 import { albumCovers, homeImages } from '../../../../assets/homeImages'
 import { ARTISTS_SECTION } from '../../../../content/copy'
 import './Artists.scss'
 
 export default function Artists() {
   return (
-    <section
-      className="artists"
-      style={{ backgroundImage: `url(${homeImages.artistsBg})` }}
-    >
+    <Reveal as="section" className="artists" bg={homeImages.artistsBg}>
       <div className="artists__overlay" />
       <div className="artists__layout">
         <div className="artists__copy">
@@ -19,11 +17,11 @@ export default function Artists() {
           </Link>
         </div>
         <div className="artists__grid">
-          {albumCovers.map(({ key, title, src }) => (
-            <img key={key} src={src} alt={title} className="artists__cover" />
+          {albumCovers.map(({ key, title, src }, index) => (
+            <Reveal as="img" key={key} src={src} alt={title} className="artists__cover" delay={index * 60} loading="lazy" />
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   )
 }

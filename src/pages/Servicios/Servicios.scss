@@ -8,6 +8,7 @@
 .servicios-hero {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: clamp(18rem, 45vh, 28rem);
@@ -38,6 +39,28 @@
   line-height: 1;
   color: $gray-100;
   text-align: center;
+}
+
+.servicios-hero__subtitle {
+  position: relative;
+  z-index: 1;
+  margin: -0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  border: 0;
+  background: none;
+  font-family: $font-body;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: $gray-200;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $gray-100;
+  }
 }
 
 .servicios-intro {

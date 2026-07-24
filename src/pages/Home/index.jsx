@@ -5,6 +5,9 @@ import Studio from './sections/Studio'
 import Welcome from './sections/Welcome'
 import Artists from './sections/Artists'
 import Team from './sections/Team'
+import Agenda from './sections/Agenda'
+import Reel from './sections/Reel'
+import Location from './sections/Location'
 import './Home.scss'
 
 export default function Home() {
@@ -17,6 +20,9 @@ export default function Home() {
       <Welcome />
       <Artists />
       <Team />
+      <Agenda />
+      <Reel />
+      <Location />
     </div>
   )
 }

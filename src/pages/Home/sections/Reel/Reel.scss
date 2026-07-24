@@ -1,0 +1,49 @@
+@use '../../../../styles/variables' as *;
+
+.reel {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 5rem 2rem;
+}
+
+.reel__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.reel__title {
+  color: $gray-100;
+  margin-bottom: 1.25rem;
+}
+
+.reel__text {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-300;
+}
+
+.reel__embed {
+  display: flex;
+  justify-content: center;
+
+  iframe {
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .reel__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .reel__embed {
+    order: -1;
+  }
+}

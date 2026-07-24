@@ -20,6 +20,7 @@ const VU_BAR_COUNT = 32;
 export default function ABMasterComparator() {
   const [current, setCurrent] = useState("A");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLooping, setIsLooping] = useState(false);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.85);
   const [selectedTrackId, setSelectedTrackId] = useState(null);
@@ -40,8 +41,10 @@ export default function ABMasterComparator() {
   const vuRafRef = useRef(null);
   const wfCanvasRef = useRef(null);
   const currentRef = useRef("A");
+  const isLoopingRef = useRef(false);
   const animateVURef = useRef(null);
   const updateProgressRef = useRef(null);
+  const playBufferRef = useRef(null);
   const progressBarRef = useRef(null);
   const seekFillRef = useRef(null);
   const currentTimeElRef = useRef(null);
@@ -53,6 +56,11 @@ export default function ABMasterComparator() {
     gainNodeRef.current.gain.value = 0.85;
     analyserRef.current = audioCtxRef.current.createAnalyser();
     analyserRef.current.fftSize = 64;
+    // Calibrate the byte range to real dBFS (0 dB = true digital ceiling)
+    // instead of the WebAudio defaults (-100..-30 dB), so a bar only reads
+    // "hot" when the signal is actually close to clipping.
+    analyserRef.current.minDecibels = -70;
+    analyserRef.current.maxDecibels = 0;
     analyserRef.current.connect(gainNodeRef.current);
     gainNodeRef.current.connect(audioCtxRef.current.destination);
     return () => {
@@ -64,6 +72,7 @@ export default function ABMasterComparator() {
   }, []);
 
   useEffect(() => { currentRef.current = current; }, [current]);
+  useEffect(() => { isLoopingRef.current = isLooping; }, [isLooping]);
 
   const drawWaveform = useCallback((buffer, which) => {
     const canvas = wfCanvasRef.current;
@@ -94,9 +103,14 @@ export default function ABMasterComparator() {
   }, []);
 
   const vuBarColor = useCallback((v) => {
-    if (v > 0.85) return "#ff4444";
-    if (v > 0.6) return "#d48212";
-    if (v > 0.1) return "#148474";
+    // v is the byte-normalized (0-1) reading mapped to the analyser's
+    // minDecibels..maxDecibels range (-70..0 dB), so this now reflects real
+    // dBFS: red only near true 0 dB, amber just under it, green for the
+    // normal working range, and idle grey below the noise floor.
+    const db = -70 + v * 70;
+    if (db > -3) return "#ff4444";
+    if (db > -8) return "#d48212";
+    if (db > -50) return "#148474";
     return "rgba(232,232,232,0.1)";
   }, []);
 
@@ -147,7 +161,19 @@ export default function ABMasterComparator() {
     const elapsed = audioCtxRef.current.currentTime - startTimeRef.current + pauseOffsetRef.current;
     const dur = durationRef.current;
     renderProgress(elapsed);
-    if (elapsed >= dur) { stopPlayback(); return; }
+    if (elapsed >= dur) {
+      if (isLoopingRef.current && playBufferRef.current) {
+        if (sourceRef.current) try { sourceRef.current.stop(); } catch { /* already stopped */ }
+        sourceRef.current = null;
+        pauseOffsetRef.current = 0;
+        cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(vuRafRef.current);
+        playBufferRef.current(currentRef.current, 0);
+        return;
+      }
+      stopPlayback();
+      return;
+    }
     rafRef.current = requestAnimationFrame(() => updateProgressRef.current());
   }, [stopPlayback, renderProgress]);
   useEffect(() => { updateProgressRef.current = updateProgress; }, [updateProgress]);
@@ -178,6 +204,11 @@ export default function ABMasterComparator() {
       start();
     }
   }, [animateVU, updateProgress]);
+  useEffect(() => { playBufferRef.current = playBuffer; }, [playBuffer]);
+
+  const toggleLoop = useCallback(() => {
+    setIsLooping((prev) => !prev);
+  }, []);
 
   const togglePlay = useCallback(() => {
     const ctx = audioCtxRef.current;
@@ -302,7 +333,7 @@ export default function ABMasterComparator() {
   };
 
   return (
-    <section className="ab-comparator-section">
+    <section id="ab-comparator" className="ab-comparator-section">
       <div className="ab-comparator-section__inner">
         <h2 className="section-title ab-comparator-section__title">{AB_COMPARATOR.title}</h2>
         <p className="ab-comparator-section__desc">{AB_COMPARATOR.description}</p>
@@ -371,6 +402,19 @@ export default function ABMasterComparator() {
                 </svg>
               )}
             </button>
+            <button
+              className={`ab-loop-btn ${isLooping ? "active" : ""}`}
+              onClick={toggleLoop}
+              title="Repetir en loop"
+              aria-pressed={isLooping}
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 8a6 6 0 0 1 6-6h4" />
+                <path d="M9 0l3 2-3 2" />
+                <path d="M14 8a6 6 0 0 1-6 6H4" />
+                <path d="M7 16l-3-2 3-2" />
+              </svg>
+            </button>
             <div className="ab-seek-wrap">
               <div className="ab-seek-track" onClick={seek}>
                 <div className="ab-seek-fill" ref={seekFillRef} />
@@ -407,7 +451,7 @@ export default function ABMasterComparator() {
           </div>
 
           <div className="ab-toggle-section">
-            <div className="ab-toggle-label">comparador a/b</div>
+            <div className="ab-toggle-label">comparador a/b · toca para alternar</div>
             <div
               className="ab-flip-toggle"
               onClick={handleFlipToggle}
@@ -418,6 +462,12 @@ export default function ABMasterComparator() {
             >
               <span className={`ab-flip-label-text ${current === "A" ? "is-original" : "is-master"}`}>
                 {current === "A" ? "ORIGINAL" : "MASTER TEBURU"}
+              </span>
+              <span className="ab-flip-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 5h10M9 2l3 3-3 3" />
+                  <path d="M14 11H4M7 8l-3 3 3 3" />
+                </svg>
               </span>
               <div className={`ab-flip-pill ${current === "A" ? "state-original" : "state-master"}`}>
                 {current === "A" ? "ORIGINAL" : "MASTER TEBURU"}

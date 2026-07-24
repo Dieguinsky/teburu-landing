@@ -1,1 +1,272 @@
-// Estudio-specific styles → .estudio-page
+@use '../../styles/variables' as *;
+
+.estudio-page {
+  padding: 0;
+  margin: 0;
+}
+
+.estudio-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(18rem, 45vh, 28rem);
+  background-size: cover;
+  background-position: center;
+}
+
+.estudio-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($primary-1, 0.55) 0%,
+    rgba($gray-700, 0.78) 100%
+  );
+}
+
+.estudio-hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2rem;
+  font-family: $font-display;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: $gray-100;
+  text-align: center;
+}
+
+.estudio-intro {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+}
+
+.estudio-intro__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.estudio-intro__title {
+  color: $gray-100;
+}
+
+.estudio-intro__text {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $gray-200;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.estudio-gallery {
+  background-color: $background;
+  padding: 0.35rem;
+}
+
+.estudio-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.estudio-gallery__figure {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.estudio-gear {
+  background-color: $gray-700;
+  color: $gray-100;
+  padding: 4.5rem 2rem 5rem;
+}
+
+.estudio-gear__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.estudio-gear__heading {
+  text-align: center;
+  color: $gray-100;
+  margin-bottom: 2.5rem;
+}
+
+.estudio-gear__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.estudio-gear__card {
+  background-color: rgba($gray-100, 0.04);
+  border: 1px solid rgba($gray-100, 0.1);
+  padding: 1.75rem;
+}
+
+.estudio-gear__category {
+  margin: 0 0 1rem;
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $primary-2;
+}
+
+.estudio-gear__list {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  list-style: disc;
+
+  li {
+    margin: 0 0 0.6rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: $gray-300;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.estudio-video {
+  background-color: $background;
+  padding: 4.5rem 2rem;
+}
+
+.estudio-video__inner {
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.estudio-video__heading {
+  color: $primary-1;
+  margin-bottom: 1rem;
+}
+
+.estudio-video__text {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-500;
+}
+
+.estudio-video__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: $primary-1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background-color: $primary-2;
+    }
+  }
+}
+
+.estudio-cta {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+  text-align: center;
+}
+
+.estudio-cta__inner {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.estudio-cta__title {
+  margin: 0 0 1rem;
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.estudio-cta__text {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $gray-200;
+}
+
+.estudio-cta__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.estudio-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .estudio-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .estudio-gear__grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .estudio-intro,
+  .estudio-gear,
+  .estudio-cta {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

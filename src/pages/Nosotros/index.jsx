@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../../components/Reveal'
 import { pageImages } from '../../assets/pageImages'
 import {
   BRAND,
@@ -20,7 +21,7 @@ export default function Nosotros() {
       </section>
 
       <section className="nosotros-intro">
-        <div className="nosotros-intro__inner">
+        <Reveal as="div" className="nosotros-intro__inner">
           {NOSOTROS_INTRO.paragraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 28)} className="nosotros-intro__text">
               {paragraph}
@@ -29,19 +30,22 @@ export default function Nosotros() {
           <Link to="/contacto" className="button">
             ¡Hablemos!
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       <section className="nosotros-team">
         <div className="nosotros-team__inner">
-          <h2 className="section-title nosotros-team__title">El equipo</h2>
+          <Reveal as="h2" className="section-title nosotros-team__title">
+            El equipo
+          </Reveal>
           <div className="nosotros-team__grid">
-            {TEAM_MEMBERS.map(({ id, name, alias, role, bio, imageKey }) => (
-              <article key={id} className="nosotros-team__member">
+            {TEAM_MEMBERS.map(({ id, name, alias, role, bio, imageKey }, index) => (
+              <Reveal as="article" key={id} className="nosotros-team__member" delay={index * 100}>
                 <img
                   src={pageImages.team[imageKey]}
                   alt={name}
                   className="nosotros-team__photo"
+                  loading="lazy"
                 />
                 <h3 className="nosotros-team__name">
                   {name}
@@ -49,16 +53,13 @@ export default function Nosotros() {
                 </h3>
                 <p className="nosotros-team__role">{role}</p>
                 <p className="nosotros-team__bio">{bio}</p>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section
-        className="nosotros-join"
-        style={{ backgroundImage: `url(${pageImages.contactoBg})` }}
-      >
+      <Reveal as="section" className="nosotros-join" bg={pageImages.contactoBg}>
         <div className="nosotros-join__overlay" />
         <div className="nosotros-join__inner">
           <h2 className="section-title nosotros-join__title">{NOSOTROS_JOIN.title}</h2>
@@ -77,7 +78,7 @@ export default function Nosotros() {
             Escríbenos
           </Link>
         </div>
-      </section>
+      </Reveal>
 
       <footer className="nosotros-footer">
         <p>Copyright © {new Date().getFullYear()} {BRAND}</p>

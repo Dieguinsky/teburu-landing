@@ -1,3 +1,4 @@
+import Reveal from '../../components/Reveal'
 import { pageImages } from '../../assets/pageImages'
 import {
   BRAND,
@@ -18,7 +19,7 @@ export default function Portafolio() {
       </section>
 
       <section className="portafolio-music">
-        <div className="portafolio-music__inner">
+        <Reveal as="div" className="portafolio-music__inner">
           <h2 className="section-title portafolio-music__title">
             {PORTAFOLIO_MUSIC.title}
           </h2>
@@ -33,20 +34,20 @@ export default function Portafolio() {
               loading="lazy"
             />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="portafolio-av">
         <div className="portafolio-av__inner">
-          <h2 className="section-title portafolio-av__title">
+          <Reveal as="h2" className="section-title portafolio-av__title">
             {PORTAFOLIO_AUDIOVISUAL.title}
-          </h2>
+          </Reveal>
           <p className="portafolio-av__desc">{PORTAFOLIO_AUDIOVISUAL.description}</p>
           <div className="portafolio-av__grid">
-            {PORTAFOLIO_AUDIOVISUAL.items.map(({ id, title, text, imageKey }) => {
+            {PORTAFOLIO_AUDIOVISUAL.items.map(({ id, title, text, imageKey }, index) => {
               const loopSrc = pageImages.audiovisualVideo[imageKey]
               return (
-                <article key={id} className="portafolio-av__card">
+                <Reveal as="article" key={id} className="portafolio-av__card" delay={index * 90}>
                   {loopSrc ? (
                     <video
                       className="portafolio-av__card-media"
@@ -62,6 +63,7 @@ export default function Portafolio() {
                       className="portafolio-av__card-media"
                       src={pageImages.audiovisual[imageKey]}
                       alt={title}
+                      loading="lazy"
                     />
                   )}
                   <div className="portafolio-av__card-overlay" />
@@ -70,7 +72,7 @@ export default function Portafolio() {
                     <span className="portafolio-av__rule" aria-hidden="true" />
                     <p>{text}</p>
                   </div>
-                </article>
+                </Reveal>
               )
             })}
           </div>

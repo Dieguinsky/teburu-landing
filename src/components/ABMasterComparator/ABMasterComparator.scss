@@ -227,6 +227,32 @@
   }
 }
 
+.ab-loop-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba($gray-100, 0.35);
+  color: rgba($gray-100, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $secondary-2;
+    color: $secondary-2;
+  }
+
+  &.active {
+    border-color: $secondary-2;
+    color: $primary-1;
+    background: $secondary-2;
+  }
+}
+
 .ab-seek-wrap {
   flex: 1;
   position: relative;
@@ -276,10 +302,61 @@
   gap: 12px;
   cursor: pointer;
   user-select: none;
-  transition: border-color 0.3s;
+  transition:
+    border-color 0.3s,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+  animation: ab-invite-pulse 2.4s ease-in-out infinite;
 
   &:hover {
-    border-color: rgba($gray-100, 0.3);
+    border-color: $secondary-2;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($secondary-2, 0.25);
+    animation-play-state: paused;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $secondary-2;
+    outline-offset: 3px;
+    animation-play-state: paused;
+  }
+}
+
+@keyframes ab-invite-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba($secondary-2, 0.18);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba($secondary-2, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-flip-toggle {
+    animation: none;
+  }
+}
+
+.ab-flip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba($secondary-2, 0.15);
+  color: $secondary-2;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  .ab-flip-toggle:hover & {
+    transform: rotate(180deg);
   }
 }
 

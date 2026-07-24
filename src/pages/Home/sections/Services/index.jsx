@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../../../../components/Reveal'
 import { homeImages } from '../../../../assets/homeImages'
 import { SERVICES } from '../../../../content/copy'
 import './Services.scss'
@@ -12,15 +13,17 @@ export default function Services() {
   return (
     <section className="services">
       <div className="services__inner">
-        <h2 className="section-title services__title">Servicios Disponibles
-
-        </h2>
+        <Reveal as="h2" className="section-title services__title">
+          Servicios Disponibles
+        </Reveal>
         <div className="services__grid">
-          {services.map(({ title, text, image }) => (
-            <article
+          {services.map(({ title, text, image }, index) => (
+            <Reveal
+              as="article"
               key={title}
               className="services__card"
-              style={{ backgroundImage: `url(${image})` }}
+              bg={image}
+              delay={index * 90}
             >
               <div className="services__card-overlay" />
               <div className="services__card-body">
@@ -30,7 +33,7 @@ export default function Services() {
                   mas información
                 </Link>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
