@@ -143,41 +143,6 @@
       outline-offset: 1px;
     }
   }
-
-  &--narrow {
-    grid-column: span 1;
-  }
-
-  &--wide {
-    grid-column: span 1;
-  }
-}
-
-.contacto-fieldset {
-  margin: 0 0 1.25rem;
-  padding: 0;
-  border: 0;
-
-  legend {
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: $gray-100;
-  }
-}
-
-.contacto-radio-group {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.contacto-radio {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: $gray-200;
-  cursor: pointer;
 }
 
 .contacto-form__submit {

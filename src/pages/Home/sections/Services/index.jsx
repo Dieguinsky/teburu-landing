@@ -17,7 +17,7 @@ export default function Services() {
           Servicios Disponibles
         </Reveal>
         <div className="services__grid">
-          {services.map(({ title, text, image }, index) => (
+          {services.map(({ title, text, image, anchor }, index) => (
             <Reveal
               as="article"
               key={title}
@@ -29,7 +29,7 @@ export default function Services() {
               <div className="services__card-body">
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <Link to="/servicios" className="button">
+                <Link to={`/servicios#${anchor}`} className="button">
                   mas información
                 </Link>
               </div>

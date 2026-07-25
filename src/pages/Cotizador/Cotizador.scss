@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+
+.cotizador-page {
+  padding: 0;
+  margin: 0;
+  min-height: calc(100vh - 4rem);
+}
+
+.cotizador-layout {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  min-height: calc(100vh - 4rem);
+}
+
+.cotizador-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: $gray-700;
+  color: $gray-200;
+}
+
+.cotizador-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.cotizador-sidebar__logo {
+  font-size: 1.5rem;
+  color: $primary-2;
+}
+
+.cotizador-sidebar__name {
+  font-family: $font-display;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $gray-100;
+}
+
+.cotizador-sidebar__help {
+  margin: auto 0 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: $gray-400;
+
+  a {
+    color: $gray-200;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-2;
+    }
+  }
+}
+
+.cotizador-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background-color: $gray-200;
+}
+
+.cotizador-main__title {
+  margin: 0;
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $primary-1;
+}
+
+.cotizador-main__rule {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin: 1.25rem auto;
+  background-color: $primary-2;
+}
+
+.cotizador-main__subtitle {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $gray-700;
+}
+
+.cotizador-main__desc {
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: $gray-600;
+}
+
+.cotizador-main__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.cotizador-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 900px) {
+  .cotizador-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cotizador-sidebar {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cotizador-sidebar__help {
+    margin-top: 1.5rem;
+  }
+}

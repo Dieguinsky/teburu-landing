@@ -8,11 +8,7 @@ const initialForm = {
   project: '',
   phone: '',
   email: '',
-  songs: '',
   about: '',
-  startDate: '',
-  endDate: '',
-  needsProducer: '',
   details: '',
 }
 
@@ -78,13 +74,12 @@ export default function Contacto() {
                   />
                 </label>
                 <label className="contacto-field">
-                  <span>Proyecto *</span>
+                  <span>Proyecto/Empresa</span>
                   <input
                     type="text"
                     name="project"
                     value={form.project}
                     onChange={handleChange}
-                    required
                   />
                 </label>
               </div>
@@ -112,83 +107,16 @@ export default function Contacto() {
                 </label>
               </div>
 
-              <div className="contacto-form__row">
-                <label className="contacto-field contacto-field--narrow">
-                  <span>Nº de canciones *</span>
-                  <input
-                    type="number"
-                    name="songs"
-                    min="1"
-                    value={form.songs}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-                <label className="contacto-field contacto-field--wide">
-                  <span>Cuéntanos acerca de tu música *</span>
-                  <textarea
-                    name="about"
-                    rows={4}
-                    value={form.about}
-                    onChange={handleChange}
-                    placeholder="Describe tu proyecto, género, referencias o links."
-                    required
-                  />
-                </label>
-              </div>
-
-              <fieldset className="contacto-fieldset">
-                <legend>¿Cuándo te gustaría grabar?</legend>
-                <div className="contacto-form__row">
-                  <label className="contacto-field">
-                    <span>Inicio *</span>
-                    <input
-                      type="date"
-                      name="startDate"
-                      value={form.startDate}
-                      onChange={handleChange}
-                      required
-                    />
-                  </label>
-                  <label className="contacto-field">
-                    <span>Término *</span>
-                    <input
-                      type="date"
-                      name="endDate"
-                      value={form.endDate}
-                      onChange={handleChange}
-                      required
-                    />
-                  </label>
-                </div>
-              </fieldset>
-
-              <fieldset className="contacto-fieldset">
-                <legend>¿Necesitas de un productor? *</legend>
-                <div className="contacto-radio-group">
-                  <label className="contacto-radio">
-                    <input
-                      type="radio"
-                      name="needsProducer"
-                      value="si"
-                      checked={form.needsProducer === 'si'}
-                      onChange={handleChange}
-                      required
-                    />
-                    Sí
-                  </label>
-                  <label className="contacto-radio">
-                    <input
-                      type="radio"
-                      name="needsProducer"
-                      value="no"
-                      checked={form.needsProducer === 'no'}
-                      onChange={handleChange}
-                    />
-                    No
-                  </label>
-                </div>
-              </fieldset>
+              <label className="contacto-field">
+                <span>Cuéntanos sobre tu proyecto *</span>
+                <textarea
+                  name="about"
+                  rows={4}
+                  value={form.about}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
               <label className="contacto-field">
                 <span>Detalles que necesites contarnos</span>

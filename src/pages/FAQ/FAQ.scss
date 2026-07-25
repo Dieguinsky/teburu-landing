@@ -1,0 +1,163 @@
+@use '../../styles/variables' as *;
+
+.faq-page {
+  padding: 0;
+  margin: 0;
+}
+
+.faq-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(16rem, 38vh, 22rem);
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.faq-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($primary-1, 0.55) 0%,
+    rgba($gray-700, 0.78) 100%
+  );
+}
+
+.faq-hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: $font-display;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: $gray-100;
+}
+
+.faq-hero__subtitle {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $gray-200;
+}
+
+.faq-list {
+  background-color: $background;
+  padding: 4rem 2rem;
+}
+
+.faq-list__inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba($primary-1, 0.15);
+
+  &[open] .faq-item__question::after {
+    content: '−';
+  }
+}
+
+.faq-item__question {
+  position: relative;
+  padding: 1.5rem 2.5rem 1.5rem 0;
+  font-family: $font-display;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: $primary-1;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::marker {
+    display: none;
+  }
+
+  &::after {
+    content: '+';
+    position: absolute;
+    top: 1.4rem;
+    right: 0.25rem;
+    font-family: $font-body;
+    font-size: 1.4rem;
+    color: $primary-2;
+  }
+
+  &:hover {
+    color: $primary-2;
+  }
+}
+
+.faq-item__answer {
+  margin: 0 0 1.5rem;
+  max-width: 42rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: $gray-600;
+}
+
+.faq-cta {
+  background-color: $primary-1;
+  color: $gray-100;
+  padding: 4.5rem 2rem;
+  text-align: center;
+}
+
+.faq-cta__inner {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.faq-cta__title {
+  margin: 0 0 1rem;
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.faq-cta__email {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: $gray-200;
+}
+
+.faq-footer {
+  background-color: $gray-800;
+  color: $gray-400;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba($gray-100, 0.08);
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-list,
+  .faq-cta {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

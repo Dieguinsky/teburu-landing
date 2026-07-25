@@ -9,6 +9,8 @@ import Escuela from './pages/Escuela'
 import Contacto from './pages/Contacto'
 import Reservar from './pages/Reservar'
 import Portafolio from './pages/Portafolio'
+import Cotizador from './pages/Cotizador'
+import FAQ from './pages/FAQ'
 
 export default function AppRoutes() {
   return (
@@ -23,6 +25,8 @@ export default function AppRoutes() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/reservar" element={<Reservar />} />
         <Route path="/portafolio" element={<Portafolio />} />
+        <Route path="/cotizador" element={<Cotizador />} />
+        <Route path="/faq" element={<FAQ />} />
       </Route>
     </Routes>
   )

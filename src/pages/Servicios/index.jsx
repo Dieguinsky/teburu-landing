@@ -1,9 +1,30 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
 import { serviciosImages } from '../../assets/serviciosImages'
-import { BRAND, SERVICIOS_INTRO, STUDIO_SERVICES, PODCAST_SERVICES } from '../../content/copy'
+import {
+  BRAND,
+  SERVICIOS_INTRO,
+  STUDIO_SERVICES,
+  SERVICIOS_MUSICA_CTAS,
+  PODCAST_SERVICES,
+  SERVICIOS_PODCAST_CTAS,
+  AUDIOVISUAL_SERVICES,
+  SERVICIOS_AUDIOVISUAL_CTAS,
+  CONTACT_INFO,
+} from '../../content/copy'
 import ABMasterComparator from '../../components/ABMasterComparator'
 import './Servicios.scss'
+
+const SERVICE_CATEGORIES = [
+  { id: 'musica', heading: 'Música', services: STUDIO_SERVICES, ctas: SERVICIOS_MUSICA_CTAS },
+  { id: 'podcast', heading: 'Podcast', services: PODCAST_SERVICES, ctas: SERVICIOS_PODCAST_CTAS },
+  {
+    id: 'audiovisual',
+    heading: 'Audiovisual',
+    services: AUDIOVISUAL_SERVICES,
+    ctas: SERVICIOS_AUDIOVISUAL_CTAS,
+  },
+]
 
 function scrollToComparator() {
   document.getElementById('ab-comparator')?.scrollIntoView({ behavior: 'smooth' })
@@ -51,39 +72,35 @@ export default function Servicios() {
 
       <section className="servicios-catalog">
         <div className="servicios-catalog__inner">
-          <Reveal as="h2" className="section-title servicios-catalog__heading">
-            Sesión de estudio
-          </Reveal>
+          {SERVICE_CATEGORIES.map(({ id, heading, services, ctas }) => (
+            <div className="servicios-category" key={id}>
+              <Reveal as="h2" id={id} className="section-title servicios-catalog__heading">
+                {heading}
+              </Reveal>
 
-          <div className="servicios-grid">
-            {STUDIO_SERVICES.map(({ id, title, description, imageKey }, index) => (
-              <ServiceCard
-                key={id}
-                title={title}
-                description={description}
-                image={serviciosImages[imageKey]}
-                delay={index * 90}
-              />
-            ))}
-          </div>
+              <div
+                className={`servicios-grid${services.length === 4 ? ' servicios-grid--four' : ''}`}
+              >
+                {services.map(({ id: serviceId, title, description, imageKey }, index) => (
+                  <ServiceCard
+                    key={serviceId}
+                    title={title}
+                    description={description}
+                    image={serviciosImages[imageKey]}
+                    delay={index * 90}
+                  />
+                ))}
+              </div>
 
-          <hr className="servicios-divider" />
-
-          <Reveal as="h2" className="section-title servicios-catalog__heading">
-            Podcast
-          </Reveal>
-
-          <div className="servicios-grid">
-            {PODCAST_SERVICES.map(({ id, title, description, imageKey }, index) => (
-              <ServiceCard
-                key={id}
-                title={title}
-                description={description}
-                image={serviciosImages[imageKey]}
-                delay={index * 90}
-              />
-            ))}
-          </div>
+              <div className="servicios-catalog__cta">
+                {ctas.map(({ label, to }) => (
+                  <Link key={to} to={to} className="button button--accent">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -92,7 +109,7 @@ export default function Servicios() {
       <section className="servicios-cta">
         <Reveal as="div" className="servicios-cta__inner">
           <h2 className="servicios-cta__title">¿Listo/a para hacer tu música?</h2>
-          <p className="servicios-cta__email">contacto@estudioteburu.cl</p>
+          <p className="servicios-cta__email">{CONTACT_INFO.email}</p>
           <Link to="/contacto" className="button button--accent">
             Formulario de contacto
           </Link>

@@ -1,4 +1,4 @@
-import { BRAND, BOOKING_STEPS } from '../../content/copy'
+import { BRAND, BOOKING_STEPS, CONTACT_INFO } from '../../content/copy'
 import BookingFlow from '../../components/BookingFlow'
 import useBookingFlow from '../../components/BookingFlow/useBookingFlow'
 import './Reservar.scss'
@@ -44,7 +44,7 @@ export default function Reservar() {
           <p className="reservar-sidebar__help">
             ¿Tienes alguna pregunta?
             <br />
-            <a href="mailto:contacto@estudioteburu.cl">contacto@estudioteburu.cl</a>
+            <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
           </p>
         </aside>
 

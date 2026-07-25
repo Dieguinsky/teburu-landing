@@ -16,6 +16,7 @@ export const NAV_ITEMS_ES = [
   { to: '/contacto', label: 'Contacto' },
   { to: '/reservar', label: 'Reservar' },
   { to: '/portafolio', label: 'Portafolio' },
+  { to: '/faq', label: 'FAQ' },
 ]
 
 export const NAV_ITEMS_JP = [
@@ -26,24 +27,24 @@ export const NAV_ITEMS_JP = [
   { to: '/contacto', label: 'お問い合わせ' },
   { to: '/reservar', label: '予約' },
   { to: '/portafolio', label: 'ポートフォリオ' },
+  { to: '/faq', label: 'よくある質問' },
 ]
 
 export const SERVICES = [
   {
-    title: 'Producción',
-    text: 'Acompañamiento creativo desde la idea hasta la premezcla: arreglos, dirección artística y captura de cada toma.',
+    title: 'Música',
+    text: 'Grabación, producción, mezcla y masterización en una sala tratada acústicamente, con preamps Apollo y microfonía profesional. Desde una sesión express hasta un álbum completo.',
+    anchor: 'musica',
   },
   {
-    title: 'Grabación',
-    text: 'Sala tratada acústicamente, preamps Apollo y microfonía profesional para vocales, instrumentos y bandas completas.',
+    title: 'Podcast',
+    text: 'Grabación de podcast en el estudio o a domicilio, con acústica tratada, edición y postproducción lista para streaming, más clips para redes sociales.',
+    anchor: 'podcast',
   },
   {
-    title: 'Mezcla',
-    text: 'Balance, espacialidad y color sonoro para que cada elemento de tu música tenga su lugar en el mix.',
-  },
-  {
-    title: 'Mastering',
-    text: 'Pulido final para streaming o CD: loudness, ecualización y cohesión entre pistas.',
+    title: 'Audiovisual',
+    text: 'Cobertura de eventos, contenido para redes sociales y registro multicámara de sesiones en vivo, con edición y entrega lista para publicar.',
+    anchor: 'audiovisual',
   },
 ]
 
@@ -117,68 +118,110 @@ export const STUDIO_SERVICES = [
     id: 'hora-estudio',
     title: 'Sesión de estudio (3 horas)',
     description:
-      'Reserva el estudio por  3 horas con acceso a sala de grabación, preamps Apollo y monitoreo profesional. Ideal para vocales, overdubs o sesiones puntuales.',
+      'Reserva el estudio por 3 horas con acceso a sala de grabación, preamps Apollo y monitoreo profesional, más acompañamiento de un ingeniero en sesión. Ideal para vocales, overdubs o sesiones puntuales que no requieren una jornada completa.',
     imageKey: 'horaEstudio',
   },
   {
     id: 'media-jornada',
     title: 'Doble Jornada (6 horas)',
     description:
-      'Bloque doble para desarrollar tu proyecto con calma: grabación, preproducción o sesiones intensivas con acompañamiento técnico.',
+      'Bloque de 6 horas para desarrollar tu proyecto con calma: grabación de banda completa, preproducción o sesiones intensivas con acompañamiento técnico durante toda la jornada.',
     imageKey: 'mediaJornada',
   },
   {
     id: 'jornada-completa',
     title: 'Triple Jornada (9 horas)',
     description:
-      'Día completo en el estudio para álbumes, EPs o producciones ambiciosas. Máximo enfoque creativo sin interrupciones.',
+      'Día completo en el estudio para álbumes, EPs o producciones ambiciosas que requieren varias tomas, instrumentos o invitados. Máximo enfoque creativo sin interrupciones ni cortes de sesión.',
     imageKey: 'jornadaCompleta',
   },
   {
     id: 'produccion',
     title: 'Producción Musical',
     description:
-      'Acompañamiento creativo y técnico desde la idea hasta la premezcla. Arreglos, dirección artística y captura de cada toma.',
+      'Acompañamiento creativo y técnico desde la idea hasta la premezcla: arreglos, dirección artística, elección de sonidos y captura de cada toma junto a un productor con trayectoria en la escena musical chilena.',
     imageKey: 'produccion',
   },
   {
     id: 'mezcla',
     title: 'Mezcla',
     description:
-      'Balance, espacialidad y color sonoro para que cada elemento de tu música tenga su lugar en el mix.',
+      'Balance, espacialidad y color sonoro para que cada elemento de tu música tenga su lugar en el mix, con hasta dos rondas de ajustes según tus referencias y el estilo del tema.',
     imageKey: 'mezcla',
   },
   {
     id: 'mastering',
     title: 'Masterización',
     description:
-      'Pulido final para streaming o CD. Loudness, ecualización y cohesión entre pistas. ',
+      'Pulido final para streaming o CD: loudness, ecualización y cohesión entre pistas, entregado en los formatos que necesites para distribuir tu música.',
     imageKey: 'mastering',
   },
 ]
 
 export const PODCAST_SERVICES = [
   {
-    id: 'podcast-audio',
-    title: 'Audio',
+    id: 'podcast-estudio',
+    title: 'Podcast en el estudio',
     description:
-      'Grabación y postproducción de podcasts con acústica tratada, edición y masterización para plataformas de streaming.',
+      'Grabación de tu podcast en nuestra sala tratada acústicamente, con microfonía profesional, cámaras multiplano e iluminación lista para video podcast. Incluye edición y entrega en audio y/o video para tus plataformas.',
     imageKey: 'podcastAudio',
   },
   {
-    id: 'podcast-video',
-    title: 'Video',
+    id: 'podcast-domicilio',
+    title: 'Podcast a domicilio',
     description:
-      'Video podcast multicámara con iluminación profesional, edición y entrega lista para YouTube o plataformas.',
+      'Llevamos equipo de audio y video a tu locación para grabar el podcast donde te acomode: oficina, evento o set propio. Mismo estándar de calidad de audio e imagen que en el estudio, con postproducción incluida.',
     imageKey: 'podcastVideo',
   },
   {
-    id: 'podcast-reels',
-    title: 'Reels',
+    id: 'podcast-clips',
+    title: 'Clips',
     description:
-      'Contenido corto optimizado para redes sociales: clips, highlights y piezas verticales desde tu sesión.',
+      'Edición de tu episodio en clips cortos y piezas verticales optimizadas para Instagram, TikTok y YouTube Shorts, pensados para darle más alcance a cada capítulo.',
     imageKey: 'podcastReels',
   },
+  {
+    id: 'podcast-streaming',
+    title: 'Streaming',
+    description:
+      'Transmisión en vivo de tu podcast o sesión en YouTube, Twitch o Instagram, con switching multicámara, audio en tiempo real y acompañamiento técnico durante la transmisión.',
+    imageKey: 'podcastStreaming',
+  },
+]
+
+export const SERVICIOS_MUSICA_CTAS = [
+  { label: 'Agenda tu hora', to: '/reservar' },
+  { label: 'Cotiza tu proyecto', to: '/contacto' },
+]
+
+export const SERVICIOS_PODCAST_CTAS = [{ label: 'Cotiza tu podcast', to: '/cotizador' }]
+
+export const AUDIOVISUAL_SERVICES = [
+  {
+    id: 'cobertura-eventos',
+    title: 'Cobertura de eventos',
+    description:
+      'Registro multicámara de lanzamientos, showcases y eventos en vivo, con edición posterior y entrega de piezas listas para redes o archivo del evento.',
+    imageKey: 'coberturaEventos',
+  },
+  {
+    id: 'redes-sociales',
+    title: 'Redes sociales',
+    description:
+      'Producción de contenido audiovisual pensado para tus redes: fotografía, video y clips editados a la medida de cada plataforma para fortalecer tu presencia digital.',
+    imageKey: 'redesSociales',
+  },
+  {
+    id: 'sesiones-vivo',
+    title: 'Sesiones en vivo',
+    description:
+      'Grabación en vivo de sesiones musicales con captura multicámara y audio en alta calidad, ideal para videoclips en formato sesión o contenido de lanzamiento.',
+    imageKey: 'sesionesVivo',
+  },
+]
+
+export const SERVICIOS_AUDIOVISUAL_CTAS = [
+  { label: 'Cotiza tu producción audiovisual', to: '/contacto' },
 ]
 
 export const ESTUDIO_INTRO = {
@@ -302,7 +345,7 @@ export const CONTACT_INFO = {
   subtitle: '¡Te esperamos para hacer música juntos!',
   description:
     'Completa el formulario y te responderemos a la brevedad con cotización y disponibilidad para tu proyecto.',
-  email: 'contacto@estudioteburu.cl',
+  email: 'estudio.teburu@gmail.com',
   socialLabel: '¡Búscanos en redes sociales!',
   instagram: 'https://www.instagram.com/estudio.teburu/',
   whatsapp: '+56 9 6899 8905',
@@ -333,6 +376,13 @@ export const BOOKING_TRANSFER = {
 }
 
 export const BOOKING_SERVICES = [
+  {
+    id: 'grabacion-express-1h',
+    title: 'Grabación express (1 hora)',
+    duration: '1h',
+    description: 'Alquiler del estudio durante 1h. Ideal para sesiones puntuales y tomas rápidas.',
+    price: 50000,
+  },
   {
     id: 'sesion-3h',
     title: 'Sesión de estudio (3 horas)',
@@ -397,4 +447,78 @@ export const PORTAFOLIO_AUDIOVISUAL = {
       imageKey: 'reels',
     },
   ],
+}
+
+export const FAQ_INFO = {
+  title: 'Preguntas Frecuentes',
+  subtitle: 'Resolvemos las dudas más comunes sobre grabar música, podcast y contenido audiovisual en Teburu.',
+}
+
+export const FAQ_ITEMS = [
+  {
+    id: 'cuanto-cuesta-grabar',
+    question: '¿Cuánto cuesta grabar en un estudio de grabación en Santiago?',
+    answer:
+      `En ${BRAND} los valores parten desde $50.000 + IVA por una Grabación Express de 1 hora, hasta $300.000 + IVA por una Triple Jornada de 9 horas para producciones más grandes. La mezcla y la masterización se cotizan por separado. Puedes ver el detalle completo de precios y reservar directamente en nuestra página de Reservar.`,
+  },
+  {
+    id: 'que-incluye-sesion',
+    question: '¿Qué incluye una sesión de estudio en Teburu?',
+    answer:
+      'Cada bloque de estudio incluye acceso a la sala de grabación tratada acústicamente, preamps Apollo, microfonía profesional y monitoreo de referencia, además de acompañamiento de un ingeniero en sesión. No necesitas traer equipo propio salvo tu instrumento personal si tienes uno específico.',
+  },
+  {
+    id: 'principiante',
+    question: '¿Puedo grabar si es mi primera vez o no tengo experiencia en estudio?',
+    answer:
+      'Sí. Muchos de nuestros proyectos son de artistas que graban por primera vez. Nuestro equipo de productores e ingenieros te acompaña durante toda la sesión para que el proceso sea claro y sin apuro, independiente de tu nivel de experiencia.',
+  },
+  {
+    id: 'cuanto-cuesta-podcast',
+    question: '¿Cuánto cuesta grabar un podcast?',
+    answer:
+      'El valor depende del formato: podcast en el estudio, a domicilio, clips para redes o streaming en vivo. Cada uno tiene un alcance distinto, así que te recomendamos escribirnos con el detalle de tu proyecto (frecuencia, duración, formato de entrega) para enviarte una cotización a la medida a través de nuestro cotizador de podcast.',
+  },
+  {
+    id: 'podcast-domicilio',
+    question: '¿Graban podcast a domicilio o solo en el estudio?',
+    answer:
+      'Ambas opciones están disponibles. Podemos grabar tu podcast en nuestra sala tratada acústicamente en Santiago, o llevar el equipo de audio y video a tu locación (oficina, evento o set propio) manteniendo el mismo estándar de calidad.',
+  },
+  {
+    id: 'mezcla-master-incluido',
+    question: '¿La mezcla y la masterización están incluidas en el precio de la sesión?',
+    answer:
+      'No, se cotizan como servicios adicionales independientes del alquiler del estudio. Esto te permite grabar en Teburu y decidir después si quieres que mezclemos y masterericemos tu proyecto nosotros, o llevarte tus archivos para trabajarlos en otro lugar.',
+  },
+  {
+    id: 'donde-estan-ubicados',
+    question: '¿Dónde está ubicado el estudio?',
+    answer: `${BRAND} está ubicado en ${HOME_LOCATION.address}, en pleno centro de Santiago.`,
+  },
+  {
+    id: 'como-reservo',
+    question: '¿Cómo reservo una hora de estudio?',
+    answer:
+      'Puedes reservar directamente desde nuestra página de Reservar, eligiendo el servicio, la fecha y el horario disponible en nuestra agenda. Si tienes dudas antes de reservar, también puedes escribirnos por correo o WhatsApp.',
+  },
+  {
+    id: 'servicios-audiovisuales',
+    question: '¿Qué servicios audiovisuales ofrecen además de audio?',
+    answer:
+      'Ofrecemos cobertura de eventos, producción de contenido para redes sociales y grabación multicámara de sesiones en vivo, con edición y entrega lista para publicar. Puedes ver el detalle en la sección Audiovisual de nuestra página de Servicios.',
+  },
+  {
+    id: 'proyecto-fuera-de-lista',
+    question: 'Mi proyecto no calza exactamente con los servicios listados, ¿igual pueden ayudarme?',
+    answer:
+      'Sí. Trabajamos proyectos de todos los géneros y formatos, desde una sesión express hasta una producción de largo aliento. Escríbenos por el formulario de contacto contándonos de qué se trata tu proyecto y te responderemos con una propuesta a la medida.',
+  },
+]
+
+export const COTIZADOR_INFO = {
+  title: 'Cotizador',
+  subtitle: 'Cotiza tu podcast',
+  description:
+    'Estamos terminando de armar el cotizador online para que puedas simular el valor de tu producción de podcast. Mientras tanto, escríbenos y te enviamos una cotización a la medida.',
 }
