@@ -148,6 +148,17 @@
 .contacto-form__submit {
   margin-top: 0.5rem;
   border: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.contacto-form__error {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: $primary-2;
 }
 
 .contacto-success {

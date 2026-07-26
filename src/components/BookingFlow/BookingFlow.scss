@@ -111,6 +111,31 @@
   border: 0;
 }
 
+.booking-flow__agenda-blocked {
+  max-width: 44rem;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: rgba($secondary-2, 0.15);
+
+  p {
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: $gray-500;
+  }
+}
+
+.booking-flow__agenda-blocked-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
 .booking-flow__summary-booking {
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
@@ -142,6 +167,72 @@
   font-size: 0.9rem;
   color: $primary-1;
   border-bottom: 1px solid rgba($primary-1, 0.08);
+}
+
+.booking-flow__summary-line--discount span:last-child {
+  color: $primary-2;
+}
+
+.booking-flow__coupon {
+  margin-top: 1rem;
+}
+
+.booking-flow__coupon-form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.booking-flow__coupon-input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba($primary-1, 0.2);
+  border-radius: 4px;
+  background-color: $gray-100;
+  font-size: 0.85rem;
+  color: $primary-1;
+
+  &::placeholder {
+    color: $gray-500;
+  }
+}
+
+.booking-flow__coupon-submit {
+  padding: 0.65rem 1.5rem;
+  border: 1px solid rgba($primary-1, 0.25);
+  border-radius: 4px;
+  background-color: $gray-100;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $gray-500;
+  cursor: pointer;
+}
+
+.booking-flow__coupon-applied {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.85rem;
+  color: $primary-1;
+
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: underline;
+    color: $gray-500;
+    cursor: pointer;
+  }
+}
+
+.booking-flow__coupon-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: $secondary-2;
 }
 
 .booking-flow__summary-total {
@@ -211,11 +302,16 @@
 }
 
 .booking-flow__nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 3rem 2rem;
+  padding: 1.25rem 6rem 1.25rem 3rem;
   margin-top: auto;
+  background-color: $gray-200;
+  box-shadow: 0 -4px 12px rgba($primary-1, 0.08);
 }
 
 .booking-flow__nav-back {
@@ -263,6 +359,6 @@
   }
 
   .booking-flow__nav {
-    padding: 1.25rem 1.25rem 2rem;
+    padding: 1.25rem 4.5rem 1.25rem 1.25rem;
   }
 }

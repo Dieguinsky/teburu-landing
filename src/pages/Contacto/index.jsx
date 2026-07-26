@@ -15,14 +15,42 @@ const initialForm = {
 export default function Contacto() {
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   function handleChange({ target: { name, value } }) {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError('')
+
+    try {
+      const formData = new FormData()
+      formData.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
+      formData.append('subject', `Nuevo contacto: ${form.name}`)
+      formData.append('from_name', form.name)
+      Object.entries(form).forEach(([key, value]) => formData.append(key, value))
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const result = await response.json()
+      if (!result.success) throw new Error('request-failed')
+
+      setSubmitted(true)
+    } catch {
+      setError(
+        'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente a ' +
+          `${CONTACT_INFO.email}.`,
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -128,8 +156,14 @@ export default function Contacto() {
                 />
               </label>
 
-              <button type="submit" className="button button--accent contacto-form__submit">
-                Enviar →
+              {error && <p className="contacto-form__error">{error}</p>}
+
+              <button
+                type="submit"
+                className="button button--accent contacto-form__submit"
+                disabled={sending}
+              >
+                {sending ? 'Enviando…' : 'Enviar →'}
               </button>
             </form>
           )}

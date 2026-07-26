@@ -412,6 +412,11 @@ export const BOOKING_EXTRAS = [
   { id: 'mezcla-master', label: 'Mezcla + Master', price: 200000 },
 ]
 
+// Códigos de cupón: clave en minúsculas -> porcentaje de descuento sobre el subtotal.
+export const BOOKING_COUPONS = {
+  panda50: { code: 'PANDA50', discount: 0.5 },
+}
+
 export const ARTISTS_SECTION = {
   title: 'Artistas y lanzamientos',
   text: 'Parte de la música producida, grabada y masterizada en Teburu: proyectos de artistas independientes listos para streaming.',

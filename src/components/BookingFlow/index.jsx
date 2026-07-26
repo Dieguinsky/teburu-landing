@@ -3,6 +3,7 @@ import {
   BOOKING_EXTRAS,
   BOOKING_CALENDAR_URL,
   BOOKING_TRANSFER,
+  CONTACT_INFO,
 } from '../../content/copy'
 import { STEP_IDS, formatPrice } from './useBookingFlow'
 import './BookingFlow.scss'
@@ -13,6 +14,13 @@ export default function BookingFlow({ flow }) {
     booking,
     selectedService,
     selectedExtras,
+    discount,
+    appliedCoupon,
+    couponInput,
+    couponError,
+    setCouponInput,
+    applyCoupon,
+    removeCoupon,
     iva,
     total,
     goNext,
@@ -20,6 +28,7 @@ export default function BookingFlow({ flow }) {
     toggleExtra,
     canProceed,
     setService,
+    agendaBlocked,
   } = flow
 
   return (
@@ -93,20 +102,48 @@ export default function BookingFlow({ flow }) {
       {STEP_IDS[step] === 'agenda' && (
         <div className="booking-flow__panel">
           <h3 className="booking-flow__panel-title">Selecciona la fecha y hora</h3>
-          <p className="booking-flow__agenda-note">
-            Elige el día y horario disponible y completa tus datos en el
-            calendario. Al confirmar, tu reserva queda agendada y recibirás la
-            confirmación por correo.
-          </p>
-          <div className="booking-flow__agenda">
-            <iframe
-              src={BOOKING_CALENDAR_URL}
-              title="Agenda de Estudio Teburu"
-              className="booking-flow__agenda-embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          {agendaBlocked ? (
+            <div className="booking-flow__agenda-blocked">
+              <p>
+                Alcanzaste el límite de intentos de agenda desde este
+                navegador. Escríbenos directamente y coordinamos tu reserva a
+                mano.
+              </p>
+              <div className="booking-flow__agenda-blocked-actions">
+                <a
+                  href={`https://wa.me/${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="booking-flow__nav-next"
+                >
+                  Escribir por WhatsApp
+                </a>
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="booking-flow__nav-back"
+                >
+                  Escribir por correo
+                </a>
+              </div>
+            </div>
+          ) : (
+            <>
+              <p className="booking-flow__agenda-note">
+                Elige el día y horario disponible y completa tus datos en el
+                calendario. Al confirmar, tu reserva queda agendada y recibirás
+                la confirmación por correo.
+              </p>
+              <div className="booking-flow__agenda">
+                <iframe
+                  src={BOOKING_CALENDAR_URL}
+                  title="Agenda de Estudio Teburu"
+                  className="booking-flow__agenda-embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -137,6 +174,12 @@ export default function BookingFlow({ flow }) {
                     <span>{formatPrice(extra.price)}</span>
                   </div>
                 ))}
+                {appliedCoupon && (
+                  <div className="booking-flow__summary-line booking-flow__summary-line--discount">
+                    <span>Descuento ({appliedCoupon.code})</span>
+                    <span>-{formatPrice(discount)}</span>
+                  </div>
+                )}
                 <div className="booking-flow__summary-line">
                   <span>IVA</span>
                   <span>{formatPrice(iva)}</span>
@@ -144,6 +187,37 @@ export default function BookingFlow({ flow }) {
                 <div className="booking-flow__summary-total">
                   <span>Precio total</span>
                   <span>{formatPrice(total)}</span>
+                </div>
+
+                <div className="booking-flow__coupon">
+                  {appliedCoupon ? (
+                    <p className="booking-flow__coupon-applied">
+                      Cupón <strong>{appliedCoupon.code}</strong> aplicado
+                      <button type="button" onClick={removeCoupon}>
+                        Quitar
+                      </button>
+                    </p>
+                  ) : (
+                    <form
+                      className="booking-flow__coupon-form"
+                      onSubmit={(e) => {
+                        e.preventDefault()
+                        applyCoupon()
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={couponInput}
+                        onChange={(e) => setCouponInput(e.target.value)}
+                        placeholder="Código de descuento"
+                        className="booking-flow__coupon-input"
+                      />
+                      <button type="submit" className="booking-flow__coupon-submit">
+                        Aplicar
+                      </button>
+                    </form>
+                  )}
+                  {couponError && <p className="booking-flow__coupon-error">{couponError}</p>}
                 </div>
               </div>
 
