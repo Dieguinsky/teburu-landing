@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
+import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
 import {
   BRAND,
+  NOSOTROS_PHILOSOPHY,
   NOSOTROS_INTRO,
   TEAM_MEMBERS,
   NOSOTROS_JOIN,
@@ -12,12 +14,30 @@ import './Nosotros.scss'
 export default function Nosotros() {
   return (
     <main className="nosotros-page">
+      <Seo
+        title={NOSOTROS_INTRO.seoTitle}
+        description={NOSOTROS_INTRO.seoDescription}
+        path="/nosotros"
+      />
       <section
         className="nosotros-hero"
         style={{ backgroundImage: `url(${pageImages.nosotrosHero})` }}
       >
         <div className="nosotros-hero__overlay" />
         <h1 className="nosotros-hero__title">Nosotros</h1>
+      </section>
+
+      <section className="nosotros-philosophy">
+        <Reveal as="div" className="nosotros-philosophy__inner">
+          <h2 className="section-title nosotros-philosophy__title">
+            {NOSOTROS_PHILOSOPHY.title}
+          </h2>
+          {NOSOTROS_PHILOSOPHY.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 28)} className="nosotros-philosophy__text">
+              {paragraph}
+            </p>
+          ))}
+        </Reveal>
       </section>
 
       <section className="nosotros-intro">

@@ -23,4 +23,4 @@ Esto es una práctica estándar entre ingenieros de mezcla profesionales precisa
 
 Un monitor de $5.000 dólares en una sala sin tratar acústicamente puede rendir peor que un monitor correcto en una sala bien pensada, revisado además en una referencia mono de control. La plata mejor invertida no es siempre "el parlante más caro posible" — es el tratamiento acústico de la sala y la variedad de referencias de escucha.
 
-Puedes ver el detalle completo de nuestro monitoreo y el resto del equipamiento en [Nuestro Estudio](/estudio).
+Puedes ver el detalle completo de nuestro monitoreo y el resto del equipamiento en [Nuestro Estudio](/estudio). Si quieres escuchar la diferencia en un espacio bien tratado, revisa nuestros [Servicios](/servicios) o [reserva una sesión](/reservar).

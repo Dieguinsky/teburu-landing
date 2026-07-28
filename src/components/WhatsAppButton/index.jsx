@@ -1,8 +1,10 @@
+import { trackEvent } from '../../lib/analytics'
 import './WhatsAppButton.scss'
 
 const WHATSAPP_NUMBER = '56968998905'
 
 function openWhatsApp() {
+  trackEvent('whatsapp_click', { location: 'floating_button' })
   const webUrl = `https://wa.me/${WHATSAPP_NUMBER}`
   const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
 

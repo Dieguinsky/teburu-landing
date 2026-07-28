@@ -1,6 +1,7 @@
-import { BRAND, BOOKING_STEPS, CONTACT_INFO } from '../../content/copy'
+import { BRAND, BOOKING_STEPS, CONTACT_INFO, RESERVAR_SEO } from '../../content/copy'
 import BookingFlow from '../../components/BookingFlow'
 import useBookingFlow from '../../components/BookingFlow/useBookingFlow'
+import Seo from '../../components/Seo'
 import './Reservar.scss'
 
 export default function Reservar() {
@@ -8,6 +9,11 @@ export default function Reservar() {
 
   return (
     <main className="reservar-page">
+      <Seo
+        title={RESERVAR_SEO.seoTitle}
+        description={RESERVAR_SEO.seoDescription}
+        path="/reservar"
+      />
       <div className="reservar-layout">
         <aside className="reservar-sidebar">
           <div className="reservar-sidebar__brand">

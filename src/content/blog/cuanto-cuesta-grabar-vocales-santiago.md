@@ -21,4 +21,4 @@ Si estás por grabar voces para una canción, un demo o un proyecto propio, lo p
 3. ¿La mezcla y masterización están incluidas o se cotizan aparte?
 4. ¿Puedo escuchar ejemplos de trabajos grabados ahí?
 
-En Estudio Teburu tenemos el detalle completo de precios (desde sesiones express de 1 hora hasta jornadas largas) en nuestra página de [Reservar](/reservar), y puedes revisar más dudas comunes en nuestras [Preguntas Frecuentes](/faq).
+En Estudio Teburu tenemos el detalle completo de precios (desde sesiones express de 1 hora hasta jornadas largas) en nuestra página de [Reservar](/reservar), y puedes revisar más dudas comunes en nuestras [Preguntas Frecuentes](/faq). Si tu proyecto tiene necesidades particulares, también puedes pedirnos una [cotización a medida](/cotizador).

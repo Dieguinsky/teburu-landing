@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKING_STEPS, BOOKING_SERVICES, BOOKING_EXTRAS, BOOKING_COUPONS } from '../../content/copy'
+import { trackEvent } from '../../lib/analytics'
 
 export const STEP_IDS = BOOKING_STEPS.map((s) => s.id)
 
@@ -72,7 +73,9 @@ export default function useBookingFlow() {
   const total = subtotal - discount + iva
 
   function goNext() {
-    if (step < STEP_IDS.length - 1) setStep((s) => s + 1)
+    if (step >= STEP_IDS.length - 1) return
+    trackEvent('booking_step_completed', { step: STEP_IDS[step] })
+    setStep((s) => s + 1)
   }
 
   function goBack() {

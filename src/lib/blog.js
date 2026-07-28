@@ -1,6 +1,8 @@
 import { marked } from 'marked'
 
-const postModules = import.meta.glob('../content/blog/*.md', {
+// Excludes CLAUDE.md (repo documentation for this content folder, not a post)
+// so it never gets picked up as a blog entry.
+const postModules = import.meta.glob(['../content/blog/*.md', '!../content/blog/CLAUDE.md'], {
   eager: true,
   query: '?raw',
   import: 'default',

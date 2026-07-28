@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
 import { BRAND, CONTACT_INFO } from '../../content/copy'
+import { trackEvent } from '../../lib/analytics'
 import './Contacto.scss'
 
 const initialForm = {
@@ -42,6 +44,7 @@ export default function Contacto() {
       const result = await response.json()
       if (!result.success) throw new Error('request-failed')
 
+      trackEvent('contact_form_submit')
       setSubmitted(true)
     } catch {
       setError(
@@ -55,6 +58,11 @@ export default function Contacto() {
 
   return (
     <main className="contacto-page">
+      <Seo
+        title={CONTACT_INFO.seoTitle}
+        description={CONTACT_INFO.seoDescription}
+        path="/contacto"
+      />
       <div className="contacto-layout">
         <aside
           className="contacto-info"

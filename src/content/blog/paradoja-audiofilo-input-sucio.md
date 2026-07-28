@@ -1,6 +1,6 @@
 ---
 title: "La paradoja del audiófilo: cables de $2.000 dólares para un input que nadie cuidó"
-description: "Por qué la obsesión por la 'pureza' del output audiophile choca con la realidad sucia, analógica y llena de decisiones humanas del input original."
+description: "Por qué la obsesión por la 'pureza' del output audiófilo choca con la realidad sucia, analógica y llena de decisiones humanas del input original."
 date: "2026-07-21"
 author: "Diego Novoa"
 ---
@@ -34,8 +34,8 @@ La ciencia de la audición humana respalda esto: el oído humano tiene límites 
 
 ## Qué significa esto para quien graba
 
-Si te importa cómo suena tu música, la inversión con mayor retorno no es un cable de auditorio ni un conversor "audiophile" — es la calidad del input: una sala tratada, microfonía elegida con criterio para cada fuente, y un ingeniero que sepa qué está buscando antes de apretar rec.
+Si te importa cómo suena tu música, la inversión con mayor retorno no es un cable de auditorio ni un conversor "audiófilo" — es la calidad del input: una sala tratada, microfonía elegida con criterio para cada fuente, y un ingeniero que sepa qué está buscando antes de apretar rec.
 
-En Teburu trabajamos justamente ahí: en el origen de la señal, con microfonía y preamplificación pensada para cada instrumento, antes de que exista cualquier debate sobre "pureza" en la salida. Puedes ver el detalle del equipamiento que usamos en [Nuestro Estudio](/estudio).
+En Teburu trabajamos justamente ahí: en el origen de la señal, con microfonía y preamplificación pensada para cada instrumento, antes de que exista cualquier debate sobre "pureza" en la salida. Puedes ver el detalle del equipamiento que usamos en [Nuestro Estudio](/estudio) o [reservar tu sesión](/reservar) directamente.
 
 En la [segunda parte](/blog/paradoja-audiofilo-parte-2-pureza-inalcanzable) de esta serie llevamos la idea de "pureza" a su extremo — desde un audiófilo japonés que se instaló su propio poste eléctrico hasta por qué es casi imposible sostener que el vinilo es objetivamente más fiel que el CD.

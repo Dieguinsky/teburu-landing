@@ -1,3 +1,5 @@
+import Seo from '../../components/Seo'
+import { HOME_SEO } from '../../content/copy'
 import Hero from './sections/Hero'
 import Intro from './sections/Intro'
 import Services from './sections/Services'
@@ -13,6 +15,7 @@ import './Home.scss'
 export default function Home() {
   return (
     <div className="home-page">
+      <Seo title={HOME_SEO.seoTitle} description={HOME_SEO.seoDescription} path="/" />
       <Hero />
       <Intro />
       <Services />

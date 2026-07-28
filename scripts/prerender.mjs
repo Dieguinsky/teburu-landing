@@ -16,19 +16,19 @@ const BLOG_CONTENT_DIR = path.resolve('src/content/blog')
 const SITE_URL = 'https://estudioteburu.cl'
 
 // Routes that stay pure client-side SPA (not prerendered) — listed here only
-// so the sitemap reflects the full site, matching src/routes.jsx.
-const STATIC_ROUTES = [
-  '/',
-  '/servicios',
-  '/nosotros',
-  '/estudio',
-  '/artistas',
-  '/escuela',
-  '/contacto',
-  '/reservar',
-  '/portafolio',
-  '/cotizador',
-]
+// so the sitemap reflects the full site.
+const STATIC_ROUTES = ['/nosotros', '/estudio', '/contacto', '/portafolio']
+
+// Top-level routes prerendered to real static HTML (in addition to /faq and
+// every /blog* route below). Kept short on purpose: /nosotros, /estudio,
+// /contacto and /portafolio stay pure SPA for now. Note that '/' is special —
+// its output file (dist/index.html) is also the SPA fallback shell that
+// public/404.html redirects every non-prerendered route to, so prerendering
+// it means a hard-reload/deep-link to one of those routes briefly shows
+// Home's markup before React mounts and swaps in the right page. Accepted as
+// a minor, standard SPA+prerender tradeoff — the alternative (leaving '/'
+// as an empty shell) is worse for crawlers hitting the homepage itself.
+const PRERENDERED_TOP_ROUTES = ['/', '/servicios', '/reservar', '/cotizador']
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -82,7 +82,10 @@ function startServer() {
 
 async function getBlogSlugs() {
   const files = await readdir(BLOG_CONTENT_DIR)
-  return files.filter((file) => file.endsWith('.md')).map((file) => file.replace(/\.md$/, ''))
+  // CLAUDE.md documents this content folder for Claude Code — it's not a post.
+  return files
+    .filter((file) => file.endsWith('.md') && file !== 'CLAUDE.md')
+    .map((file) => file.replace(/\.md$/, ''))
 }
 
 function outputPathFor(route) {
@@ -90,10 +93,15 @@ function outputPathFor(route) {
 }
 
 async function prerenderRoute(page, baseUrl, route) {
-  await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle0' })
+  // domcontentloaded, not networkidle0: some routes embed third-party iframes
+  // that poll continuously (Google Calendar on /reservar, Google Maps and the
+  // Instagram embed script on /) and would never let the network go idle,
+  // hanging the build. The explicit canonical-link wait below is the actual
+  // "React has rendered" signal, independent of background network chatter.
+  await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' })
   // The Seo component writes a <link rel="canonical"> on mount — waiting for
   // it confirms React actually rendered before we capture the DOM.
-  await page.waitForSelector('link[rel="canonical"]', { timeout: 5000 })
+  await page.waitForSelector('link[rel="canonical"]', { timeout: 8000 })
 
   const html = await page.content()
   const outPath = outputPathFor(route)
@@ -115,7 +123,7 @@ async function main() {
 
   const blogSlugs = await getBlogSlugs()
   const blogRoutes = ['/blog', ...blogSlugs.map((slug) => `/blog/${slug}`)]
-  const routesToPrerender = ['/faq', ...blogRoutes]
+  const routesToPrerender = [...PRERENDERED_TOP_ROUTES, '/faq', ...blogRoutes]
 
   const server = await startServer()
   const { port } = server.address()
@@ -133,7 +141,7 @@ async function main() {
     server.close()
   }
 
-  await writeSitemap([...STATIC_ROUTES, '/faq', ...blogRoutes])
+  await writeSitemap([...STATIC_ROUTES, ...routesToPrerender])
   console.log('dist/sitemap.xml regenerated.')
 }
 

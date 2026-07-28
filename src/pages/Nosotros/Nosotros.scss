@@ -40,6 +40,33 @@
   text-align: center;
 }
 
+.nosotros-philosophy {
+  background-color: $background;
+  padding: 4.5rem 2rem;
+  text-align: center;
+}
+
+.nosotros-philosophy__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.nosotros-philosophy__title {
+  color: $primary-1;
+  margin-bottom: 2rem;
+}
+
+.nosotros-philosophy__text {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $gray-500;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 .nosotros-intro {
   background-color: $gray-700;
   color: $gray-100;
@@ -200,6 +227,7 @@
 }
 
 @media (max-width: 600px) {
+  .nosotros-philosophy,
   .nosotros-intro,
   .nosotros-team,
   .nosotros-join {

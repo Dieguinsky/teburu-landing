@@ -107,8 +107,17 @@ export const HOME_LOCATION = {
   cta: 'Cómo llegar',
 }
 
+export const HOME_SEO = {
+  seoTitle: 'Estudio Teburu',
+  seoDescription:
+    'Estudio de grabación en Santiago para música, podcast y contenido audiovisual. Equipamiento profesional y un equipo con trayectoria en la industria.',
+}
+
 export const SERVICIOS_INTRO = {
   title: 'Fuente de creatividad a tu disposición',
+  seoTitle: 'Servicios de grabación, producción y podcast — Estudio Teburu',
+  seoDescription:
+    'Sesiones de grabación, producción musical, mezcla, masterización y podcast en Estudio Teburu, Santiago. Conoce nuestros planes y servicios.',
   paragraphs: [
     `En ${BRAND} combinamos equipamiento de alto nivel con un ambiente pensado para la creatividad. Trabajamos proyectos de todos los géneros con la misma dedicación, ya sea una sesión express o una producción de largo aliento.`,
     'Desde la grabación hasta el mastering, te acompañamos en cada etapa con criterio técnico y sensibilidad artística. Conocemos el panorama musical chileno y sabemos lo que se necesita para que tu música suene profesional.',
@@ -228,6 +237,9 @@ export const SERVICIOS_AUDIOVISUAL_CTAS = [
 
 export const ESTUDIO_INTRO = {
   title: 'Un espacio pensado para grabar sin fricciones',
+  seoTitle: 'Conoce el estudio — Estudio Teburu',
+  seoDescription:
+    'Sala de grabación con acústica tratada y equipamiento profesional en Santiago: microfonía, outboard y cámaras para música, podcast y video.',
   paragraphs: [
     'La sala de grabación de Teburu combina acústica tratada, equipamiento profesional y un ambiente relajado para que la sesión fluya. Cada rincón está pensado para que te concentres en tocar, cantar o producir — nosotros nos encargamos del resto.',
     'Trabajamos con una selección de equipamiento pensada para cubrir cualquier fuente, desde vocales y guitarras hasta batería completa, teclados y sesiones de podcast.',
@@ -303,7 +315,19 @@ export const AB_COMPARATOR_TRACKS = [
   { id: 'triangulo', title: 'Onda triangular (prueba)' },
 ]
 
+export const NOSOTROS_PHILOSOPHY = {
+  title: '¿Por qué nace Teburu?',
+  paragraphs: [
+    'Teburu nace en una época de hiperconexión: todo pasa más rápido, hay más información de la que alcanzamos a procesar, y siempre parece haber algo más pidiendo nuestra atención. En medio de ese ruido, quisimos volver a algo simple: hacer música.',
+    'Creemos en hacer música para entregar algo, no solo para sumar más contenido a un mundo que ya tiene demasiado. Trabajamos con la disposición que admiramos de la cultura laboral japonesa: seriedad, cuidado por el detalle y ganas genuinas de mejorar cada día, sin perder calidez humana en el camino.',
+    'Por eso la parte técnica la asumimos nosotros: nos mantenemos informados, filtramos con criterio los mitos que rodean al audio y la tecnología, y tomamos esas decisiones para que tú no tengas que hacerlo. Mientras nosotros nos encargamos del resto, el músico se dedica a lo único que realmente importa: hacer música, sin cargar con las presiones del mundo moderno.',
+  ],
+}
+
 export const NOSOTROS_INTRO = {
+  seoTitle: 'Nosotros — Estudio Teburu',
+  seoDescription:
+    'Conoce al equipo de productores, ingenieros y artistas detrás de Estudio Teburu, con trayectoria en la industria musical chilena.',
   paragraphs: [
     `En ${BRAND} somos un estudio de grabación ubicado en Chile, conformado por productores, ingenieros y artistas con trayectoria en la industria musical nacional.`,
     'Nuestro equipo combina formación académica, experiencia en producción y sensibilidad artística para acompañar cada proyecto con dedicación y criterio técnico.',
@@ -316,14 +340,14 @@ export const TEAM_MEMBERS = [
     name: 'Diego Novoa',
     alias: 'Panda',
     role: 'Fundador · Ingeniero de sonido · Productor musical',
-    bio: 'Licenciado en Teoría Musical y Literatura UC. Fundador de Estudio Teburu.',
+    bio: 'Licenciado en Teoría Musical y Literatura UC. Fundador de Estudio Teburu, con 8 años de producción musical y más de 150 shows en vivo para artistas independientes.',
     imageKey: 'diego',
   },
   {
     id: 'jose',
     name: 'José Tomás Musalem',
     role: 'Editor de video · Fotógrafo · RR.SS.',
-    bio: 'Periodista de la Universidad de Chile. Encargado de contenido audiovisual y redes sociales.',
+    bio: 'Periodista de la Universidad de Chile. Encargado del área audiovisual, con un extenso portafolio de contenido para redes sociales.',
     imageKey: 'jose',
   },
   {
@@ -331,7 +355,7 @@ export const TEAM_MEMBERS = [
     name: 'Pablo Silva',
     alias: 'Quevdor',
     role: 'Compositor · Letrista · Artista',
-    bio: 'Artista fundador del estudio. Compositor y letrista con proyectos propios y colaboraciones.',
+    bio: 'Artista fundador del estudio. Compositor y letrista con 8 años de trayectoria, más de 200 shows en vivo y múltiples hitos musicales, además de su propia marca, EKIWON.',
     imageKey: 'pablo',
   },
 ]
@@ -347,10 +371,19 @@ export const CONTACT_INFO = {
   subtitle: '¡Te esperamos para hacer música juntos!',
   description:
     'Completa el formulario y te responderemos a la brevedad con cotización y disponibilidad para tu proyecto.',
+  seoTitle: 'Contacto — Estudio Teburu',
+  seoDescription:
+    'Escríbenos para cotizar tu sesión de grabación, producción musical o podcast en Estudio Teburu, Santiago.',
   email: 'estudio.teburu@gmail.com',
   socialLabel: '¡Búscanos en redes sociales!',
   instagram: 'https://www.instagram.com/estudio.teburu/',
   whatsapp: '+56 9 6899 8905',
+}
+
+export const RESERVAR_SEO = {
+  seoTitle: 'Reserva tu sesión de estudio — Estudio Teburu',
+  seoDescription:
+    'Agenda online tu sesión de grabación, producción musical o podcast en Estudio Teburu: elige servicio, fecha y paga en línea.',
 }
 
 export const BOOKING_STEPS = [
@@ -423,6 +456,12 @@ export const ARTISTS_SECTION = {
   title: 'Artistas y lanzamientos',
   text: 'Parte de la música producida, grabada y masterizada en Teburu: proyectos de artistas independientes listos para streaming.',
   cta: 'Ver portafolio',
+}
+
+export const PORTAFOLIO_SEO = {
+  seoTitle: 'Portafolio — Estudio Teburu',
+  seoDescription:
+    'Trabajos de música, video podcast y contenido audiovisual producidos en Estudio Teburu, Santiago.',
 }
 
 export const PORTAFOLIO_MUSIC = {
@@ -539,4 +578,7 @@ export const COTIZADOR_INFO = {
   subtitle: 'Cotiza tu podcast',
   description:
     'Estamos terminando de armar el cotizador online para que puedas simular el valor de tu producción de podcast. Mientras tanto, escríbenos y te enviamos una cotización a la medida.',
+  seoTitle: 'Cotizador de podcast — Estudio Teburu',
+  seoDescription:
+    'Cotiza el valor de tu producción de podcast en Estudio Teburu, Santiago. Escríbenos y te enviamos una cotización a la medida.',
 }

@@ -43,3 +43,15 @@ export function trackPageview(path) {
     })
   }
 }
+
+// Conversion/interaction events — separate from pageviews so GA4 and Clarity
+// can report on what actually drives business value (contact submissions,
+// WhatsApp clicks, booking funnel progress), not just traffic.
+export function trackEvent(name, params = {}) {
+  if (GA_ID && typeof window.gtag === 'function') {
+    window.gtag('event', name, params)
+  }
+  if (CLARITY_ID && typeof window.clarity === 'function') {
+    window.clarity('event', name)
+  }
+}

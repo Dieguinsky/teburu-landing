@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
+import Seo from '../../components/Seo'
 import { serviciosImages } from '../../assets/serviciosImages'
 import {
   BRAND,
@@ -46,6 +47,11 @@ function ServiceCard({ title, description, image, delay }) {
 export default function Servicios() {
   return (
     <main className="servicios-page">
+      <Seo
+        title={SERVICIOS_INTRO.seoTitle}
+        description={SERVICIOS_INTRO.seoDescription}
+        path="/servicios"
+      />
       <section
         className="servicios-hero"
         style={{ backgroundImage: `url(${serviciosImages.hero})` }}

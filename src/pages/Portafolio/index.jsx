@@ -1,7 +1,9 @@
 import Reveal from '../../components/Reveal'
+import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
 import {
   BRAND,
+  PORTAFOLIO_SEO,
   PORTAFOLIO_MUSIC,
   PORTAFOLIO_AUDIOVISUAL,
 } from '../../content/copy'
@@ -10,6 +12,11 @@ import './Portafolio.scss'
 export default function Portafolio() {
   return (
     <main className="portafolio-page">
+      <Seo
+        title={PORTAFOLIO_SEO.seoTitle}
+        description={PORTAFOLIO_SEO.seoDescription}
+        path="/portafolio"
+      />
       <section
         className="portafolio-hero"
         style={{ backgroundImage: `url(${pageImages.portafolioHero})` }}

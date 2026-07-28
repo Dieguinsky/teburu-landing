@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
+import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
 import { BRAND, ESTUDIO_INTRO, ESTUDIO_GEAR, ESTUDIO_VIDEO_GEAR } from '../../content/copy'
 import './Estudio.scss'
@@ -7,6 +8,11 @@ import './Estudio.scss'
 export default function Estudio() {
   return (
     <main className="estudio-page">
+      <Seo
+        title={ESTUDIO_INTRO.seoTitle}
+        description={ESTUDIO_INTRO.seoDescription}
+        path="/estudio"
+      />
       <section
         className="estudio-hero"
         style={{ backgroundImage: `url(${pageImages.estudioHero})` }}

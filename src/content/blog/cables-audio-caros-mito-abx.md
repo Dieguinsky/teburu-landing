@@ -19,8 +19,8 @@ Las conclusiones, replicadas en pruebas ciegas ABX por años en la comunidad de 
 
 ## Por qué el mito persiste
 
-Porque un cable es un producto fácil de vender con storytelling ("más transparencia", "más aire", "más definición") y muy difícil de refutar para el consumidor promedio sin una prueba ciega controlada. Es marketing audiophile, no ingeniería de audio.
+Porque un cable es un producto fácil de vender con storytelling ("más transparencia", "más aire", "más definición") y muy difícil de refutar para el consumidor promedio sin una prueba ciega controlada. Es marketing audiófilo, no ingeniería de audio.
 
 ## En qué sí vale la pena invertir
 
-Todo el cableado que usamos en Teburu está armado a mano en el mismo estudio, con control de calidad propio en cada conexión — no porque el material sea "premium" en el sentido audiophile, sino porque una soldadura mal hecha o un conector suelto sí genera un problema real y medible: ruido, falsos contactos, pérdida de señal. Esa es la diferencia que importa: cableado bien hecho y confiable, no cableado caro. El resto del presupuesto rinde mucho más invertido en microfonía, preamplificación y tiempo de sesión con criterio. Puedes ver el detalle en [Nuestro Estudio](/estudio) o resolver otras dudas en nuestras [Preguntas Frecuentes](/faq).
+Todo el cableado que usamos en Teburu está armado a mano en el mismo estudio, con control de calidad propio en cada conexión — no porque el material sea "premium" en el sentido audiófilo, sino porque una soldadura mal hecha o un conector suelto sí genera un problema real y medible: ruido, falsos contactos, pérdida de señal. Esa es la diferencia que importa: cableado bien hecho y confiable, no cableado caro. El resto del presupuesto rinde mucho más invertido en microfonía, preamplificación y tiempo de sesión con criterio. Puedes ver el detalle en [Nuestro Estudio](/estudio), resolver otras dudas en nuestras [Preguntas Frecuentes](/faq), o [reservar una sesión](/reservar) directamente.
