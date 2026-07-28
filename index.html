@@ -13,6 +13,24 @@
     />
     <meta name="theme-color" content="#0a0a14" />
 
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages: restores the real path after
+      // 404.html redirected here — see public/404.html for the encoding side.
+      // https://github.com/rafgraph/spa-github-pages
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Estudio Teburu" />
     <meta property="og:locale" content="es_CL" />

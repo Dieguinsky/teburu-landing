@@ -17,6 +17,7 @@ export const NAV_ITEMS_ES = [
   { to: '/reservar', label: 'Reservar' },
   { to: '/portafolio', label: 'Portafolio' },
   { to: '/faq', label: 'FAQ' },
+  { to: '/blog', label: 'Blog' },
 ]
 
 export const NAV_ITEMS_JP = [
@@ -28,6 +29,7 @@ export const NAV_ITEMS_JP = [
   { to: '/reservar', label: '予約' },
   { to: '/portafolio', label: 'ポートフォリオ' },
   { to: '/faq', label: 'よくある質問' },
+  { to: '/blog', label: 'ブログ' },
 ]
 
 export const SERVICES = [
@@ -454,9 +456,20 @@ export const PORTAFOLIO_AUDIOVISUAL = {
   ],
 }
 
+export const BLOG_INFO = {
+  title: 'Blog',
+  subtitle: 'Notas sobre grabación, producción musical y podcast en Santiago.',
+  seoTitle: 'Blog — Estudio Teburu',
+  seoDescription:
+    'Guías y consejos sobre grabación de música, podcast y producción audiovisual en Santiago, por Estudio Teburu.',
+}
+
 export const FAQ_INFO = {
   title: 'Preguntas Frecuentes',
   subtitle: 'Resolvemos las dudas más comunes sobre grabar música, podcast y contenido audiovisual en Teburu.',
+  seoTitle: 'Preguntas Frecuentes — Estudio Teburu',
+  seoDescription:
+    'Precios, tiempos y cómo funciona grabar música, podcast o contenido audiovisual en Estudio Teburu, Santiago.',
 }
 
 export const FAQ_ITEMS = [

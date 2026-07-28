@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import logo from '../../assets/img/logos/plano/blanco.png'
 import WhatsAppButton from '../WhatsAppButton'
+import CursorGlow from '../CursorGlow'
 import { CONTACT_INFO, NAV_ITEMS_ES, NAV_ITEMS_JP } from '../../content/copy'
 import './Layout.scss'
 
@@ -82,6 +83,14 @@ export default function Layout() {
       </div>
 
       <Outlet />
+
+      {/* Rendered after Outlet on purpose: many sections have a decorative
+          position:absolute overlay div with no explicit z-index (Hero, FAQ
+          hero, Artists, etc). Those tie with CursorGlow's z-index: 0, and
+          ties are won by DOM order — being last makes the glow paint above
+          those overlays instead of getting hidden under them, while it still
+          stays below any real z-index: 1+ content (titles, buttons). */}
+      <CursorGlow />
       <WhatsAppButton />
     </>
   )

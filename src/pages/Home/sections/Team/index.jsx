@@ -22,7 +22,7 @@ export default function Team() {
               />
               <h3>
                 {name}
-                {alias && ` · ${alias}`}
+                {alias && <span className="team__alias"> · {alias}</span>}
               </h3>
               <p>{role}</p>
               <Link to="/nosotros" className="team__social">

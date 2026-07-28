@@ -52,27 +52,23 @@
 }
 
 .nav-item {
+  // Both labels share the same grid cell so the item's width is the widest
+  // of the two (JP/ES translations differ a lot in length) instead of only
+  // the ES one — otherwise a longer JP label overflows into the next item.
   position: relative;
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
+  justify-items: center;
 }
 
 .nav-link {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 1em;
-}
-
-.nav-link--jp {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   white-space: nowrap;
-}
-
-.nav-link--es {
-  position: relative;
 }
 
 .nav-link--fade-in {
@@ -85,14 +81,6 @@
   opacity: 0;
   transform: rotateY(20deg) scale(0.95);
   pointer-events: none;
-}
-
-.nav-link--jp.nav-link--fade-in {
-  transform: translateY(-50%) rotateY(0deg) scale(1);
-}
-
-.nav-link--jp.nav-link--fade-out {
-  transform: translateY(-50%) rotateY(20deg) scale(0.95);
 }
 
 .nav-actions {
@@ -196,9 +184,5 @@
     height: auto;
     padding: 1rem 1.5rem;
     font-size: 0.95rem;
-  }
-
-  .nav-link--jp {
-    top: 50%;
   }
 }

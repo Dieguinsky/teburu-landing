@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7rem;
+  height: 7rem;
+  margin-left: -3.5rem;
+  margin-top: -3.5rem;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.5s ease;
+  // Blend modes (soft-light/overlay) turned out to be too dependent on the
+  // backdrop's own luminance: they read fine on the cream sections but were
+  // nearly invisible over the flat navy ($primary-1) ones. A direct
+  // semi-transparent color reads consistently on both.
+  background: radial-gradient(
+    circle,
+    rgba($primary-2, 0.45) 0%,
+    rgba($primary-2, 0.25) 35%,
+    transparent 65%
+  );
+
+  &--visible {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .cursor-glow {
+    display: none;
+  }
+}

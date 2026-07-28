@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
+import Seo, { JsonLd } from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
 import { BRAND, FAQ_INFO, FAQ_ITEMS, CONTACT_INFO } from '../../content/copy'
 import './FAQ.scss'
@@ -20,7 +21,8 @@ const faqSchema = {
 export default function FAQ() {
   return (
     <main className="faq-page">
-      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      <Seo title={FAQ_INFO.seoTitle} description={FAQ_INFO.seoDescription} path="/faq" />
+      <JsonLd id="faq-schema" schema={faqSchema} />
 
       <section
         className="faq-hero"

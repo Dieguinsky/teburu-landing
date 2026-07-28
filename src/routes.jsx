@@ -11,6 +11,8 @@ import Reservar from './pages/Reservar'
 import Portafolio from './pages/Portafolio'
 import Cotizador from './pages/Cotizador'
 import FAQ from './pages/FAQ'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 export default function AppRoutes() {
   return (
@@ -27,6 +29,8 @@ export default function AppRoutes() {
         <Route path="/portafolio" element={<Portafolio />} />
         <Route path="/cotizador" element={<Cotizador />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Route>
     </Routes>
   )
