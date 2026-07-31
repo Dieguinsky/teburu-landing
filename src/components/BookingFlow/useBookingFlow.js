@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { BOOKING_STEPS, BOOKING_SERVICES, BOOKING_EXTRAS, BOOKING_COUPONS } from '../../content/copy'
+import { BOOKING_STEPS, BOOKING_SERVICES, BOOKING_EXTRAS } from '../../content/copy'
 import { trackEvent } from '../../lib/analytics'
 
 export const STEP_IDS = BOOKING_STEPS.map((s) => s.id)
@@ -58,7 +58,8 @@ export default function useBookingFlow() {
     extras: [],
   })
   const [couponInput, setCouponInput] = useState('')
-  const [coupon, setCoupon] = useState({ key: null, error: null })
+  const [coupon, setCoupon] = useState({ code: null, discount: 0, error: null })
+  const [couponChecking, setCouponChecking] = useState(false)
 
   const selectedService = BOOKING_SERVICES.find((s) => s.id === booking.serviceId)
   const selectedExtras = BOOKING_EXTRAS.filter((e) => booking.extras.includes(e.id))
@@ -67,8 +68,8 @@ export default function useBookingFlow() {
   const extrasPrice = selectedExtras.reduce((sum, e) => sum + e.price, 0)
   const subtotal = servicePrice + extrasPrice
 
-  const appliedCoupon = coupon.key ? BOOKING_COUPONS[coupon.key] : null
-  const discount = appliedCoupon ? Math.round(subtotal * appliedCoupon.discount) : 0
+  const appliedCoupon = coupon.code ? { code: coupon.code } : null
+  const discount = coupon.code ? Math.round(subtotal * coupon.discount) : 0
   const iva = Math.round((subtotal - discount) * 0.19)
   const total = subtotal - discount + iva
 
@@ -99,18 +100,31 @@ export default function useBookingFlow() {
     setBooking((prev) => ({ ...prev, serviceId: id }))
   }
 
-  function applyCoupon() {
+  async function applyCoupon() {
     const key = couponInput.trim().toLowerCase()
-    if (!key) return
-    if (BOOKING_COUPONS[key]) {
-      setCoupon({ key, error: null })
-    } else {
-      setCoupon({ key: null, error: 'Cupón no válido' })
+    if (!key || couponChecking) return
+    setCouponChecking(true)
+    try {
+      const res = await fetch(import.meta.env.VITE_COUPON_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: key }),
+      })
+      const data = await res.json()
+      if (data.valid) {
+        setCoupon({ code: data.label, discount: data.discount, error: null })
+      } else {
+        setCoupon({ code: null, discount: 0, error: 'Cupón no válido' })
+      }
+    } catch {
+      setCoupon({ code: null, discount: 0, error: 'No se pudo validar el cupón, intenta de nuevo' })
+    } finally {
+      setCouponChecking(false)
     }
   }
 
   function removeCoupon() {
-    setCoupon({ key: null, error: null })
+    setCoupon({ code: null, discount: 0, error: null })
     setCouponInput('')
   }
 
@@ -128,6 +142,7 @@ export default function useBookingFlow() {
     appliedCoupon,
     couponInput,
     couponError: coupon.error,
+    couponChecking,
     setCouponInput,
     applyCoupon,
     removeCoupon,

@@ -35,10 +35,12 @@ There is no test runner configured in this project.
 
 **Booking flow**: `src/pages/Reservar` + `src/components/BookingFlow` walk through service → extras → date/time → payment; a Google Calendar embed is what actually reserves the slot. See `src/components/BookingFlow/CLAUDE.md`.
 
+**Coupon validation**: discount codes are validated server-side by a standalone Cloudflare Worker in `worker/` (own `package.json`, deployed separately from the site via Wrangler) — codes used to be a plain object in `copy.js`, which leaked every code in the client bundle of this public repo, so that format is retired. See `worker/CLAUDE.md` for the deploy/secret-update workflow.
+
 **Images**: image imports are centralized in `src/assets/*Images.js` files (e.g. `homeImages.js`, `pageImages.js`, `serviciosImages.js`) rather than imported ad hoc per component — each exports a keyed object mapping semantic names to imported image assets. Add new images to the relevant `*Images.js` file rather than importing raw paths directly in page/section components. Actual image files live under `src/assets/img/`.
 
 **Styles**: global Sass entry point is `src/styles/index.scss`, which just forwards `fonts`, `variables`, and `base` partials. Brand colors, grayscale, and font stacks are defined once in `src/styles/_variables.scss` — reference these Sass variables rather than hardcoding colors/fonts in page-level SCSS.
 
-**Deploy**: hosted on GitHub Pages via `gh-pages` (not Cloudflare — Cloudflare only holds unproxied DNS for the domain). `public/404.html` + the inline script in `index.html` implement the standard SPA-on-GitHub-Pages redirect trick so deep links survive a full page load.
+**Deploy**: hosted on GitHub Pages via `gh-pages` (not Cloudflare — Cloudflare only holds unproxied DNS for the domain; the coupon-validation Worker above is a separate, unrelated use of the same Cloudflare account and does not touch the site's DNS/proxy). `public/404.html` + the inline script in `index.html` implement the standard SPA-on-GitHub-Pages redirect trick so deep links survive a full page load.
 
 **Design references**: the `refes/` directory holds local design reference images (mockups, chat screenshots) and is git-ignored — it's for local reference only, not part of the shipped app.

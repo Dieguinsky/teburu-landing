@@ -12,4 +12,8 @@ There's a client-side attempt counter that soft-limits how many times the agenda
 
 ## Payment
 
-Payment step supports bank transfer (`BOOKING_TRANSFER` in `copy.js`) and coupon codes (`BOOKING_COUPONS`) — no payment gateway/processor integration exists; nothing here charges a card automatically.
+Payment step supports bank transfer (`BOOKING_TRANSFER` in `copy.js`) and coupon codes — no payment gateway/processor integration exists; nothing here charges a card automatically.
+
+## Coupons
+
+Coupon codes are validated server-side by a small Cloudflare Worker (`worker/`, see `worker/CLAUDE.md`) via `VITE_COUPON_API_URL` — they used to be a plain object in `copy.js`, but that leaked every code in the client JS bundle of this public repo. `applyCoupon` in `useBookingFlow.js` is now async: it POSTs the entered code to the worker and applies whatever discount comes back, rather than looking anything up locally.

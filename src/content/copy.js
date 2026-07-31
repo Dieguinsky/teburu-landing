@@ -447,10 +447,8 @@ export const BOOKING_EXTRAS = [
   { id: 'mezcla-master', label: 'Mezcla + Master', price: 200000 },
 ]
 
-// Códigos de cupón: clave en minúsculas -> porcentaje de descuento sobre el subtotal.
-export const BOOKING_COUPONS = {
-  panda50: { code: 'PANDA50', discount: 0.5 },
-}
+// Los códigos de cupón ya no viven acá (este repo es público): se validan
+// server-side en el Worker de worker/, ver worker/CLAUDE.md.
 
 export const ARTISTS_SECTION = {
   title: 'Artistas y lanzamientos',

@@ -18,6 +18,7 @@ export default function BookingFlow({ flow }) {
     appliedCoupon,
     couponInput,
     couponError,
+    couponChecking,
     setCouponInput,
     applyCoupon,
     removeCoupon,
@@ -211,9 +212,10 @@ export default function BookingFlow({ flow }) {
                         onChange={(e) => setCouponInput(e.target.value)}
                         placeholder="Código de descuento"
                         className="booking-flow__coupon-input"
+                        disabled={couponChecking}
                       />
-                      <button type="submit" className="booking-flow__coupon-submit">
-                        Aplicar
+                      <button type="submit" className="booking-flow__coupon-submit" disabled={couponChecking}>
+                        {couponChecking ? 'Verificando…' : 'Aplicar'}
                       </button>
                     </form>
                   )}
