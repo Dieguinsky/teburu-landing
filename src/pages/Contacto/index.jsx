@@ -100,7 +100,7 @@ export default function Contacto() {
             <form className="contacto-form" onSubmit={handleSubmit}>
               <div className="contacto-form__row">
                 <label className="contacto-field">
-                  <span>Nombre & apellido *</span>
+                  <span>Nombre y apellido *</span>
                   <input
                     type="text"
                     name="name"

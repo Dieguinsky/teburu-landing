@@ -575,8 +575,49 @@ export const COTIZADOR_INFO = {
   title: 'Cotizador',
   subtitle: 'Cotiza tu podcast',
   description:
-    'Estamos terminando de armar el cotizador online para que puedas simular el valor de tu producción de podcast. Mientras tanto, escríbenos y te enviamos una cotización a la medida.',
+    'Cuéntanos qué necesitas para tu podcast y te enviamos una cotización a la medida. Sin compromiso.',
   seoTitle: 'Cotizador de podcast — Estudio Teburu',
   seoDescription:
-    'Cotiza el valor de tu producción de podcast en Estudio Teburu, Santiago. Escríbenos y te enviamos una cotización a la medida.',
+    'Cuéntanos qué necesitas para tu producción de podcast en Estudio Teburu, Santiago, y te enviamos una cotización a la medida.',
 }
+
+export const COTIZADOR_EPISODIOS_OPCIONES = [
+  '1 capítulo',
+  '2 capítulos',
+  '3 capítulos',
+  '4 capítulos',
+  '5 capítulos',
+  '6 capítulos',
+  '7 capítulos',
+  '8 capítulos',
+  '9 capítulos',
+  '10 capítulos',
+  '11 capítulos',
+  '12 capítulos',
+  '13 capítulos',
+  '14 capítulos',
+  '15+ capítulos',
+]
+
+export const COTIZADOR_CLIPS_OPCIONES = ['Sin clips', '1-4 clips', '5-10 clips', '11+ clips']
+
+export const COTIZADOR_SERVICES = [
+  // Formato de grabación
+  { id: 'podcast-en-estudio', title: 'Podcast en estudio' },
+  { id: 'podcast-a-domicilio', title: 'Podcast a domicilio' },
+  // Postproducción
+  { id: 'edicion-audio', title: 'Edición de audio' },
+  { id: 'edicion-video', title: 'Edición de video' },
+  { id: 'clips-reels', title: 'Clips / reels para redes sociales' },
+  // Espacio y equipo humano
+  { id: 'montaje-sala', title: 'Montaje y arriendo de sala' },
+  { id: 'camarografo', title: 'Camarógrafo' },
+  // Transmisión en vivo
+  { id: 'streaming', title: 'Streaming en vivo' },
+  { id: 'direccion-streaming', title: 'Dirección de streaming' },
+  { id: 'sonidista', title: 'Sonidista en vivo' },
+  // Servicios creativos adicionales
+  { id: 'direccion-audiovisual', title: 'Dirección artística / audiovisual' },
+  { id: 'fotografia', title: 'Fotografía' },
+  { id: 'diseno-escena', title: 'Diseño gráfico de escena' },
+]

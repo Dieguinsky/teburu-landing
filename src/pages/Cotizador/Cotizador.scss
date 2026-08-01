@@ -3,36 +3,49 @@
 .cotizador-page {
   padding: 0;
   margin: 0;
-  min-height: calc(100vh - 4rem);
 }
 
 .cotizador-layout {
   display: grid;
-  grid-template-columns: 16rem 1fr;
+  grid-template-columns: 1fr 1.1fr;
   min-height: calc(100vh - 4rem);
 }
 
-.cotizador-sidebar {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 1.5rem;
-  background-color: $gray-700;
-  color: $gray-200;
-}
-
-.cotizador-sidebar__brand {
+.cotizador-info {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 2.5rem;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: $gray-700;
+  background-size: cover;
+  background-position: center;
 }
 
-.cotizador-sidebar__logo {
+.cotizador-info__panel {
+  position: relative;
+  z-index: 1;
+  max-width: 22rem;
+  padding: 2.5rem 2rem;
+  background-color: rgba($gray-800, 0.9);
+  color: $gray-100;
+  text-align: center;
+}
+
+.cotizador-info__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.cotizador-info__logo {
   font-size: 1.5rem;
   color: $primary-2;
 }
 
-.cotizador-sidebar__name {
+.cotizador-info__name {
   font-family: $font-display;
   font-size: 0.95rem;
   letter-spacing: 0.1em;
@@ -40,44 +53,16 @@
   color: $gray-100;
 }
 
-.cotizador-sidebar__help {
-  margin: auto 0 0;
-  font-size: 0.75rem;
-  line-height: 1.6;
-  color: $gray-400;
-
-  a {
-    color: $gray-200;
-    text-decoration: none;
-
-    &:hover {
-      color: $primary-2;
-    }
-  }
-}
-
-.cotizador-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 32rem;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
-  text-align: center;
-  background-color: $gray-200;
-}
-
-.cotizador-main__title {
+.cotizador-info__title {
   margin: 0;
   font-family: $font-display;
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $primary-1;
 }
 
-.cotizador-main__rule {
+.cotizador-info__rule {
   display: block;
   width: 3rem;
   height: 2px;
@@ -85,23 +70,178 @@
   background-color: $primary-2;
 }
 
-.cotizador-main__subtitle {
+.cotizador-info__subtitle {
   margin: 0 0 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: $gray-700;
 }
 
-.cotizador-main__desc {
-  margin: 0 0 2rem;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: $gray-600;
+.cotizador-info__desc {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: $gray-300;
 }
 
-.cotizador-main__actions {
+.cotizador-info__email {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: $gray-200;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-2;
+  }
+}
+
+.cotizador-form-section {
+  background-color: $gray-600;
+  padding: 3rem 2.5rem;
+  overflow-y: auto;
+}
+
+.cotizador-form {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.cotizador-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cotizador-field {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+
+  span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: $gray-100;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba($gray-100, 0.15);
+    border-radius: 4px;
+    background-color: rgba($gray-700, 0.6);
+    color: $gray-100;
+    font-family: $font-body;
+    font-size: 0.9rem;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-2;
+      outline-offset: 1px;
+    }
+  }
+
+  select {
+    cursor: pointer;
+
+    option {
+      background-color: $gray-700;
+      color: $gray-100;
+    }
+  }
+}
+
+.cotizador-chips {
+  display: flex;
+  flex-direction: column;
+  min-height: 3rem;
+  margin-top: 0.75rem;
+  border: 1px solid rgba($gray-100, 0.15);
+  border-radius: 4px;
+  background-color: rgba($gray-700, 0.6);
+  overflow: hidden;
+}
+
+.cotizador-chips__empty {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: $gray-400;
+}
+
+.cotizador-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: $gray-100;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba($gray-100, 0.1);
+  }
+}
+
+.cotizador-chip__remove {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: $gray-400;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-2;
+    background-color: rgba($gray-100, 0.08);
+  }
+}
+
+.cotizador-form__submit {
+  margin-top: 0.5rem;
+  border: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.cotizador-form__error {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: $primary-2;
+}
+
+.cotizador-success {
+  max-width: 28rem;
+  margin: 4rem auto;
+  text-align: center;
+  color: $gray-100;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-family: $font-display;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-300;
+  }
 }
 
 .cotizador-footer {
@@ -123,11 +263,18 @@
     grid-template-columns: 1fr;
   }
 
-  .cotizador-sidebar {
-    padding: 1.5rem 1.25rem;
+  .cotizador-info {
+    min-height: 16rem;
+    padding: 2rem 1.5rem;
   }
 
-  .cotizador-sidebar__help {
-    margin-top: 1.5rem;
+  .cotizador-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cotizador-form-section {
+    padding: 2rem 1.25rem;
   }
 }
