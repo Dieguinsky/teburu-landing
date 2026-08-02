@@ -157,7 +157,7 @@ Cada pocos meses aparece un modelo nuevo que genera una canción completa a part
 
 ## No crea: copia y remezcla
 
-Un modelo generativo de audio no compone desde cero. Aprende patrones estadísticos de un catálogo de entrenamiento y, al generar, tiende a reproducir fragmentos de ese catálogo — a veces de forma literal. Un estudio reciente sobre modelos de generación musical documentó justamente eso: [replicación de datos de entrenamiento en modelos como MusicGen](https://arxiv.org/abs/2407.14364), con fragmentos exactos o casi exactos del material original reapareciendo en la salida generada. No es una metáfora ni una crítica moral al modelo — es un comportamiento medido y publicado. Lo que un modelo generativo hace, en el fondo, es una mezcla de elementos existentes; llamarlo "crear" es, como mínimo, impreciso.
+Un modelo generativo de audio no compone desde cero. Aprende patrones estadísticos de un catálogo de entrenamiento y, al generar, tiende a reproducir fragmentos de ese catálogo — a veces de forma literal. Un estudio reciente sobre modelos de generación musical documentó justamente eso: [replicación de datos de entrenamiento en modelos como MusicGen](https://arxiv.org/pdf/2407.14364), con fragmentos exactos o casi exactos del material original reapareciendo en la salida generada. No es una metáfora ni una crítica moral al modelo — es un comportamiento medido y publicado. Lo que un modelo generativo hace, en el fondo, es una mezcla de elementos existentes; llamarlo "crear" es, como mínimo, impreciso.
 
 ## Lo que la IA no puede hacer: romper la regla
 
@@ -169,7 +169,7 @@ Para lo de consumo fácil y rápido, la IA ya es efectivamente competitiva: pued
 
 ## El límite ya se está viendo — y es exponencial
 
-La mejora de estos modelos no es lineal: llegar de un nivel de calidad a otro cuesta cada vez más recursos, no la misma cantidad. Un análisis reciente sobre las curvas de escalamiento de IA lo deja en números concretos: pasar de 90% a 95% de acierto en un benchmark estándar (MMLU-Pro) no cuesta un 5% más de cómputo, sino más de cinco veces más — de aproximadamente 10¹⁰ a 5,6×10¹⁰ PFLOP. Es lo que ese mismo análisis llama ["el muro de los retornos decrecientes"](https://arxiv.org/abs/2512.20264): cada punto adicional de calidad es exponencialmente más caro que el anterior. Eso no significa que la IA deje de mejorar, pero sí que cerrar el último tramo — el que separa "suena bien" de "suena a algo real" — no es cuestión de esperar un par de meses más.
+La mejora de estos modelos no es lineal: llegar de un nivel de calidad a otro cuesta cada vez más recursos, no la misma cantidad. Un análisis reciente sobre las curvas de escalamiento de IA lo deja en números concretos: pasar de 90% a 95% de acierto en un benchmark estándar (MMLU-Pro) no cuesta un 5% más de cómputo, sino más de cinco veces más — de aproximadamente 10¹⁰ a 5,6×10¹⁰ PFLOP. Es lo que ese mismo análisis llama ["el muro de los retornos decrecientes"](https://arxiv.org/pdf/2512.20264): cada punto adicional de calidad es exponencialmente más caro que el anterior. Eso no significa que la IA deje de mejorar, pero sí que cerrar el último tramo — el que separa "suena bien" de "suena a algo real" — no es cuestión de esperar un par de meses más.
 
 ## Lo que nunca va a hacer
 
