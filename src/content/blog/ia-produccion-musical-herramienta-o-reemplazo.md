@@ -17,7 +17,7 @@ Ningún modelo entrenado para predecir el siguiente patrón "esperado" va a inve
 
 ## El paralelo con la comida rápida
 
-Para lo de consumo fácil y rápido, la IA ya es efectivamente competitiva: puede resolver un jingle, una cortina, una base genérica en minutos. Es la papa frita y la hamburguesa del rubro — cumple, es rápida, es barata. Pero no hace el plato de autor ni tampoco esa comida casera simple que sabe a algo específico: a una cocina, a alguien que la preparó pensando en vos. Ese sabor no es una cuestión técnica de receta; es que hay una persona y una intención real detrás. En música pasa lo mismo: se puede generar una base competente, pero no la sensación de que hay alguien del otro lado que vivió algo y lo está contando.
+Para lo de consumo fácil y rápido, la IA ya es efectivamente competitiva: puede resolver un jingle, una cortina, una base genérica en minutos. Es la papa frita y la hamburguesa del rubro — cumple, es rápida, es barata. Pero no hace el plato de autor ni tampoco esa comida casera simple que sabe a algo específico: a una cocina, a alguien que la preparó pensando en ti. Ese sabor no es una cuestión técnica de receta; es que hay una persona y una intención real detrás. En música pasa lo mismo: se puede generar una base competente, pero no la sensación de que hay alguien del otro lado que vivió algo y lo está contando.
 
 ## El límite ya se está viendo — y es exponencial
 
