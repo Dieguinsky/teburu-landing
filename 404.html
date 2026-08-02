@@ -1,52 +1,21 @@
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex, nofollow" />
-<title>Estudio Teburu — Volvemos pronto</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    height: 100%;
-    background: #001024;
-    color: #eaeada;
-    font-family: system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    text-align: center;
-  }
-  .wrap { max-width: 480px; }
-  h1 {
-    font-size: 1.75rem;
-    letter-spacing: 0.02em;
-    margin-bottom: 16px;
-    color: #eaeada;
-  }
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #dadc88;
-    margin-bottom: 8px;
-  }
-  .bar {
-    width: 48px;
-    height: 3px;
-    background: #d63e15;
-    margin: 0 auto 24px;
-  }
-</style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="bar"></div>
-    <h1>Estudio Teburu</h1>
-    <p>Estamos haciendo mantenimiento en el sitio.</p>
-    <p>Volvemos en breve.</p>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Estudio Teburu</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 0
+      var l = window.location
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      )
+    </script>
+  </head>
+  <body></body>
 </html>
