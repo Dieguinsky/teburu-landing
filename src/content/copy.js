@@ -626,23 +626,55 @@ export const COTIZADOR_EPISODIOS_OPCIONES = [
 
 export const COTIZADOR_CLIPS_OPCIONES = ['Sin clips', '1-4 clips', '5-10 clips', '11+ clips']
 
+// Precios por capítulo/sesión, en CLP. Referencian los valores más recientes
+// (y más altos) de nuestras cotizaciones vigentes. `perEpisode: true` marca
+// los servicios cuyo costo se multiplica por la cantidad de capítulos elegida.
 export const COTIZADOR_SERVICES = [
-  // Formato de grabación
-  { id: 'podcast-en-estudio', title: 'Podcast en estudio' },
-  { id: 'podcast-a-domicilio', title: 'Podcast a domicilio' },
+  // Formato de grabación (incluye 2 micrófonos; extras se agregan aparte)
+  {
+    id: 'podcast-en-estudio',
+    title: 'Podcast en estudio (2 micrófonos)',
+    price: 60000,
+    perEpisode: true,
+  },
+  {
+    id: 'podcast-a-domicilio',
+    title: 'Podcast a domicilio (2 micrófonos + traslado)',
+    price: 110000,
+    perEpisode: true,
+  },
   // Postproducción
-  { id: 'edicion-audio', title: 'Edición de audio' },
-  { id: 'edicion-video', title: 'Edición de video' },
-  { id: 'clips-reels', title: 'Clips / reels para redes sociales' },
+  { id: 'edicion-audio', title: 'Edición de audio', price: 15000, perEpisode: true },
+  { id: 'edicion-video', title: 'Edición de video', price: 40000, perEpisode: true },
+  { id: 'clips-reels', title: 'Clip / reel para redes sociales (c/u)', price: 15000 },
   // Espacio y equipo humano
-  { id: 'montaje-sala', title: 'Montaje y arriendo de sala' },
-  { id: 'camarografo', title: 'Camarógrafo' },
+  { id: 'montaje-sala', title: 'Montaje y arriendo de sala', price: 25000, perEpisode: true },
   // Transmisión en vivo
-  { id: 'streaming', title: 'Streaming en vivo' },
-  { id: 'direccion-streaming', title: 'Dirección de streaming' },
-  { id: 'sonidista', title: 'Sonidista en vivo' },
+  { id: 'streaming', title: 'Streaming en vivo', price: 60000, perEpisode: true },
+  {
+    id: 'direccion-streaming',
+    title: 'Dirección de streaming',
+    price: 20000,
+    perEpisode: true,
+  },
+  { id: 'sonidista', title: 'Sonidista en vivo', price: 20000, perEpisode: true },
   // Servicios creativos adicionales
-  { id: 'direccion-audiovisual', title: 'Dirección artística / audiovisual' },
-  { id: 'fotografia', title: 'Fotografía' },
-  { id: 'diseno-escena', title: 'Diseño gráfico de escena' },
+  { id: 'direccion-audiovisual', title: 'Dirección artística / audiovisual', price: 75000 },
+  { id: 'fotografia', title: 'Fotografía', price: 60000 },
+  { id: 'diseno-escena', title: 'Diseño gráfico de escena', price: 20000 },
+]
+
+// Ítems de cantidad: siempre visibles en la tabla del cotizador con un
+// selector numérico en vez de agregarse/quitarse por servicio. Los
+// micrófonos/invitados son EXTRA: los formatos de podcast ya incluyen 2.
+export const COTIZADOR_QUANTITY_ITEMS = [
+  {
+    id: 'mics',
+    title: 'Micrófonos / invitados extra',
+    price: 10000,
+    min: 0,
+    max: 8,
+    defaultQty: 0,
+  },
+  { id: 'camaras', title: 'Cámaras', price: 30000, min: 0, max: 3, defaultQty: 1 },
 ]

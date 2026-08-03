@@ -9,17 +9,24 @@ import avVideo from './img/diam1/D1_4.jpg'
 import avReels from './img/puntiagudo2/P2_5.jpg'
 import avSampleLoop from './videos/teburu sample.mp4'
 import estudioHero from './img/oficials/image00024.jpeg'
-import estudioGallery1 from './img/oficials/image00120.jpeg'
-import estudioGallery2 from './img/oficials/image00109.jpeg'
-import estudioGallery3 from './img/oficials/image00067.jpeg'
-import estudioGallery4 from './img/oficials/image00006.jpeg'
+import estudioGalleryEscritorioFrente from './img/Espacio/escritorio-frente.jpg'
+import estudioGalleryEscritorioArriba from './img/Espacio/escritorio-arriba.jpg'
+import estudioGallerySofa from './img/Espacio/sofa.jpg'
+import estudioGalleryWa8000 from './img/Espacio/wa8000.jpg'
+import cotizadorPodcast from './img/podcast/Imagen Podcast 3.jpg'
 
 export const pageImages = {
   nosotrosHero: consoleBg,
   contactoBg: studioBg,
   portafolioHero: heroBg,
   estudioHero,
-  estudioGallery: [estudioGallery1, estudioGallery2, estudioGallery3, estudioGallery4],
+  cotizadorPodcast,
+  estudioGallery: [
+    estudioGalleryEscritorioFrente,
+    estudioGalleryEscritorioArriba,
+    estudioGallerySofa,
+    estudioGalleryWa8000,
+  ],
   team: {
     diego: teamDiego,
     jose: teamJose,
