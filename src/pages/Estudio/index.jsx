@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import Reveal from '../../components/Reveal'
 import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
-import { BRAND, ESTUDIO_INTRO, ESTUDIO_GEAR, ESTUDIO_VIDEO_GEAR } from '../../content/copy'
+import { brandsImages } from '../../assets/brandsImages'
+import { BRAND, ESTUDIO_INTRO, ESTUDIO_GEAR, ESTUDIO_VIDEO_GEAR, ESTUDIO_BRANDS } from '../../content/copy'
 import './Estudio.scss'
 
 export default function Estudio() {
@@ -72,6 +73,26 @@ export default function Estudio() {
             ))}
           </ul>
         </Reveal>
+      </section>
+
+      <section className="estudio-brands">
+        <div className="estudio-brands__inner">
+          <Reveal as="h2" className="section-title estudio-brands__heading">
+            Marcas que encontrarás en nuestro estudio
+          </Reveal>
+          <div className="estudio-brands__grid">
+            {ESTUDIO_BRANDS.map(({ name, imageKey, tier, boost, shrink }, index) => (
+              <Reveal
+                as="div"
+                key={name}
+                className={`estudio-brands__logo estudio-brands__logo--tier${tier}${boost === 'lg' ? ' estudio-brands__logo--boost-lg' : boost ? ' estudio-brands__logo--boost' : ''}${shrink ? ' estudio-brands__logo--shrink' : ''}`}
+                delay={index * 50}
+              >
+                <img src={brandsImages[imageKey]} alt={name} loading="lazy" />
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="estudio-cta">

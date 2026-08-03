@@ -34,7 +34,7 @@ export default function Blog() {
             <Reveal as="article" key={post.slug} className="blog-card" delay={index * 60}>
               <Link to={`/blog/${post.slug}`} className="blog-card__link">
                 <time className="blog-card__date" dateTime={post.date}>
-                  {formatDate(post.date)}
+                  N.° {String(post.number).padStart(2, '0')} · {formatDate(post.date)}
                   {post.author ? ` · Por ${post.author}` : ''}
                 </time>
                 <h2 className="blog-card__title">{post.title}</h2>

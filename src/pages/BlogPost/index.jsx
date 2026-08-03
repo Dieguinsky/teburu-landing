@@ -53,7 +53,7 @@ export default function BlogPost() {
           ← Volver al blog
         </Link>
         <time className="blog-post__date" dateTime={post.date}>
-          {formatDate(post.date)}
+          N.° {String(post.number).padStart(2, '0')} · {formatDate(post.date)}
           {post.author ? ` · Por ${post.author}` : ''}
         </time>
         <h1 className="blog-post__title">{post.title}</h1>

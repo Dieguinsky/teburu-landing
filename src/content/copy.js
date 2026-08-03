@@ -305,6 +305,31 @@ export const ESTUDIO_VIDEO_GEAR = {
   ],
 }
 
+// Ordered by brand prestige/reputation in professional audio, most to least —
+// `tier` drives logo size in the grid (1 = largest, 3 = smallest).
+// `boost` bumps a logo a bit larger than its tier baseline, for cases where
+// the tier-standard size reads too small for that specific mark. `shrink`
+// does the opposite, for marks whose bold/dense typeface reads larger than
+// peers at the same height (e.g. Sony's heavy wordmark).
+export const ESTUDIO_BRANDS = [
+  { name: 'Universal Audio', imageKey: 'universalAudio', tier: 1, boost: true },
+  { name: 'Shure', imageKey: 'shure', tier: 1 },
+  { name: 'Sennheiser', imageKey: 'sennheiser', tier: 1 },
+  { name: 'Sony', imageKey: 'sony', tier: 1, shrink: true },
+  { name: 'Focal', imageKey: 'focal', tier: 1 },
+  { name: 'Neutrik', imageKey: 'neutrik', tier: 1, boost: true },
+  { name: 'Warm Audio', imageKey: 'warmAudio', tier: 2, boost: true },
+  { name: 'Yamaha', imageKey: 'yamaha', tier: 2 },
+  { name: 'Audio-Technica', imageKey: 'audioTechnica', tier: 2 },
+  { name: 'Focusrite', imageKey: 'focusrite', tier: 2 },
+  { name: 'Furman', imageKey: 'furman', tier: 3 },
+  { name: 'Avantone', imageKey: 'avantone', tier: 3, boost: 'lg' },
+  { name: 'Behringer', imageKey: 'behringer', tier: 3 },
+  { name: 'Wharfedale Pro', imageKey: 'wharfedale', tier: 3, boost: 'lg' },
+  { name: 'Nektar', imageKey: 'nektar', tier: 3 },
+  { name: 'Oyaide NEO d+', imageKey: 'oyaide', tier: 3, boost: true },
+]
+
 export const AB_COMPARATOR = {
   title: 'Escucha la diferencia',
   description: 'Compara el antes y el después de una masterización real hecha en Teburu.',

@@ -44,6 +44,10 @@ export const BLOG_POSTS = Object.entries(postModules)
       html: marked.parse(content),
     }
   })
+  // Number posts by original publish order (oldest = 1) before re-sorting
+  // newest-first for display.
+  .sort((a, b) => new Date(a.date) - new Date(b.date))
+  .map((post, index) => ({ ...post, number: index + 1 }))
   .sort((a, b) => new Date(b.date) - new Date(a.date))
 
 export function getPostBySlug(slug) {

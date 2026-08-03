@@ -148,6 +148,81 @@
   }
 }
 
+.estudio-brands {
+  background-color: $background;
+  padding: 4rem 2rem;
+}
+
+.estudio-brands__inner {
+  max-width: 74rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.estudio-brands__heading {
+  color: $primary-1;
+  margin-bottom: 2.5rem;
+}
+
+.estudio-brands__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem 4rem;
+}
+
+// Height-based sizing, width left free — a fixed box (object-fit: contain)
+// was tried here and reverted: it forced very wide wordmarks (Sennheiser,
+// Shure, Sony) to shrink in HEIGHT to fit the box width, hurting legibility.
+// Logo walls read best when every mark shares a consistent height and wide
+// wordmarks are simply allowed to run wider. Compact/badge-shaped marks
+// (icon-over-wordmark, circular seals) look smaller than wordmarks at the
+// same height, so those get an explicit boost instead.
+.estudio-brands__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    display: block;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &--tier1 img {
+    height: 3.2rem;
+  }
+
+  &--tier2 img {
+    height: 2.6rem;
+  }
+
+  &--tier3 img {
+    height: 2rem;
+  }
+
+  &--tier1.estudio-brands__logo--boost img {
+    height: 3.9rem;
+  }
+
+  &--tier2.estudio-brands__logo--boost img {
+    height: 3.7rem;
+  }
+
+  &--tier3.estudio-brands__logo--boost img {
+    height: 2.5rem;
+  }
+
+  &--tier3.estudio-brands__logo--boost-lg img {
+    height: 3rem;
+  }
+
+  &--tier1.estudio-brands__logo--shrink img {
+    height: 2.6rem;
+  }
+}
+
 .estudio-video {
   background-color: $background;
   padding: 4.5rem 2rem;
