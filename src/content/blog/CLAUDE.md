@@ -28,3 +28,9 @@ This very file (`CLAUDE.md`) is explicitly excluded from that glob — and from 
 ## Adding a post
 
 Just add a new `.md` file here with the frontmatter above — no route registration needed, `import.meta.glob` picks it up automatically. After adding, run `npm run build && npm run prerender` (or `npm run deploy`) so the post gets prerendered static HTML and is added to `dist/sitemap.xml` — see `../../../scripts/CLAUDE.md`.
+
+## Counter-argument sections
+
+Posts that make a debatable claim or bust a myth (e.g. "expensive cables don't matter", "192kHz is placebo") should include a `## El contraargumento: "..."` section: a steelmanned objection stated in quotes, then refuted using the same evidence/logic the rest of the post already relies on — not a straw man. Place it after the post's main evidence sections and before the closing CTA paragraph/section. Skip the objection's quote-and-refute framing (but a "when X actually matters" nuance section is still fine) if the post already substantively addresses a counterpoint to its own thesis elsewhere.
+
+Do **not** add this to purely informational posts — pricing FAQs, service/checklist descriptions, listicles/roundups (e.g. free-tools bundles). Those have no single thesis to argue against, so a manufactured counter-argument would be forced.
