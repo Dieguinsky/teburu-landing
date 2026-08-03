@@ -27,6 +27,12 @@ La mejora de estos modelos no es lineal: llegar de un nivel de calidad a otro cu
 
 Ningún modelo va a componer una Novena Sinfonía ni un disco como *Nevermind*, porque esas obras no son la suma óptima de referencias anteriores — son la respuesta de una persona específica a una vida específica. Una IA no va a escribir una canción sobre la desaparición o el abuso de un familiar propio, porque no tiene familia, ni pérdida, ni nada que contar. Puede imitar la forma de esa canción después de que existe. No puede tener el motivo por el cual esa canción tuvo que existir.
 
+## El contraargumento: "ya hay canciones hechas con IA compitiendo en streaming"
+
+Es cierto, y no hay que restarle importancia: ya circulan canciones generadas por IA con miles —a veces millones— de reproducciones, algunas incluso sin que el oyente promedio note que no hay una persona real detrás. Si la pregunta es "¿puede la IA generar algo que compita comercialmente hoy?", la respuesta ya es sí, y descartarla sería no ver lo que está pasando.
+
+Pero esa pregunta es distinta a la que importa acá. Que una canción generada compita en un algoritmo de descubrimiento, o funcione como música de fondo en un video corto, dice más sobre cómo funciona el consumo pasivo en plataformas de streaming que sobre la capacidad creativa del modelo. Nadie está sosteniendo que la IA no pueda generar algo escuchable, competitivo incluso — eso ya se demostró y va a seguir mejorando. Lo que se sostiene es que ese resultado sigue siendo, técnicamente, una remezcla estadística de lo que ya existía: competir en las condiciones de descubrimiento pasivo de una plataforma no es lo mismo que crear una obra que alguien elige activamente porque sabe quién la hizo y por qué.
+
 ## Entonces, ¿qué cambia realmente?
 
 Sí va a desplazar el contenido de creación rápida y consumo fácil — música de fondo, jingles, plantillas comerciales — y probablemente va a acercar a más gente a esos productos comerciales de la industria. Eso es real y ya está pasando. Pero más allá de ese segmento, no le gana con facilidad al trabajo con intención real detrás.

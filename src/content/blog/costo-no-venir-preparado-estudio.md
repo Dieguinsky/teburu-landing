@@ -31,6 +31,12 @@ Llegar con cambios de letra escritos a mano encima de una versión vieja, con pa
 
 Más allá del tiempo y la plata, hay un tercer costo que es el más difícil de recuperar: la inercia creativa. Una sesión que fluye — llegar, calentar, grabar tomas sólidas una tras otra — construye energía y confianza que se nota en el resultado final. Una sesión que se detiene cada cinco minutos para resolver algo que debió resolverse antes rompe ese impulso constantemente. Después de la tercera interrupción por una letra que no está lista, es mucho más difícil volver a meterse en la canción con la misma intensidad de la primera toma.
 
+## El contraargumento: "la mejor toma sale improvisando en el momento"
+
+Es cierto, y vale la pena decirlo sin rodeos: algunas de las mejores tomas de la historia de la grabación salieron de un accidente, una frase que no estaba en el papel, una decisión tomada en el momento porque "se sintió bien". La espontaneidad no es el enemigo de una buena sesión — muchas veces es lo que la hace memorable.
+
+La diferencia está en qué tipo de decisión se está improvisando. Improvisar una interpretación —un fraseo distinto, una ad-lib, una nota que no estaba planeada— es exactamente el tipo de descubrimiento que una sesión bien preparada deja espacio para explorar, porque el tiempo no se está gastando en resolver la letra o la estructura. Improvisar la estructura de la canción o terminar de escribir la letra en vivo es un problema distinto: no es un hallazgo creativo, es trabajo de preproducción que se traslada a una sala que se cobra por hora. La preparación no elimina la espontaneidad — la protege, dejándole tiempo real para pasar.
+
 ## Qué significa "venir preparado" en la práctica
 
 - La letra escrita en su versión final, idealmente memorizada.

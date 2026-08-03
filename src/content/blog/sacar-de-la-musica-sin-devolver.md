@@ -30,4 +30,10 @@ Una escena musical no se sostiene con streams ni con packs de samples. Se sostie
 
 Cada vez que un proyecto elige invertir en una sesión de grabación real en vez de conformarse con lo gratuito, está sosteniendo esa cadena — no solo consumiendo el resultado final de ella.
 
+## El contraargumento: "el streaming y la IA democratizan el acceso a hacer música"
+
+Es un argumento real, no solo una excusa: nunca fue tan barato grabar, producir y distribuir música. Alguien sin plata para un estudio puede hoy sacar una canción completa con un computador y herramientas gratuitas, y eso —comparado con la barrera de entrada de hace treinta años, cuando grabar exigía un sello o un estudio caro— es un cambio real hacia más gente pudiendo participar, no menos.
+
+El problema no es la democratización del acceso en sí —eso es, en general, algo bueno. El problema es que "más fácil de acceder" y "el circuito completo recibe algo de vuelta" son dos cosas distintas, y la primera no garantiza la segunda. Que cualquiera pueda producir una canción no resuelve cómo se sostiene el estudio, el ingeniero, la sala de ensayo o el show en vivo de quien decide invertir en hacerlo con otra gente y no solo, desde su pieza, con un plugin gratis. Democratizar el acceso a las herramientas está bien; el riesgo es confundir eso con que el ecosistema completo alrededor de la música —el que no cabe en un plugin— se sostiene solo.
+
 En Teburu creemos en esa parte del trato: producir con el mismo cuidado que le pondríamos a nuestra propia música, y que ese trabajo se traduzca en un ingreso real para quienes lo hacen posible. Si tienes un proyecto y quieres invertir en el origen del sonido y no solo en su imitación, puedes revisar nuestros [Servicios](/servicios) o [Reservar](/reservar) una sesión.

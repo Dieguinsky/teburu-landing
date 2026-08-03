@@ -32,6 +32,10 @@ Es más fácil vender (y comprar) la idea de que el problema está al final de l
 
 La ciencia de la audición humana respalda esto: el oído humano tiene límites de resolución bien documentados, y buena parte de las diferencias que un audiófilo cree escuchar entre cables o conversores de alta gama no se sostienen bajo pruebas ciegas controladas (ABX). Lo que sí es audible y medible es lo que pasa río arriba: la fuente, el micrófono, la sala, el criterio de quien graba.
 
+## El contraargumento: "yo sí noto la diferencia en mi propio sistema"
+
+Es la respuesta más común frente a cualquier prueba ABX: "puede que en un laboratorio no se note, pero en mi sistema, con mis oídos, sí la escucho". Es una objeción genuina y no hay que despacharla como ignorancia — el problema es que describe exactamente el escenario donde el sesgo de expectativa opera con más fuerza, no menos. Escuchar en casa, sabiendo qué componente se acaba de cambiar, con la expectativa de que algo debería sonar distinto porque costó más, es la condición ideal para que el cerebro complete una diferencia que la señal eléctrica no tiene. Es la misma razón por la que la industria farmacéutica no confía en "sentí que el medicamento funcionó" y exige ensayos doble ciego: no porque el paciente mienta, sino porque la expectativa cambia la percepción de forma real y medible, sin que la persona lo note desde adentro. La única forma de separar una diferencia real de una esperada es no saber qué se está escuchando mientras se escucha — y ahí, sistemáticamente, la mayoría de esas diferencias percibidas desaparecen.
+
 ## Qué significa esto para quien graba
 
 Si te importa cómo suena tu música, la inversión con mayor retorno no es un cable de auditorio ni un conversor "audiófilo" — es la calidad del input: una sala tratada, microfonía elegida con criterio para cada fuente, y un ingeniero que sepa qué está buscando antes de apretar rec.

@@ -21,6 +21,10 @@ Las plataformas de streaming no reproducen tu master tal cual lo subiste: aplica
 - Priorizar dinámica y separación sobre volumen bruto: una mezcla con rango dinámico se sigue sintiendo "grande" e impactante en streaming, sin necesidad de aplastarla contra el techo.
 - Si el proyecto también va a formatos no normalizados (por ejemplo, video o broadcast tradicional), ahí sí puede convenir un master distinto siguiendo el estándar correspondiente (-23 LUFS para broadcast europeo, por ejemplo).
 
+## El contraargumento: "mi canción suena más floja que las demás en la playlist"
+
+Es una objeción real y frecuente: aunque en teoría todas las canciones se normalizan al mismo nivel percibido, en la práctica algunos artistas siguen notando que su tema suena "más chico" al lado de otros en una misma playlist. La explicación casi nunca es que la normalización esté fallando — es que "sonar grande" y "sonar fuerte" no son lo mismo. Una mezcla con buena separación de frecuencias, transientes claros y dinámica bien manejada se percibe como más grande e impactante incluso a igual LUFS que una mezcla más plana y sobrecomprimida, porque el cerebro interpreta detalle y contraste como presencia, no solo volumen. El problema casi siempre está en la mezcla, no en el nivel de masterización —y subir el volumen para compensarlo es exactamente el error que la normalización volvió inútil.
+
 ## Lo que hacemos en Teburu
 
 Masterizamos pensando en cómo realmente se va a escuchar la canción —streaming normalizado, no el medidor de volumen del estudio— para que la dinámica del trabajo de mezcla no se pierda por perseguir un número que las plataformas van a ignorar de todos modos. Si tienes una mezcla lista y quieres masterizarla, puedes revisar el detalle en [Servicios](/servicios) o [reservar](/reservar) directamente.

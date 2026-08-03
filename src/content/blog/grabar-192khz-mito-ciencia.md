@@ -24,6 +24,12 @@ Porque 192kHz "se ve" mejor en una hoja de specs, igual que los megapíxeles en 
 - El manejo de ruido de piso y de la sala.
 - El criterio de quien graba, más que el archivo resultante.
 
+## El contraargumento: "mejor grabar en la frecuencia más alta posible, por si acaso"
+
+Es un argumento de "future-proofing": si el almacenamiento es barato, ¿por qué no grabar siempre al máximo posible, para no tener que lamentarlo después? Tiene sentido en apariencia, pero ignora dos costos reales. El primero es de cómputo: procesar plugins (sobre todo los que emulan comportamiento no lineal, como saturación o compresión análoga) a 192kHz exige varias veces más potencia de procesamiento que a 48kHz, lo que se traduce en menos plugins simultáneos o más latencia durante la sesión misma —un costo que sí se siente en el momento, a cambio de una fidelidad que, como muestra la medición de Xiph.org, no es audible. El segundo es de flujo de trabajo: archivos más pesados, sesiones más lentas de cargar, más espacio de respaldo, sin ningún beneficio sonoro que lo compense en el 99% de los casos de uso.
+
+Grabar más alto "por si acaso" no es gratis — tiene un costo real en la sesión de hoy a cambio de un beneficio hipotético que la evidencia técnica no respalda.
+
 ## Cómo trabajamos esto en Teburu
 
 En nuestra sala grabamos con una interfaz Universal Audio Apollo x4 Gen 2 a las frecuencias de muestreo estándar de la industria (44.1kHz/48kHz a 24 bits), que es lo que efectivamente se usa en el 99% de los lanzamientos comerciales, streaming incluido. Preferimos invertir el tiempo de sesión en microfonía, posicionamiento y interpretación — las variables que sí determinan cómo suena una grabación — antes que en un número de specs que no vas a poder escuchar. Puedes revisar el resto de nuestro equipamiento en [Nuestro Estudio](/estudio) o ver nuestros [Servicios](/servicios) para agendar tu próxima sesión.

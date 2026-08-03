@@ -23,4 +23,8 @@ Esto es una práctica estándar entre ingenieros de mezcla profesionales precisa
 
 Un monitor de $5.000 dólares en una sala sin tratar acústicamente puede rendir peor que un monitor correcto en una sala bien pensada, revisado además en una referencia mono de control. La plata mejor invertida no es siempre "el parlante más caro posible" — es el tratamiento acústico de la sala y la variedad de referencias de escucha.
 
+## Cuándo sí vale la pena invertir en monitores de gama alta
+
+No es que el precio nunca importe. Un monitor de referencia de alta gama sí ofrece una respuesta en frecuencia más plana, menos distorsión a volúmenes altos y mayor resolución de detalle —cosas que se vuelven relevantes en etapas específicas: masterización, donde se están tomando decisiones finales de EQ y dinámica sobre una mezcla ya cerrada, o mezcla profesional en una sala ya bien tratada, donde el techo de mejora está en el monitor mismo y no en variables más baratas de resolver primero. La inversión en un monitor caro rinde cuando ya se resolvió lo anterior —sala, posición de escucha, referencias variadas—; gastar ahí primero, antes de tratar la sala, es invertir en la variable equivocada primero.
+
 Puedes ver el detalle completo de nuestro monitoreo y el resto del equipamiento en [Nuestro Estudio](/estudio). Si quieres escuchar la diferencia en un espacio bien tratado, revisa nuestros [Servicios](/servicios) o [reserva una sesión](/reservar).

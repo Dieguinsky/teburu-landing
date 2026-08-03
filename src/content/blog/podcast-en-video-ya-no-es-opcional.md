@@ -26,6 +26,12 @@ Esto no significa que todo podcast necesite una producción audiovisual compleja
 - Pensar la iluminación y el fondo del espacio de grabación como parte del producto, no como un detalle secundario del audio.
 - Reservar tiempo de edición para al menos algunos clips verticales por episodio —es la forma más directa de que el podcast se descubra fuera de su propio feed.
 
+## El contraargumento: "hay podcasts exitosos que son solo audio"
+
+Es verdad, y hay ejemplos grandes: proyectos que llevan años solo en audio, con audiencias fieles que nunca pidieron video. Si un podcast ya tiene una audiencia establecida en solo audio y le está funcionando, no hay ninguna urgencia de cambiar algo que ya funciona.
+
+La objeción deja de aplicar en el caso que realmente importa acá: un podcast nuevo, que todavía no tiene audiencia y depende de que lo descubran. Los proyectos de solo audio que hoy tienen éxito construyeron esa audiencia en gran parte antes de que YouTube se convirtiera en la plataforma principal de descubrimiento de podcast, o la construyeron por otros canales (redes, boca a boca, invitados con público propio) que compensan no estar en video. Para un proyecto que recién empieza, sin ese capital de audiencia previo, apostar solo por audio es cerrarse la puerta de descubrimiento más grande que existe hoy, no replicar la estrategia de alguien que llegó a un lugar distinto por un camino distinto.
+
 ## Cómo lo resolvemos en Teburu
 
 Nuestro servicio de podcast en estudio ya incluye cámaras multiplano e iluminación pensadas para esto, y el de podcast a domicilio lleva ese mismo equipo a tu locación. Si estás por lanzar un podcast nuevo o quieres sumarle video al que ya tienes, puedes cotizarlo en nuestro [Cotizador](/cotizador).
