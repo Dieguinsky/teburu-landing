@@ -626,55 +626,78 @@ export const COTIZADOR_EPISODIOS_OPCIONES = [
 
 export const COTIZADOR_CLIPS_OPCIONES = ['Sin clips', '1-4 clips', '5-10 clips', '11+ clips']
 
-// Precios por capítulo/sesión, en CLP. Referencian los valores más recientes
-// (y más altos) de nuestras cotizaciones vigentes. `perEpisode: true` marca
-// los servicios cuyo costo se multiplica por la cantidad de capítulos elegida.
+// Motor de precios del cotizador: replica la lógica y los montos del Excel
+// "Cotizador podcast" (columnas A:E, G:K, M:N, P:Q, T:U). Ver
+// src/pages/Cotizador/CLAUDE.md para la explicación completa de cómo se
+// combinan estas tablas y cómo editar los precios a futuro.
+
+// Tabla A1:E3 — precio por locación según cantidad de micrófonos.
+export const COTIZADOR_LOCACIONES = [
+  {
+    id: 'teburu',
+    title: 'En Teburu',
+    pricesByMic: { 1: 25000, 2: 50000, 3: 65000, 4: 80000 },
+  },
+  {
+    id: 'domicilio',
+    title: 'A domicilio',
+    pricesByMic: { 1: 30000, 2: 60000, 3: 78000, 4: 96000 },
+  },
+]
+
+export const COTIZADOR_MICROFONOS_OPCIONES = [1, 2, 3, 4]
+
+// Tabla G1:K3 — precio por tipo de servicio según cantidad de cámaras.
+// `extraFee` (solo Streaming) se suma una única vez por proyecto: no se
+// multiplica por capítulos ni recibe el descuento por volumen.
+export const COTIZADOR_TIPOS_SERVICIO = [
+  {
+    id: 'post-edicion',
+    title: 'Post edición',
+    pricesByCamara: { 0: 25000, 1: 55000, 2: 65000, 3: 75000 },
+  },
+  {
+    id: 'streaming',
+    title: 'Streaming',
+    pricesByCamara: { 0: 20000, 1: 45000, 2: 52500, 3: 60000 },
+    extraFee: 45000,
+  },
+  {
+    id: 'material-crudo',
+    title: 'Entrega material crudo',
+    pricesByCamara: { 0: 10000, 1: 15000, 2: 30000, 3: 40000 },
+  },
+]
+
+export const COTIZADOR_CAMARAS_OPCIONES = [
+  { value: 0, label: '0 (solo audio)' },
+  { value: 1, label: '1' },
+  { value: 2, label: '2' },
+  { value: 3, label: '3' },
+]
+
+// Tabla P2:Q5 — descuento por volumen según cantidad de capítulos del proyecto.
+// Se aplica solo sobre (locación + servicio) × capítulos, no sobre extras.
+export const COTIZADOR_DESCUENTO_TRAMOS = [
+  { max: 5, pct: 0.05, label: '1 a 5 capítulos (5%)' },
+  { max: 10, pct: 0.1, label: '6 a 10 capítulos (10%)' },
+  { max: 15, pct: 0.15, label: '11 a 15 capítulos (15%)' },
+  { max: Infinity, pct: 0.2, label: '16+ capítulos (20%)' },
+]
+
+// Servicios adicionales a la carta, fuera de la lógica del Excel. Se agregan
+// y quitan libremente desde el selector de "servicios adicionales".
+// `perEpisode: true` marca los que se multiplican por la cantidad de
+// capítulos (sin descuento por volumen, que solo aplica al core Locación +
+// Servicio).
 export const COTIZADOR_SERVICES = [
-  // Formato de grabación (incluye 2 micrófonos; extras se agregan aparte)
-  {
-    id: 'podcast-en-estudio',
-    title: 'Podcast en estudio (2 micrófonos)',
-    price: 60000,
-    perEpisode: true,
-  },
-  {
-    id: 'podcast-a-domicilio',
-    title: 'Podcast a domicilio (2 micrófonos + traslado)',
-    price: 110000,
-    perEpisode: true,
-  },
-  // Postproducción
-  { id: 'edicion-audio', title: 'Edición de audio', price: 15000, perEpisode: true },
-  { id: 'edicion-video', title: 'Edición de video', price: 40000, perEpisode: true },
   { id: 'clips-reels', title: 'Clip / reel para redes sociales (c/u)', price: 15000 },
-  // Espacio y equipo humano
-  { id: 'montaje-sala', title: 'Montaje y arriendo de sala', price: 25000, perEpisode: true },
-  // Transmisión en vivo
-  { id: 'streaming', title: 'Streaming en vivo', price: 60000, perEpisode: true },
   {
     id: 'direccion-streaming',
     title: 'Dirección de streaming',
     price: 20000,
     perEpisode: true,
   },
-  { id: 'sonidista', title: 'Sonidista en vivo', price: 20000, perEpisode: true },
-  // Servicios creativos adicionales
-  { id: 'direccion-audiovisual', title: 'Dirección artística / audiovisual', price: 75000 },
   { id: 'fotografia', title: 'Fotografía', price: 60000 },
   { id: 'diseno-escena', title: 'Diseño gráfico de escena', price: 20000 },
-]
-
-// Ítems de cantidad: siempre visibles en la tabla del cotizador con un
-// selector numérico en vez de agregarse/quitarse por servicio. Los
-// micrófonos/invitados son EXTRA: los formatos de podcast ya incluyen 2.
-export const COTIZADOR_QUANTITY_ITEMS = [
-  {
-    id: 'mics',
-    title: 'Micrófonos / invitados extra',
-    price: 10000,
-    min: 0,
-    max: 8,
-    defaultQty: 0,
-  },
-  { id: 'camaras', title: 'Cámaras', price: 30000, min: 0, max: 3, defaultQty: 1 },
 ]

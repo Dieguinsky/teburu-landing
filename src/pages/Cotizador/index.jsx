@@ -3,8 +3,12 @@ import {
   BRAND,
   COTIZADOR_INFO,
   CONTACT_INFO,
+  COTIZADOR_LOCACIONES,
+  COTIZADOR_MICROFONOS_OPCIONES,
+  COTIZADOR_TIPOS_SERVICIO,
+  COTIZADOR_CAMARAS_OPCIONES,
+  COTIZADOR_DESCUENTO_TRAMOS,
   COTIZADOR_SERVICES,
-  COTIZADOR_QUANTITY_ITEMS,
   COTIZADOR_EPISODIOS_OPCIONES,
   COTIZADOR_CLIPS_OPCIONES,
 } from '../../content/copy'
@@ -16,16 +20,16 @@ import './Cotizador.scss'
 
 const IVA_RATE = 0.19
 
-const initialQuantities = Object.fromEntries(
-  COTIZADOR_QUANTITY_ITEMS.map((item) => [item.id, item.defaultQty]),
-)
-
 const initialForm = {
   name: '',
   email: '',
   phone: '',
   episodes: '',
   clips: '',
+  locacion: COTIZADOR_LOCACIONES[0].id,
+  microfonos: String(COTIZADOR_MICROFONOS_OPCIONES[0]),
+  tipoServicio: COTIZADOR_TIPOS_SERVICIO[0].id,
+  camaras: String(COTIZADOR_CAMARAS_OPCIONES[0].value),
   about: '',
   details: '',
   services: [],
@@ -33,7 +37,6 @@ const initialForm = {
 
 export default function Cotizador() {
   const [form, setForm] = useState(initialForm)
-  const [quantities, setQuantities] = useState(initialQuantities)
   const [serviceToAdd, setServiceToAdd] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
@@ -41,14 +44,6 @@ export default function Cotizador() {
 
   function handleChange({ target: { name, value } }) {
     setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  function handleQuantityChange(id, delta) {
-    const item = COTIZADOR_QUANTITY_ITEMS.find((i) => i.id === id)
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.min(item.max, Math.max(item.min, prev[id] + delta)),
-    }))
   }
 
   function handleServiceSelect({ target: { value: id } }) {
@@ -66,22 +61,78 @@ export default function Cotizador() {
   // "15+ capítulos" -> 15; sin selección -> 1, para no anular precios por defecto.
   const episodeCount = Math.max(1, parseInt(form.episodes, 10) || 1)
 
-  const quantityRows = COTIZADOR_QUANTITY_ITEMS.map((item) => ({
-    ...item,
-    qty: quantities[item.id],
-    subtotal: item.price * quantities[item.id],
-  }))
+  const locacion = COTIZADOR_LOCACIONES.find((l) => l.id === form.locacion)
+  const tipoServicio = COTIZADOR_TIPOS_SERVICIO.find((t) => t.id === form.tipoServicio)
+  const microfonos = Number(form.microfonos)
+  const camaras = Number(form.camaras)
+
+  const locacionPrice = locacion.pricesByMic[microfonos]
+  const servicioPrice = tipoServicio.pricesByCamara[camaras]
+  const coreSubtotalBeforeDiscount = (locacionPrice + servicioPrice) * episodeCount
+
+  const tramo = COTIZADOR_DESCUENTO_TRAMOS.find((t) => episodeCount <= t.max)
+  const discountAmount = Math.round(coreSubtotalBeforeDiscount * tramo.pct)
+  const streamingExtra = tipoServicio.extraFee ?? 0
+
+  const coreRows = [
+    {
+      id: 'locacion',
+      title: `Locación: ${locacion.title} — ${microfonos} micrófono${microfonos > 1 ? 's' : ''}`,
+      qtyLabel: `${episodeCount} cap.`,
+      price: locacionPrice,
+      subtotal: locacionPrice * episodeCount,
+    },
+    {
+      id: 'servicio',
+      title: `Servicio: ${tipoServicio.title} — ${camaras} cámara${camaras !== 1 ? 's' : ''}`,
+      qtyLabel: `${episodeCount} cap.`,
+      price: servicioPrice,
+      subtotal: servicioPrice * episodeCount,
+    },
+  ]
+
+  const extraFeeRows =
+    streamingExtra > 0
+      ? [
+          {
+            id: 'streaming-extra',
+            title: 'Streaming — cargo fijo único',
+            qtyLabel: '1',
+            price: streamingExtra,
+            subtotal: streamingExtra,
+          },
+        ]
+      : []
+
+  const discountRows =
+    discountAmount > 0
+      ? [
+          {
+            id: 'descuento',
+            title: `Descuento por volumen (${tramo.label})`,
+            qtyLabel: '',
+            price: null,
+            subtotal: -discountAmount,
+          },
+        ]
+      : []
 
   const serviceRows = form.services
     .map((id) => COTIZADOR_SERVICES.find((s) => s.id === id))
     .filter(Boolean)
     .map((service) => {
       const qty = service.perEpisode ? episodeCount : 1
-      return { ...service, qty, subtotal: service.price * qty }
+      return {
+        ...service,
+        qtyLabel: service.perEpisode ? `${qty} cap.` : qty,
+        subtotal: service.price * qty,
+        removable: true,
+      }
     })
 
-  const allRows = [...quantityRows, ...serviceRows]
+  const allRows = [...coreRows, ...extraFeeRows, ...discountRows, ...serviceRows]
   const subtotal = allRows.reduce((sum, row) => sum + row.subtotal, 0)
+  const subtotalBruto = subtotal + discountAmount
   const iva = Math.round(subtotal * IVA_RATE)
   const total = subtotal + iva
 
@@ -92,8 +143,7 @@ export default function Cotizador() {
 
     try {
       const lineItemsSummary = allRows
-        .filter((row) => row.qty > 0)
-        .map((row) => `${row.title} x${row.qty} — ${formatPrice(row.subtotal)}`)
+        .map((row) => `${row.title} x${row.qtyLabel || 1} — ${formatPrice(row.subtotal)}`)
         .join('\n')
 
       const formData = new FormData()
@@ -104,7 +154,7 @@ export default function Cotizador() {
         if (key === 'services') return
         formData.append(key, value)
       })
-      formData.append('servicios_cotizados', lineItemsSummary || 'Sin servicios agregados')
+      formData.append('servicios_cotizados', lineItemsSummary)
       formData.append('subtotal_estimado', formatPrice(subtotal))
       formData.append('iva_estimado', formatPrice(iva))
       formData.append('total_estimado', formatPrice(total))
@@ -221,6 +271,52 @@ export default function Cotizador() {
                 </label>
               </div>
 
+              <div className="cotizador-form__row">
+                <label className="cotizador-field">
+                  <span>Locación</span>
+                  <select name="locacion" value={form.locacion} onChange={handleChange}>
+                    {COTIZADOR_LOCACIONES.map((l) => (
+                      <option key={l.id} value={l.id}>
+                        {l.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="cotizador-field">
+                  <span>Cantidad de micrófonos</span>
+                  <select name="microfonos" value={form.microfonos} onChange={handleChange}>
+                    {COTIZADOR_MICROFONOS_OPCIONES.map((n) => (
+                      <option key={n} value={n}>
+                        {n}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <div className="cotizador-form__row">
+                <label className="cotizador-field">
+                  <span>Tipo de servicio</span>
+                  <select name="tipoServicio" value={form.tipoServicio} onChange={handleChange}>
+                    {COTIZADOR_TIPOS_SERVICIO.map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {t.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="cotizador-field">
+                  <span>Cantidad de cámaras</span>
+                  <select name="camaras" value={form.camaras} onChange={handleChange}>
+                    {COTIZADOR_CAMARAS_OPCIONES.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
               <label className="cotizador-field">
                 <span>¿Cuántos clips/reels te interesan?</span>
                 <select name="clips" value={form.clips} onChange={handleChange}>
@@ -234,7 +330,7 @@ export default function Cotizador() {
               </label>
 
               <div className="cotizador-field">
-                <span>¿Qué servicios te interesan?</span>
+                <span>¿Qué servicios adicionales te interesan?</span>
                 <select value={serviceToAdd} onChange={handleServiceSelect}>
                   <option value="">Selecciona un servicio para agregar</option>
                   {availableServices.map((service) => (
@@ -246,82 +342,49 @@ export default function Cotizador() {
                 </select>
               </div>
 
-              <div className="cotizador-table-wrap">
-                <div className="cotizador-table-scroll">
-                  <table className="cotizador-table">
-                    <thead>
-                      <tr>
-                        <th>Servicio</th>
-                        <th>Cantidad</th>
-                        <th>Precio unit.</th>
-                        <th>Subtotal</th>
-                        <th aria-hidden="true" />
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {quantityRows.map((row) => (
-                        <tr key={row.id}>
-                          <td>{row.title}</td>
-                          <td>
-                            <div className="cotizador-stepper">
-                              <button
-                                type="button"
-                                onClick={() => handleQuantityChange(row.id, -1)}
-                                disabled={row.qty <= row.min}
-                                aria-label={`Restar ${row.title}`}
-                              >
-                                −
-                              </button>
-                              <span>{row.qty}</span>
-                              <button
-                                type="button"
-                                onClick={() => handleQuantityChange(row.id, 1)}
-                                disabled={row.qty >= row.max}
-                                aria-label={`Sumar ${row.title}`}
-                              >
-                                +
-                              </button>
-                            </div>
-                          </td>
-                          <td>{formatPrice(row.price)}</td>
-                          <td>{formatPrice(row.subtotal)}</td>
-                          <td />
-                        </tr>
-                      ))}
-                      {serviceRows.length === 0 && (
-                        <tr className="cotizador-table__empty-row">
-                          <td colSpan={5}>Aún no agregas servicios adicionales.</td>
-                        </tr>
-                      )}
-                      {serviceRows.map((row) => (
-                        <tr key={row.id}>
-                          <td>{row.title}</td>
-                          <td>
-                            {row.qty}
-                            {row.perEpisode ? ' cap.' : ''}
-                          </td>
-                          <td>{formatPrice(row.price)}</td>
-                          <td>{formatPrice(row.subtotal)}</td>
-                          <td>
-                            <button
-                              type="button"
-                              className="cotizador-table__remove"
-                              onClick={() => handleServiceRemove(row.id)}
-                              aria-label={`Quitar ${row.title}`}
-                            >
-                              ✕
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+              <div className="cotizador-summary-wrap">
+                <ul className="cotizador-resumen">
+                  <li>
+                    {locacion.title} — {microfonos} micrófono{microfonos > 1 ? 's' : ''}
+                  </li>
+                  <li>
+                    {tipoServicio.title} — {camaras} cámara{camaras !== 1 ? 's' : ''}
+                  </li>
+                  <li>
+                    {episodeCount} capítulo{episodeCount > 1 ? 's' : ''}
+                  </li>
+                  {streamingExtra > 0 && <li>Cargo fijo de streaming incluido</li>}
+                  {serviceRows.length === 0 && (
+                    <li className="cotizador-resumen__empty">
+                      Aún no agregas servicios adicionales.
+                    </li>
+                  )}
+                  {serviceRows.map((row) => (
+                    <li key={row.id} className="cotizador-resumen__extra">
+                      <span>
+                        {row.title}
+                        {row.perEpisode ? ` (${episodeCount} cap.)` : ''}
+                      </span>
+                      <button
+                        type="button"
+                        className="cotizador-resumen__remove"
+                        onClick={() => handleServiceRemove(row.id)}
+                        aria-label={`Quitar ${row.title}`}
+                      >
+                        ✕
+                      </button>
+                    </li>
+                  ))}
+                </ul>
 
                 <div className="cotizador-summary">
                   <div className="cotizador-summary__line">
                     <span>Subtotal</span>
-                    <span>{formatPrice(subtotal)}</span>
+                    <span>{formatPrice(subtotalBruto)}</span>
+                  </div>
+                  <div className="cotizador-summary__line cotizador-summary__line--discount">
+                    <span>Descuentos aplicados{discountAmount > 0 ? ` (${tramo.label})` : ''}</span>
+                    <span>{formatPrice(discountAmount > 0 ? -discountAmount : 0)}</span>
                   </div>
                   <div className="cotizador-summary__line">
                     <span>IVA (19%)</span>
@@ -331,11 +394,6 @@ export default function Cotizador() {
                     <span>Total estimado</span>
                     <span>{formatPrice(total)}</span>
                   </div>
-                  <p className="cotizador-summary__hint">
-                    Estimación referencial. Los servicios marcados "cap." se multiplican por la
-                    cantidad de capítulos que elijas arriba. La cotización final puede variar
-                    según tu proyecto.
-                  </p>
                 </div>
               </div>
 
