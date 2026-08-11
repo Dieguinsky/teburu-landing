@@ -199,6 +199,152 @@
     transform 0.35s ease;
 }
 
+.portafolio-trabajos {
+  background-color: $primary-1;
+  padding: 4.5rem 2rem 5rem;
+}
+
+.portafolio-trabajos__inner {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.portafolio-trabajos__title {
+  text-align: center;
+  color: $gray-100;
+}
+
+.portafolio-trabajos__desc {
+  max-width: 40rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-300;
+}
+
+.portafolio-trabajos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.6rem;
+}
+
+.portafolio-trabajos__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 6px;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    .portafolio-trabajos__card-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba($gray-700, 0.15) 0%,
+        rgba($primary-1, 0.9) 100%
+      );
+    }
+
+    .portafolio-trabajos__rule {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .portafolio-trabajos__card-content p {
+      opacity: 1;
+      max-height: 6rem;
+    }
+
+    .portafolio-trabajos__card-media {
+      transform: scale(1.04);
+    }
+  }
+}
+
+.portafolio-trabajos__card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portafolio-trabajos__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($gray-700, 0.05) 0%,
+    rgba($primary-1, 0.75) 100%
+  );
+  transition: background 0.35s ease;
+}
+
+.portafolio-trabajos__card-badge {
+  position: absolute;
+  z-index: 1;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba($gray-800, 0.55);
+  color: $gray-100;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.portafolio-trabajos__card-content {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0.9rem;
+  text-align: left;
+  color: $gray-100;
+
+  h3 {
+    margin: 0;
+    font-family: $font-display;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: $gray-200;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 0.35s ease,
+      max-height 0.35s ease;
+  }
+}
+
+.portafolio-trabajos__rule {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin: 0.5rem 0;
+  background-color: $gray-100;
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
 .portafolio-footer {
   background-color: $gray-800;
   color: $gray-400;
@@ -221,7 +367,8 @@
 
 @media (max-width: 600px) {
   .portafolio-music,
-  .portafolio-av {
+  .portafolio-av,
+  .portafolio-trabajos {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
@@ -234,6 +381,21 @@
   .portafolio-av__rule {
     opacity: 1;
     transform: scaleX(1);
+  }
+
+  .portafolio-trabajos__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .portafolio-trabajos__rule {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .portafolio-trabajos__card-content p {
+    opacity: 1;
+    max-height: none;
   }
 
   .portafolio-av__card-content p {

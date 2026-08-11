@@ -518,6 +518,119 @@ export const PORTAFOLIO_AUDIOVISUAL = {
   ],
 }
 
+export const PORTAFOLIO_TRABAJOS = {
+  title: 'Trabajos',
+  description:
+    'Video podcasts y reels grabados y producidos en Teburu para distintos proyectos y marcas. Tocá cualquiera para verlo en Instagram.',
+  items: [
+    {
+      id: 'teburu-1',
+      client: 'Tēburu',
+      text: 'Cápsula de cultura musical para redes.',
+      imageKey: 'teburu1',
+      url: 'https://www.instagram.com/p/DXpw2qxkfxB/',
+    },
+    {
+      id: 'teburu-2',
+      client: 'Tēburu',
+      text: 'Cápsula de cultura musical para redes.',
+      imageKey: 'teburu2',
+      url: 'https://www.instagram.com/reel/DPe9LDWDG5z/',
+    },
+    {
+      id: 'misfitzpower',
+      client: 'Misfitzpower',
+      text: 'Sesión de rap grabada en vivo en el estudio.',
+      imageKey: 'misfitzpower',
+      url: 'https://www.instagram.com/reel/DOrhSCBCRO9/',
+    },
+    {
+      id: 'delorean-1',
+      client: 'El Delorean',
+      text: 'Video podcast de historia.',
+      imageKey: 'delorean1',
+      url: 'https://www.instagram.com/reel/DVekggIlKeL/',
+    },
+    {
+      id: 'delorean-2',
+      client: 'El Delorean',
+      text: 'Video podcast de historia.',
+      imageKey: 'delorean2',
+      url: 'https://www.instagram.com/reel/DVRu1k0lKU9/',
+    },
+    {
+      id: 'carrete-1',
+      client: 'Carrete de Verano',
+      text: 'Video podcast de cultura y actualidad chilena.',
+      imageKey: 'carrete1',
+      url: 'https://www.instagram.com/reel/DYiMpXVNQvQ/',
+    },
+    {
+      id: 'carrete-2',
+      client: 'Carrete de Verano',
+      text: 'Video podcast de cultura y actualidad chilena.',
+      imageKey: 'carrete2',
+      url: 'https://www.instagram.com/reel/DUG8ZxjlSfQ/',
+    },
+    {
+      id: 'carrete-3',
+      client: 'Carrete de Verano',
+      text: 'Video podcast de cultura y actualidad chilena.',
+      imageKey: 'carrete3',
+      url: 'https://www.instagram.com/reel/DUB34eDFcWP/',
+    },
+    {
+      id: 'carrete-4',
+      client: 'Carrete de Verano',
+      text: 'Video podcast de cultura y actualidad chilena.',
+      imageKey: 'carrete4',
+      url: 'https://www.instagram.com/reel/DZLzQsYtL0r/',
+    },
+    {
+      id: 'andes-1',
+      client: 'AndeStories',
+      text: 'Video podcast de montaña y esquí.',
+      imageKey: 'andes1',
+      url: 'https://www.instagram.com/reel/Dbg6vvZRjXU/',
+    },
+    {
+      id: 'andes-2',
+      client: 'AndeStories',
+      text: 'Video podcast de montaña y esquí.',
+      imageKey: 'andes2',
+      url: 'https://www.instagram.com/reel/Dbb4TEPxMxJ/',
+    },
+    {
+      id: 'andes-3',
+      client: 'AndeStories',
+      text: 'Video podcast de montaña y esquí.',
+      imageKey: 'andes3',
+      url: 'https://www.instagram.com/reel/DbEKDRhJzEa/',
+    },
+    {
+      id: 'andes-4',
+      client: 'AndeStories',
+      text: 'Video podcast de montaña y esquí.',
+      imageKey: 'andes4',
+      url: 'https://www.instagram.com/reel/DbCK8eNxcM3/',
+    },
+    {
+      id: 'andes-5',
+      client: 'AndeStories',
+      text: 'Video podcast de montaña y esquí.',
+      imageKey: 'andes5',
+      url: 'https://www.instagram.com/reel/DatxJwgxs6u/',
+    },
+    {
+      id: 'andes-touring',
+      client: 'Andes Touring',
+      text: 'Contenido para comunidad de freeride y backcountry.',
+      imageKey: 'andesTouring',
+      url: 'https://www.instagram.com/reel/DaoKRNeR4pd/',
+    },
+  ],
+}
+
 export const BLOG_INFO = {
   title: 'Blog',
   subtitle: 'Notas sobre grabación, producción musical y podcast en Santiago.',

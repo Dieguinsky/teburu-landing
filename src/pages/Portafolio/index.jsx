@@ -6,6 +6,7 @@ import {
   PORTAFOLIO_SEO,
   PORTAFOLIO_MUSIC,
   PORTAFOLIO_AUDIOVISUAL,
+  PORTAFOLIO_TRABAJOS,
 } from '../../content/copy'
 import './Portafolio.scss'
 
@@ -82,6 +83,43 @@ export default function Portafolio() {
                 </Reveal>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="portafolio-trabajos">
+        <div className="portafolio-trabajos__inner">
+          <Reveal as="h2" className="section-title portafolio-trabajos__title">
+            {PORTAFOLIO_TRABAJOS.title}
+          </Reveal>
+          <p className="portafolio-trabajos__desc">{PORTAFOLIO_TRABAJOS.description}</p>
+          <div className="portafolio-trabajos__grid">
+            {PORTAFOLIO_TRABAJOS.items.map(({ id, client, text, imageKey, url }, index) => (
+              <Reveal
+                as="a"
+                key={id}
+                className="portafolio-trabajos__card"
+                delay={(index % 6) * 70}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Ver en Instagram: ${client}`}
+              >
+                <img
+                  className="portafolio-trabajos__card-media"
+                  src={pageImages.reels[imageKey]}
+                  alt={`${client} — ${text}`}
+                  loading="lazy"
+                />
+                <div className="portafolio-trabajos__card-overlay" />
+                <span className="portafolio-trabajos__card-badge">IG</span>
+                <div className="portafolio-trabajos__card-content">
+                  <h3>{client}</h3>
+                  <span className="portafolio-trabajos__rule" aria-hidden="true" />
+                  <p>{text}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
