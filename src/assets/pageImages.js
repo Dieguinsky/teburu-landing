@@ -5,10 +5,11 @@ import teamDiego from './img/oficials/image00107.jpeg'
 import teamJose from './img/equipo/josemusalem.jpg'
 import teamPablo from './img/oficials/image00131.jpeg'
 import avPodcast from './img/portafolio/iribarne-live-poster.jpg'
-import avVideo from './img/diam1/D1_4.jpg'
+import avVideo from './img/portafolio/video-podcast-poster.jpg'
 import avReels from './img/puntiagudo2/P2_5.jpg'
 import avSampleLoop from './videos/teburu sample.mp4'
 import avPodcastLoop from './videos/iribarne-live-loop.mp4'
+import avVideoLoop from './videos/video-podcast-loop.mp4'
 import reelTeburu1 from './img/portafolio/reels/DXpw2qxkfxB.jpg'
 import reelTeburu2 from './img/portafolio/reels/DPe9LDWDG5z.jpg'
 import reelMisfitzpower from './img/portafolio/reels/DOrhSCBCRO9.jpg'
@@ -58,12 +59,12 @@ export const pageImages = {
     reels: avReels,
   },
   // Loops de video para las cards de "audiovisual" en Portafolio.
-  // "podcast" ya usa un clip real (sesión en vivo grabada en Teburu);
-  // reemplazá videoPodcast/reels por sus clips finales cuando estén listos
-  // (mismo import, solo cambiá la ruta) — por ahora usan el sample de prueba.
+  // "podcast" y "videoPodcast" ya usan clips reales grabados en Teburu;
+  // reemplazá "reels" por su clip final cuando esté listo (mismo import,
+  // solo cambiá la ruta) — por ahora usa el sample de prueba.
   audiovisualVideo: {
     podcast: avPodcastLoop,
-    videoPodcast: avSampleLoop,
+    videoPodcast: avVideoLoop,
     reels: avSampleLoop,
   },
   // Miniaturas (frame de portada de Instagram) de reels/video podcasts reales
