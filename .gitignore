@@ -30,3 +30,7 @@ dist-ssr
 
 # Design references (local only)
 refes/
+
+# Raw footage kept locally for deriving web assets (posters/loops) from —
+# too heavy to ship in the repo; see src/assets/videos/ for the derived clips.
+src/assets/videos/IRIBARNE LIVE.mp4
