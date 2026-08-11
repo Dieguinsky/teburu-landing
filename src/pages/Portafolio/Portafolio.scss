@@ -284,20 +284,6 @@
   transition: background 0.35s ease;
 }
 
-.portafolio-trabajos__card-badge {
-  position: absolute;
-  z-index: 1;
-  top: 0.6rem;
-  right: 0.6rem;
-  padding: 0.2rem 0.45rem;
-  border-radius: 4px;
-  background: rgba($gray-800, 0.55);
-  color: $gray-100;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
 .portafolio-trabajos__card-content {
   position: absolute;
   z-index: 1;

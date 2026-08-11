@@ -112,7 +112,6 @@ export default function Portafolio() {
                   loading="lazy"
                 />
                 <div className="portafolio-trabajos__card-overlay" />
-                <span className="portafolio-trabajos__card-badge">IG</span>
                 <div className="portafolio-trabajos__card-content">
                   <h3>{client}</h3>
                   <span className="portafolio-trabajos__rule" aria-hidden="true" />
