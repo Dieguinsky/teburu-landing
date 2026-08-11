@@ -143,6 +143,78 @@
   }
 }
 
+// Retro-mode easter egg (see components/RetroMode): a simulated marquee
+// banner, built with a CSS keyframe loop rather than the old <marquee> tag.
+// Sits in normal flow right below the sticky nav, so it never overlaps
+// content and disappears cleanly on scroll like a regular banner.
+.retro-marquee {
+  overflow: hidden;
+  background-color: $primary-2;
+  border-bottom: 2px dashed $gray-100;
+  white-space: nowrap;
+}
+
+.retro-marquee__track {
+  display: inline-flex;
+  animation: retro-marquee-scroll 16s linear infinite;
+}
+
+.retro-marquee__item {
+  padding: 0.4rem 3rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: $gray-100;
+  text-transform: uppercase;
+}
+
+@keyframes retro-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-marquee__track {
+    animation: none;
+  }
+}
+
+// Retro-mode easter egg: a classic 90s "webring" button strip — every
+// personal homepage from that era ended with a row of these. Rendered right
+// after Outlet so it lands at the bottom of whatever page is showing,
+// without any page needing to know about it.
+.retro-webring {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background-color: $gray-800;
+  border-top: 2px dashed $secondary-2;
+}
+
+.retro-webring__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  min-height: 31px;
+  padding: 0.2rem 0.35rem;
+  background-color: $primary-1;
+  border: 2px outset $gray-100;
+  color: $secondary-1;
+  font-size: 0.55rem;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 @media (max-width: 900px) {
   .nav-container {
     padding: 0.75rem 1rem;

@@ -1,0 +1,98 @@
+@use 'variables' as *;
+
+// Easter egg: 5 clicks on the logo (see components/Layout) toggles this
+// class on <body>. Everything below is additive/decorative on top of the
+// existing styles — nothing here changes display, position-in-flow, or
+// element sizing — so toggling the class off always restores the page
+// exactly. See components/RetroMode for the extra decorative elements
+// (stars, visitor counter, exit button) rendered alongside this.
+body.retro-mode {
+  // Courier New gives the Latin/kana text a monospace 90s look; the Hiragino/
+  // Yu Gothic/Noto entries after it are NOT monospace, but they're what
+  // actually ship kanji glyphs on Mac/iOS, Windows, and Linux/Android — the
+  // generic `monospace` fallback at the end resolves to fonts with zero CJK
+  // coverage, which silently turned the marquee's Japanese tagline into tofu
+  // during testing. Per-character fallback still applies within this list,
+  // so kanji fall through to a real CJK font while everything else stays
+  // monospaced.
+  font-family:
+    'MS Gothic',
+    'ＭＳ ゴシック',
+    'Osaka-Mono',
+    'Courier New',
+    'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans',
+    'Yu Gothic',
+    'Noto Sans CJK JP',
+    'Noto Sans JP',
+    monospace;
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ctext x='1' y='18' font-size='18' fill='%23d63e15'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E")
+      12 12,
+    auto;
+
+  // The monospace stack runs noticeably wider per character than the site's
+  // condensed default font. On tight grid columns (e.g. the Home "Artistas
+  // y lanzamientos" title next to its album-cover grid) that pushed long
+  // unbreakable words past their column into the next one, where a later
+  // sibling image then painted over the overflow — the last letter looked
+  // like it vanished "under a photo". overflow-wrap lets words break instead
+  // of overflowing, which also shrinks the column's own min-content size so
+  // grid/flex tracks never blow out in the first place.
+  * {
+    font-family: inherit !important;
+    overflow-wrap: break-word;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.2em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .section-title {
+    text-shadow:
+      2px 2px 0 rgba($primary-2, 0.5),
+      -1px -1px 0 rgba($primary-4, 0.35);
+  }
+
+  img:not(.logo) {
+    outline: 2px dotted rgba($primary-1, 0.6);
+    outline-offset: -2px;
+  }
+
+  .button,
+  button {
+    box-shadow:
+      inset -2px -2px 0 rgba(0, 0, 0, 0.35),
+      inset 2px 2px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  // Scanline texture: fixed, ignores pointer events, painted above
+  // everything else — purely a visual layer, blocks nothing.
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.06) 0px,
+      rgba(0, 0, 0, 0.06) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
