@@ -247,16 +247,6 @@
       );
     }
 
-    .portafolio-trabajos__rule {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-
-    .portafolio-trabajos__card-content p {
-      opacity: 1;
-      max-height: 6rem;
-    }
-
     .portafolio-trabajos__card-media {
       transform: scale(1.04);
     }
@@ -303,32 +293,6 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-
-  p {
-    margin: 0;
-    font-size: 0.78rem;
-    line-height: 1.5;
-    color: $gray-200;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      opacity 0.35s ease,
-      max-height 0.35s ease;
-  }
-}
-
-.portafolio-trabajos__rule {
-  display: block;
-  width: 2rem;
-  height: 2px;
-  margin: 0.5rem 0;
-  background-color: $gray-100;
-  opacity: 0;
-  transform: scaleX(0);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
 }
 
 .portafolio-footer {
@@ -372,16 +336,6 @@
   .portafolio-trabajos__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
-  }
-
-  .portafolio-trabajos__rule {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-
-  .portafolio-trabajos__card-content p {
-    opacity: 1;
-    max-height: none;
   }
 
   .portafolio-av__card-content p {
