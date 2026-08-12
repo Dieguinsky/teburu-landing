@@ -11,6 +11,8 @@ import {
 } from '../../content/copy'
 import './Nosotros.scss'
 
+const PHILOSOPHY_HIGHLIGHT = 'hacer música'
+
 export default function Nosotros() {
   return (
     <main className="nosotros-page">
@@ -34,7 +36,11 @@ export default function Nosotros() {
           </h2>
           {NOSOTROS_PHILOSOPHY.paragraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 28)} className="nosotros-philosophy__text">
-              {paragraph}
+              {paragraph.split(PHILOSOPHY_HIGHLIGHT).reduce((acc, part, i) => (
+                i === 0
+                  ? [part]
+                  : [...acc, <strong key={i}>{PHILOSOPHY_HIGHLIGHT}</strong>, part]
+              ), [])}
             </p>
           ))}
         </Reveal>
