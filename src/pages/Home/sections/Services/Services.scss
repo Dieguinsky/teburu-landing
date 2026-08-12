@@ -24,8 +24,16 @@
 .services__card {
   position: relative;
   min-height: 28rem;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+
+.services__card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .services__card-overlay {

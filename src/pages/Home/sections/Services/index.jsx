@@ -7,6 +7,7 @@ import './Services.scss'
 const services = homeImages.services.map((image, index) => ({
   ...SERVICES[index],
   image,
+  video: homeImages.servicesVideo[index],
 }))
 
 export default function Services() {
@@ -17,14 +18,22 @@ export default function Services() {
           Servicios Disponibles
         </Reveal>
         <div className="services__grid">
-          {services.map(({ title, text, image, anchor }, index) => (
+          {services.map(({ title, text, image, video, anchor }, index) => (
             <Reveal
               as="article"
               key={title}
               className="services__card"
-              bg={image}
               delay={index * 90}
             >
+              <video
+                className="services__card-media"
+                src={video}
+                poster={image}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
               <div className="services__card-overlay" />
               <div className="services__card-body">
                 <h3>{title}</h3>
