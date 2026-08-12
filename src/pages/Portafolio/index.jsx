@@ -37,7 +37,7 @@ export default function Portafolio() {
               title="Playlist Teburu"
               src={PORTAFOLIO_MUSIC.spotifyPlaylistUrl}
               width="100%"
-              height="380"
+              height="460"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             />
