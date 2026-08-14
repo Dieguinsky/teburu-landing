@@ -7,7 +7,7 @@ import studioWa8000 from './img/Espacio/wa8000.jpg'
 import servicesMusica from './img/Espacio/apollo.jpg'
 import servicesPodcast from './img/podcast/Imagen Podcast 1.jpg'
 import servicesAudiovisual from './img/oficials/image00109.jpeg'
-import servicesMusicaLoop from './videos/services-musica-loop.mp4'
+import servicesMusicaLoop from './videos/cqs-loop.mp4'
 import servicesPodcastLoop from './videos/video-podcast-loop.mp4'
 import servicesAudiovisualLoop from './videos/services-audiovisual-loop.mp4'
 
@@ -28,8 +28,8 @@ export const homeImages = {
   artistsBg: landscapeBg,
   services: [servicesMusica, servicesPodcast, servicesAudiovisual],
   // Loops de video para las cards de "Servicios Disponibles" en Home — Música
-  // usa footage real de una sesión Teburu, Podcast reutiliza el mismo loop
-  // del Video Podcast en Portafolio, Audiovisual usa el timelapse de montaje.
+  // y Podcast usan footage real de sesiones Teburu (loops distintos entre sí),
+  // Audiovisual usa el timelapse de montaje.
   servicesVideo: [servicesMusicaLoop, servicesPodcastLoop, servicesAudiovisualLoop],
   studioGallery: [studioEscritorioFrente, studioSofa, studioWa8000],
 }
