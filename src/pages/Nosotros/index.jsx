@@ -11,7 +11,7 @@ import {
 } from '../../content/copy'
 import './Nosotros.scss'
 
-const PHILOSOPHY_HIGHLIGHT = 'hacer música'
+const PHILOSOPHY_HIGHLIGHT = 'crear con sentido'
 
 export default function Nosotros() {
   return (
@@ -20,6 +20,7 @@ export default function Nosotros() {
         title={NOSOTROS_INTRO.seoTitle}
         description={NOSOTROS_INTRO.seoDescription}
         path="/nosotros"
+        image={pageImages.nosotrosHero}
       />
       <section
         className="nosotros-hero"

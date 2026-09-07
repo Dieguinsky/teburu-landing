@@ -187,6 +187,7 @@ export default function Cotizador() {
         title={COTIZADOR_INFO.seoTitle}
         description={COTIZADOR_INFO.seoDescription}
         path="/cotizador"
+        image={pageImages.cotizadorPodcast}
       />
       <div className="cotizador-layout">
         <aside

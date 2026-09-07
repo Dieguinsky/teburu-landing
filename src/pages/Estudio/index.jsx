@@ -13,6 +13,7 @@ export default function Estudio() {
         title={ESTUDIO_INTRO.seoTitle}
         description={ESTUDIO_INTRO.seoDescription}
         path="/estudio"
+        image={pageImages.estudioHero}
       />
       <section
         className="estudio-hero"

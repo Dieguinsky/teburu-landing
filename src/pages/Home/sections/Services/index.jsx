@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../../../../components/Reveal'
+import LazyVideo from '../../../../components/LazyVideo'
 import { homeImages } from '../../../../assets/homeImages'
 import { SERVICES } from '../../../../content/copy'
 import './Services.scss'
@@ -25,15 +26,7 @@ export default function Services() {
               className="services__card"
               delay={index * 90}
             >
-              <video
-                className="services__card-media"
-                src={video}
-                poster={image}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
+              <LazyVideo className="services__card-media" src={video} poster={image} />
               <div className="services__card-overlay" />
               <div className="services__card-body">
                 <h3>{title}</h3>

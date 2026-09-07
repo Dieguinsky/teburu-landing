@@ -51,10 +51,10 @@ export const SERVICES = [
 ]
 
 export const HOME_INTRO = {
-  title: 'Tu música, en buenas manos',
+  title: 'Tu proyecto, en buenas manos',
   textBefore: 'En',
   textAfter:
-    'grabamos, producimos y mezclamos con el mismo cuidado que le pondríamos a nuestra propia música: equipamiento profesional, criterio técnico y un espacio pensado para que la creatividad fluya sin interrupciones.',
+    'grabamos, producimos y editamos con el mismo cuidado que le pondríamos a nuestro propio proyecto: equipamiento profesional, criterio técnico y un espacio pensado para que la creatividad fluya sin interrupciones.',
   welcome: '¿Listo/a para grabar tu próximo proyecto?',
   cta: 'Conoce el equipo',
 }
@@ -65,17 +65,17 @@ export const HOME_WELCOME = {
     {
       icon: '◉',
       title: 'Equipamiento profesional',
-      text: 'Preamps Apollo, microfonía de estudio y monitoreo de referencia para que cada grabación suene lista para el siguiente paso.',
+      text: 'Preamps Apollo, microfonía de estudio, cámaras y monitoreo de referencia para que cada sesión —música, podcast o video— salga lista para el siguiente paso.',
     },
     {
       icon: '★',
       title: 'Equipo con oficio',
-      text: 'Productores, ingenieros y artistas con trayectoria en la escena musical chilena, involucrados en cada etapa del proceso.',
+      text: 'Productores, ingenieros, editores y artistas con trayectoria en la escena musical y audiovisual chilena, involucrados en cada etapa del proceso.',
     },
     {
       icon: '◎',
       title: 'Ambiente sin apuro',
-      text: 'Sesiones pensadas para que te concentres en la música, con la flexibilidad de horario que necesita cada proyecto.',
+      text: 'Sesiones pensadas para que te concentres en crear, con la flexibilidad de horario que necesita cada proyecto.',
     },
   ],
 }
@@ -108,7 +108,7 @@ export const HOME_LOCATION = {
 }
 
 export const HOME_SEO = {
-  seoTitle: 'Estudio Teburu',
+  seoTitle: 'Estudio de grabación, podcast y contenido en Santiago — Estudio Teburu',
   seoDescription:
     'Estudio de grabación en Santiago para música, podcast y contenido audiovisual. Equipamiento profesional y un equipo con trayectoria en la industria.',
 }
@@ -235,6 +235,17 @@ export const SERVICIOS_AUDIOVISUAL_CTAS = [
   { label: 'Cotiza tu producción audiovisual', to: '/contacto' },
 ]
 
+// Mensaje de venta cruzada entre categorías — sin precio fijo a propósito: el
+// combo real (horas de sala + producción audiovisual) varía demasiado
+// proyecto a proyecto para una tarifa formulada, así que se cotiza a medida
+// por Contacto en vez de vía Cotizador/Reservar.
+export const SERVICIOS_PAQUETES = {
+  title: 'Música y contenido, en un mismo proyecto',
+  description:
+    '¿Vas a grabar tu disco o tu podcast? Suma cobertura de contenido para redes a la misma sesión y cuéntale a más gente lo que estás creando.',
+  cta: { label: 'Cotiza tu combo', to: '/contacto' },
+}
+
 export const ESTUDIO_INTRO = {
   title: 'Un espacio pensado para grabar sin fricciones',
   seoTitle: 'Conoce el estudio — Estudio Teburu',
@@ -343,19 +354,19 @@ export const AB_COMPARATOR_TRACKS = [
 export const NOSOTROS_PHILOSOPHY = {
   title: '¿Por qué nace Teburu?',
   paragraphs: [
-    'Teburu nace en una época de hiperconexión: todo pasa más rápido, hay más información de la que alcanzamos a procesar, y siempre parece haber algo más pidiendo nuestra atención. En medio de ese ruido, quisimos volver a algo simple: hacer música.',
-    'Creemos en hacer música para entregar algo, no solo para sumar más contenido a un mundo que ya tiene demasiado. Trabajamos con la disposición que admiramos de la cultura laboral japonesa: seriedad, cuidado por el detalle y ganas genuinas de mejorar cada día, sin perder calidez humana en el camino.',
-    'Por eso la parte técnica la asumimos nosotros: nos mantenemos informados, filtramos con criterio los mitos que rodean al audio y la tecnología, y tomamos esas decisiones para que tú no tengas que hacerlo. Mientras nosotros nos encargamos del resto, el músico se dedica a lo único que realmente importa: hacer música, sin cargar con las presiones del mundo moderno.',
+    'Teburu nace en una época de hiperconexión: todo pasa más rápido, hay más información de la que alcanzamos a procesar, y siempre parece haber algo más pidiendo nuestra atención. En medio de ese ruido, quisimos volver a algo simple: crear con sentido — ya sea un disco, un podcast o el contenido que cuenta tu historia.',
+    'Creemos en hacer las cosas con intención, no en sumar más contenido a un mundo que ya tiene demasiado. Trabajamos con la disposición que admiramos de la cultura laboral japonesa: seriedad, cuidado por el detalle y ganas genuinas de mejorar cada día, sin perder calidez humana en el camino.',
+    'Por eso la parte técnica la asumimos nosotros: nos mantenemos informados, filtramos con criterio los mitos que rodean al audio, el video y la tecnología, y tomamos esas decisiones para que tú no tengas que hacerlo. Mientras nosotros nos encargamos del resto, tú te dedicas a lo único que realmente importa: crear con sentido, sin cargar con las presiones del mundo moderno.',
   ],
 }
 
 export const NOSOTROS_INTRO = {
   seoTitle: 'Nosotros — Estudio Teburu',
   seoDescription:
-    'Conoce al equipo de productores, ingenieros y artistas detrás de Estudio Teburu, con trayectoria en la industria musical chilena.',
+    'Conoce al equipo de productores, ingenieros y artistas detrás de Estudio Teburu, con trayectoria en la industria musical y audiovisual chilena.',
   paragraphs: [
-    `En ${BRAND} somos un estudio de grabación ubicado en Chile, conformado por productores, ingenieros y artistas con trayectoria en la industria musical nacional.`,
-    'Nuestro equipo combina formación académica, experiencia en producción y sensibilidad artística para acompañar cada proyecto con dedicación y criterio técnico.',
+    `En ${BRAND} somos un estudio creativo ubicado en Chile, conformado por productores, ingenieros, editores y artistas con trayectoria en la industria musical y audiovisual nacional.`,
+    'Nuestro equipo combina formación académica, experiencia en producción musical y audiovisual, y sensibilidad artística para acompañar cada proyecto —disco, podcast o contenido de marca— con dedicación y criterio técnico.',
   ],
 }
 
@@ -393,7 +404,7 @@ export const NOSOTROS_JOIN = {
 
 export const CONTACT_INFO = {
   title: 'Contacto',
-  subtitle: '¡Te esperamos para hacer música juntos!',
+  subtitle: '¡Te esperamos para crear juntos!',
   description:
     'Completa el formulario y te responderemos a la brevedad con cotización y disponibilidad para tu proyecto.',
   seoTitle: 'Contacto — Estudio Teburu',
@@ -437,39 +448,59 @@ export const BOOKING_TRANSFER = {
 
 export const BOOKING_SERVICES = [
   {
+    id: 'sin-sesion',
+    title: 'Solo mezcla/masterización',
+    duration: 'Sin sesión',
+    description:
+      'No necesitas venir al estudio: envíanos tu material y elige mezcla y/o masterización como extra en el siguiente paso.',
+    price: 0,
+  },
+  {
     id: 'grabacion-express-1h',
     title: 'Grabación express (1 hora)',
     duration: '1h',
     description: 'Alquiler del estudio durante 1h. Ideal para sesiones puntuales y tomas rápidas.',
-    price: 50000,
+    price: 25000,
   },
   {
     id: 'sesion-3h',
     title: 'Sesión de estudio (3 horas)',
     duration: '3h',
     description: 'Alquiler del estudio durante 3h. Incluye asistencia en sesión presencial.',
-    price: 120000,
+    price: 60000,
   },
   {
     id: 'sesion-6h',
-    title: 'Doble Jornada (6 horas)',
+    title: 'Sesión doble de estudio (6 horas)',
     duration: '6h',
     description: 'Bloque doble para grabación o preproducción con acompañamiento técnico.',
-    price: 220000,
+    price: 100000,
   },
   {
     id: 'sesion-9h',
-    title: 'Triple Jornada (9 horas)',
+    title: 'Sesión triple de estudio (9 horas)',
     duration: '9h',
     description: 'Día completo en el estudio para álbumes, EPs o producciones ambiciosas.',
-    price: 300000,
+    price: 140000,
   },
 ]
 
 export const BOOKING_EXTRAS = [
-  { id: 'master', label: 'Master', price: 80000 },
-  { id: 'mezcla', label: 'Mezcla', price: 150000 },
-  { id: 'mezcla-master', label: 'Mezcla + Master', price: 200000 },
+  { id: 'mezcla', label: 'Mezcla', price: 70000 },
+  { id: 'master', label: 'Master', price: 25000 },
+  { id: 'mezcla-master', label: 'Mezcla + Master', price: 80000 },
+]
+
+// Descuento por volumen de canciones sobre el precio del extra elegido
+// (Mezcla / Master / Mezcla + Master) — mismo patrón de tramos que
+// COTIZADOR_DESCUENTO_TRAMOS más arriba. `pct` se calibró para que Mezcla +
+// Master llegue a $50.000 por tema en el tramo de 12+ (80.000 × (1-0.375)).
+export const BOOKING_EXTRAS_DESCUENTO_TRAMOS = [
+  { max: 2, pct: 0, label: '1-2 temas' },
+  { max: 5, pct: 0.125, label: '3-5 temas (12,5%)' },
+  { max: 8, pct: 0.25, label: '6-8 temas (25%)' },
+  { max: 11, pct: 0.3125, label: '9-11 temas (31,25%)' },
+  { max: Infinity, pct: 0.375, label: '12+ temas (37,5%)' },
 ]
 
 // Los códigos de cupón ya no viven acá (este repo es público): se validan

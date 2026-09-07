@@ -1,6 +1,8 @@
 import Reveal from '../../components/Reveal'
+import LazyVideo from '../../components/LazyVideo'
 import Seo from '../../components/Seo'
 import { pageImages } from '../../assets/pageImages'
+import { albumCovers } from '../../assets/homeImages'
 import {
   BRAND,
   PORTAFOLIO_SEO,
@@ -17,6 +19,7 @@ export default function Portafolio() {
         title={PORTAFOLIO_SEO.seoTitle}
         description={PORTAFOLIO_SEO.seoDescription}
         path="/portafolio"
+        image={pageImages.portafolioHero}
       />
       <section
         className="portafolio-hero"
@@ -32,6 +35,19 @@ export default function Portafolio() {
             {PORTAFOLIO_MUSIC.title}
           </h2>
           <p className="portafolio-music__desc">{PORTAFOLIO_MUSIC.description}</p>
+          <div className="portafolio-music__covers">
+            {albumCovers.map(({ key, title, src }, index) => (
+              <Reveal
+                as="img"
+                key={key}
+                src={src}
+                alt={title}
+                className="portafolio-music__cover"
+                delay={index * 40}
+                loading="lazy"
+              />
+            ))}
+          </div>
           <div className="portafolio-spotify">
             <iframe
               title="Playlist Teburu"
@@ -57,14 +73,10 @@ export default function Portafolio() {
               return (
                 <Reveal as="article" key={id} className="portafolio-av__card" delay={index * 90}>
                   {loopSrc ? (
-                    <video
+                    <LazyVideo
                       className="portafolio-av__card-media"
                       src={loopSrc}
                       poster={pageImages.audiovisual[imageKey]}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
                     />
                   ) : (
                     <img

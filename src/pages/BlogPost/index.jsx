@@ -45,7 +45,12 @@ export default function BlogPost() {
 
   return (
     <main className="blog-post">
-      <Seo title={`${post.title} — ${BRAND}`} description={post.description} path={`/blog/${post.slug}`} />
+      <Seo
+        title={`${post.title} — ${BRAND}`}
+        description={post.description}
+        path={`/blog/${post.slug}`}
+        type="article"
+      />
       <JsonLd id="blog-post-schema" schema={postSchema} />
 
       <article className="blog-post__article">

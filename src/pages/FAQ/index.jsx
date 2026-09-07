@@ -21,7 +21,12 @@ const faqSchema = {
 export default function FAQ() {
   return (
     <main className="faq-page">
-      <Seo title={FAQ_INFO.seoTitle} description={FAQ_INFO.seoDescription} path="/faq" />
+      <Seo
+        title={FAQ_INFO.seoTitle}
+        description={FAQ_INFO.seoDescription}
+        path="/faq"
+        image={pageImages.portafolioHero}
+      />
       <JsonLd id="faq-schema" schema={faqSchema} />
 
       <section

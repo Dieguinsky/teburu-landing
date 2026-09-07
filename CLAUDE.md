@@ -27,7 +27,7 @@ There is no test runner configured in this project.
 
 **Blog**: posts are Markdown files with frontmatter under `src/content/blog/*.md`, rendered by `src/pages/Blog` (list) and `src/pages/BlogPost` (single post by `:slug`) via `src/lib/blog.js`. See `src/content/blog/CLAUDE.md` for the frontmatter format and parsing details.
 
-**SEO**: every page should render `<Seo title description path noindex />` (and `<JsonLd>` where a schema applies) with page-specific copy from its `*_INFO`/`*_INTRO`/`*_SEO` object in `copy.js` — don't rely on the generic fallback title/description baked into `index.html`. See `src/components/Seo/CLAUDE.md` for the component API and `scripts/CLAUDE.md` for how prerendering (only `/faq` + `/blog*` get real static HTML — everything else is pure client-rendered SPA) and sitemap generation work.
+**SEO**: every page should render `<Seo title description path image type noindex />` (and `<JsonLd>` where a schema applies) with page-specific copy from its `*_INFO`/`*_INTRO`/`*_SEO` object in `copy.js` — don't rely on the generic fallback title/description baked into `index.html`. See `src/components/Seo/CLAUDE.md` for the component API and `scripts/CLAUDE.md` for how prerendering (real static HTML for `/`, `/servicios`, `/reservar`, `/cotizador`, `/portafolio`, `/faq` and every `/blog*` route — `/nosotros`, `/estudio` and `/contacto` stay pure client-rendered SPA) and sitemap generation work.
 
 **Analytics**: GA4 + Microsoft Clarity, lazily loaded and env-gated. See `src/components/Analytics/CLAUDE.md`.
 

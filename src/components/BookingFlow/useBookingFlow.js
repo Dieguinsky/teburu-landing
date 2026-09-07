@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { BOOKING_STEPS, BOOKING_SERVICES, BOOKING_EXTRAS } from '../../content/copy'
+import {
+  BOOKING_STEPS,
+  BOOKING_SERVICES,
+  BOOKING_EXTRAS,
+  BOOKING_EXTRAS_DESCUENTO_TRAMOS,
+} from '../../content/copy'
 import { trackEvent } from '../../lib/analytics'
 
 export const STEP_IDS = BOOKING_STEPS.map((s) => s.id)
@@ -56,6 +61,7 @@ export default function useBookingFlow() {
   const [booking, setBooking] = useState({
     serviceId: null,
     extras: [],
+    songCount: 1,
   })
   const [couponInput, setCouponInput] = useState('')
   const [coupon, setCoupon] = useState({ code: null, discount: 0, error: null })
@@ -65,7 +71,15 @@ export default function useBookingFlow() {
   const selectedExtras = BOOKING_EXTRAS.filter((e) => booking.extras.includes(e.id))
 
   const servicePrice = selectedService?.price ?? 0
-  const extrasPrice = selectedExtras.reduce((sum, e) => sum + e.price, 0)
+  const songCount = Math.max(1, booking.songCount)
+  // Descuento por volumen de canciones — solo aplica al extra de mezcla/master
+  // elegido (BOOKING_EXTRAS_DESCUENTO_TRAMOS), no al precio de la sala.
+  const extrasTramo = BOOKING_EXTRAS_DESCUENTO_TRAMOS.find((t) => songCount <= t.max)
+  const extraUnitPrice = selectedExtras.reduce(
+    (sum, e) => sum + Math.round(e.price * (1 - extrasTramo.pct)),
+    0,
+  )
+  const extrasPrice = extraUnitPrice * songCount
   const subtotal = servicePrice + extrasPrice
 
   const appliedCoupon = coupon.code ? { code: coupon.code } : null
@@ -84,10 +98,21 @@ export default function useBookingFlow() {
   }
 
   function toggleExtra(id) {
-    setBooking((prev) => ({
-      ...prev,
-      extras: prev.extras.includes(id) ? [] : [id],
-    }))
+    setBooking((prev) => {
+      const wasSelected = prev.extras.includes(id)
+      return {
+        ...prev,
+        extras: wasSelected ? [] : [id],
+        // Al deseleccionar el extra, reinicia el contador de canciones para
+        // que no quede un valor alto oculto si se vuelve a seleccionar otro.
+        songCount: wasSelected ? 1 : prev.songCount,
+      }
+    })
+  }
+
+  function setSongCount(count) {
+    const next = Math.max(1, Math.round(Number(count)) || 1)
+    setBooking((prev) => ({ ...prev, songCount: next }))
   }
 
   function canProceed() {
@@ -136,6 +161,10 @@ export default function useBookingFlow() {
     selectedService,
     selectedExtras,
     servicePrice,
+    songCount,
+    setSongCount,
+    extrasTramo,
+    extraUnitPrice,
     extrasPrice,
     subtotal,
     discount,

@@ -234,6 +234,37 @@
     margin 0.35s ease;
 }
 
+.servicios-paquetes {
+  background-color: $background;
+  padding: 0 2rem 3.5rem;
+}
+
+.servicios-paquetes__inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba($gray-800, 0.15);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.servicios-paquetes__title {
+  margin: 0 0 0.75rem;
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.servicios-paquetes__desc {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-600;
+}
+
 .servicios-cta {
   background-color: $primary-1;
   color: $gray-100;
@@ -286,6 +317,7 @@
 @media (max-width: 600px) {
   .servicios-intro,
   .servicios-catalog,
+  .servicios-paquetes,
   .servicios-cta {
     padding-left: 1.25rem;
     padding-right: 1.25rem;

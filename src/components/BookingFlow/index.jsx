@@ -14,6 +14,10 @@ export default function BookingFlow({ flow }) {
     booking,
     selectedService,
     selectedExtras,
+    songCount,
+    setSongCount,
+    extrasTramo,
+    extraUnitPrice,
     discount,
     appliedCoupon,
     couponInput,
@@ -97,6 +101,39 @@ export default function BookingFlow({ flow }) {
               </li>
             ))}
           </ul>
+
+          {selectedExtras.length > 0 && (
+            <div className="booking-flow__song-count">
+              <label htmlFor="booking-song-count">Cantidad de canciones</label>
+              <div className="booking-flow__song-count-input">
+                <button
+                  type="button"
+                  onClick={() => setSongCount(songCount - 1)}
+                  disabled={songCount <= 1}
+                  aria-label="Restar canción"
+                >
+                  −
+                </button>
+                <input
+                  id="booking-song-count"
+                  type="number"
+                  min="1"
+                  value={songCount}
+                  onChange={(e) => setSongCount(e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setSongCount(songCount + 1)}
+                  aria-label="Sumar canción"
+                >
+                  +
+                </button>
+              </div>
+              <p className="booking-flow__song-count-hint">
+                {formatPrice(extraUnitPrice)} c/u · {extrasTramo.label}
+              </p>
+            </div>
+          )}
         </div>
       )}
 
@@ -171,8 +208,11 @@ export default function BookingFlow({ flow }) {
                 )}
                 {selectedExtras.map((extra) => (
                   <div key={extra.id} className="booking-flow__summary-line">
-                    <span>{extra.label} [x1]</span>
-                    <span>{formatPrice(extra.price)}</span>
+                    <span>
+                      {extra.label} [x{songCount}
+                      {songCount > 1 ? ` · ${formatPrice(extraUnitPrice)} c/u` : ''}]
+                    </span>
+                    <span>{formatPrice(extraUnitPrice * songCount)}</span>
                   </div>
                 ))}
                 {appliedCoupon && (

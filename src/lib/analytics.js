@@ -2,6 +2,11 @@ const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
 const CLARITY_ID = import.meta.env.VITE_CLARITY_PROJECT_ID
 
 let initialized = false
+// Pageviews fired (via the route-change effect in Analytics/index.jsx)
+// before initAnalytics has run — initAnalytics is deferred to idle time so it
+// doesn't compete with LCP-critical resources, which means the very first
+// pageview would otherwise arrive before window.gtag exists and get lost.
+let pendingPageviews = []
 
 export function initAnalytics() {
   if (initialized || !import.meta.env.PROD) return
@@ -32,9 +37,12 @@ export function initAnalytics() {
     clarityScript.src = `https://www.clarity.ms/tag/${CLARITY_ID}`
     document.head.appendChild(clarityScript)
   }
+
+  pendingPageviews.forEach(sendPageview)
+  pendingPageviews = []
 }
 
-export function trackPageview(path) {
+function sendPageview(path) {
   if (GA_ID && typeof window.gtag === 'function') {
     window.gtag('event', 'page_view', {
       page_path: path,
@@ -42,6 +50,15 @@ export function trackPageview(path) {
       page_title: document.title,
     })
   }
+}
+
+export function trackPageview(path) {
+  if (!import.meta.env.PROD) return
+  if (!initialized) {
+    pendingPageviews.push(path)
+    return
+  }
+  sendPageview(path)
 }
 
 // Conversion/interaction events — separate from pageviews so GA4 and Clarity

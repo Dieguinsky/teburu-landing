@@ -11,6 +11,7 @@ import {
   SERVICIOS_PODCAST_CTAS,
   AUDIOVISUAL_SERVICES,
   SERVICIOS_AUDIOVISUAL_CTAS,
+  SERVICIOS_PAQUETES,
   CONTACT_INFO,
 } from '../../content/copy'
 import ABMasterComparator from '../../components/ABMasterComparator'
@@ -51,6 +52,7 @@ export default function Servicios() {
         title={SERVICIOS_INTRO.seoTitle}
         description={SERVICIOS_INTRO.seoDescription}
         path="/servicios"
+        image={serviciosImages.hero}
       />
       <section
         className="servicios-hero"
@@ -110,11 +112,21 @@ export default function Servicios() {
         </div>
       </section>
 
+      <section className="servicios-paquetes">
+        <Reveal as="div" className="servicios-paquetes__inner">
+          <h2 className="servicios-paquetes__title">{SERVICIOS_PAQUETES.title}</h2>
+          <p className="servicios-paquetes__desc">{SERVICIOS_PAQUETES.description}</p>
+          <Link to={SERVICIOS_PAQUETES.cta.to} className="button button--accent">
+            {SERVICIOS_PAQUETES.cta.label}
+          </Link>
+        </Reveal>
+      </section>
+
       <ABMasterComparator />
 
       <section className="servicios-cta">
         <Reveal as="div" className="servicios-cta__inner">
-          <h2 className="servicios-cta__title">¿Listo/a para hacer tu música?</h2>
+          <h2 className="servicios-cta__title">¿Listo/a para tu próximo proyecto?</h2>
           <p className="servicios-cta__email">{CONTACT_INFO.email}</p>
           <Link to="/contacto" className="button button--accent">
             Formulario de contacto

@@ -62,6 +62,7 @@ export default function Contacto() {
         title={CONTACT_INFO.seoTitle}
         description={CONTACT_INFO.seoDescription}
         path="/contacto"
+        image={pageImages.contactoBg}
       />
       <div className="contacto-layout">
         <aside

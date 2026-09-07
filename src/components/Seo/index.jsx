@@ -27,7 +27,7 @@ function setCanonical(href) {
 // script (scripts/prerender.mjs) captures the DOM after this runs, so these
 // tags end up baked into the static HTML for crawlers — this isn't just a
 // client-side nicety.
-export default function Seo({ title, description, path, noindex }) {
+export default function Seo({ title, description, path, image, type, noindex }) {
   useEffect(() => {
     if (title) document.title = title
 
@@ -35,13 +35,26 @@ export default function Seo({ title, description, path, noindex }) {
     setMetaTag('name', 'robots', noindex ? 'noindex, nofollow' : null)
     setMetaTag('property', 'og:title', title)
     setMetaTag('property', 'og:description', description)
+    setMetaTag('property', 'og:type', type)
+    setMetaTag('name', 'twitter:title', title)
+    setMetaTag('name', 'twitter:description', description)
+
+    // image is a root-relative asset URL (e.g. from an *Images.js import) —
+    // resolved to absolute here, same as `path` below, since link-preview
+    // scrapers need a full URL. Falls back to index.html's sitewide
+    // og-image.png when omitted (setMetaTag no-ops on falsy content).
+    if (image) {
+      const imageUrl = `${SITE_URL}${image}`
+      setMetaTag('property', 'og:image', imageUrl)
+      setMetaTag('name', 'twitter:image', imageUrl)
+    }
 
     if (path) {
       const url = `${SITE_URL}${path}`
       setMetaTag('property', 'og:url', url)
       setCanonical(url)
     }
-  }, [title, description, path, noindex])
+  }, [title, description, path, image, type, noindex])
 
   return null
 }

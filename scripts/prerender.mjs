@@ -17,18 +17,21 @@ const SITE_URL = 'https://estudioteburu.cl'
 
 // Routes that stay pure client-side SPA (not prerendered) — listed here only
 // so the sitemap reflects the full site.
-const STATIC_ROUTES = ['/nosotros', '/estudio', '/contacto', '/portafolio']
+const STATIC_ROUTES = ['/nosotros', '/estudio', '/contacto']
 
 // Top-level routes prerendered to real static HTML (in addition to /faq and
-// every /blog* route below). Kept short on purpose: /nosotros, /estudio,
-// /contacto and /portafolio stay pure SPA for now. Note that '/' is special —
-// its output file (dist/index.html) is also the SPA fallback shell that
-// public/404.html redirects every non-prerendered route to, so prerendering
-// it means a hard-reload/deep-link to one of those routes briefly shows
-// Home's markup before React mounts and swaps in the right page. Accepted as
-// a minor, standard SPA+prerender tradeoff — the alternative (leaving '/'
-// as an empty shell) is worse for crawlers hitting the homepage itself.
-const PRERENDERED_TOP_ROUTES = ['/', '/servicios', '/reservar', '/cotizador']
+// every /blog* route below). Kept short on purpose: /nosotros, /estudio and
+// /contacto stay pure SPA for now. /portafolio was moved here (out of
+// STATIC_ROUTES) because it's the page most likely to be link-shared with
+// prospective clients — a non-JS crawler/preview bot needs real content, not
+// the '/' fallback shell (see below). Note that '/' is special — its output
+// file (dist/index.html) is also the SPA fallback shell that public/404.html
+// redirects every non-prerendered route to, so prerendering it means a
+// hard-reload/deep-link to one of those routes briefly shows Home's markup
+// before React mounts and swaps in the right page. Accepted as a minor,
+// standard SPA+prerender tradeoff — the alternative (leaving '/' as an empty
+// shell) is worse for crawlers hitting the homepage itself.
+const PRERENDERED_TOP_ROUTES = ['/', '/servicios', '/reservar', '/cotizador', '/portafolio']
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -101,7 +104,23 @@ async function prerenderRoute(page, baseUrl, route) {
   await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' })
   // The Seo component writes a <link rel="canonical"> on mount — waiting for
   // it confirms React actually rendered before we capture the DOM.
-  await page.waitForSelector('link[rel="canonical"]', { timeout: 8000 })
+  //
+  // Waiting for *presence* alone isn't enough: startServer() below falls back
+  // to serving dist/index.html for any route not yet written this run (same
+  // trick as public/404.html on GitHub Pages), and every route after the
+  // first is exactly that at request time — so the browser initially loads
+  // the PREVIOUS route's already-captured HTML, complete with ITS canonical
+  // tag already in the DOM. A bare existsSelector check resolves against
+  // that stale tag immediately, before this route's own React tree has even
+  // committed — silently baking the wrong page's title/canonical/og:image
+  // into every prerendered route except '/'. Waiting for the href to match
+  // this route specifically forces it to wait for the real re-render.
+  const expectedCanonical = `${SITE_URL}${route}`
+  await page.waitForFunction(
+    (href) => document.querySelector('link[rel="canonical"]')?.href === href,
+    { timeout: 8000 },
+    expectedCanonical,
+  )
 
   const html = await page.content()
   const outPath = outputPathFor(route)
