@@ -20,6 +20,9 @@ body {
   line-height: 1.5;
   background-color: $background;
   color: $primary-1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .page {

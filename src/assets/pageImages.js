@@ -1,9 +1,9 @@
 import heroBg from './img/oficials/image00029.jpeg'
 import studioBg from './img/oficials/image00070.jpeg'
 import consoleBg from './img/oficials/image00119.jpeg'
-import teamDiego from './img/oficials/image00107.jpeg'
-import teamJose from './img/equipo/josemusalem.jpg'
-import teamPablo from './img/oficials/image00131.jpeg'
+import teamDiego from './img/estudio-2026/diego.jpg'
+import teamJose from './img/estudio-2026/jose.jpg'
+import teamPablo from './img/estudio-2026/pablo.jpg'
 import avPodcast from './img/portafolio/iribarne-live-poster.jpg'
 import avVideo from './img/portafolio/video-podcast-poster.jpg'
 import avReels from './img/portafolio/reels-poster.jpg'
@@ -26,10 +26,14 @@ import reelAndes4 from './img/portafolio/reels/DbCK8eNxcM3.jpg'
 import reelAndes5 from './img/portafolio/reels/DatxJwgxs6u.jpg'
 import reelAndesTouring from './img/portafolio/reels/DaoKRNeR4pd.jpg'
 import estudioHero from './img/oficials/image00024.jpeg'
-import estudioGalleryEscritorioFrente from './img/Espacio/escritorio-frente.jpg'
-import estudioGalleryEscritorioArriba from './img/Espacio/escritorio-arriba.jpg'
-import estudioGallerySofa from './img/Espacio/sofa.jpg'
-import estudioGalleryWa8000 from './img/Espacio/wa8000.jpg'
+import estudioGalleryEscritorioFrente from './img/estudio-2026/escritorio-frente.jpg'
+import estudioGalleryJugandoPlay from './img/estudio-2026/jugando-play.jpg'
+import estudioGallerySofa from './img/estudio-2026/sofa.jpg'
+import estudioGalleryWa8000 from './img/estudio-2026/wa8000.jpg'
+import estudioGalleryApollo from './img/estudio-2026/apollo.jpg'
+import estudioGalleryBateria from './img/estudio-2026/bateria.jpg'
+import estudioGalleryOrgano from './img/estudio-2026/organo.jpg'
+import estudioGalleryFocalPanda from './img/estudio-2026/focal-panda.jpg'
 import cotizadorPodcast from './img/podcast/Imagen Podcast 3.jpg'
 import retroStar1 from './img/diam1/D1_1.jpg'
 import retroStar2 from './img/diam2/D2_1.jpg'
@@ -44,9 +48,13 @@ export const pageImages = {
   cotizadorPodcast,
   estudioGallery: [
     estudioGalleryEscritorioFrente,
-    estudioGalleryEscritorioArriba,
+    estudioGalleryJugandoPlay,
     estudioGallerySofa,
     estudioGalleryWa8000,
+    estudioGalleryApollo,
+    estudioGalleryBateria,
+    estudioGalleryOrgano,
+    estudioGalleryFocalPanda,
   ],
   team: {
     diego: teamDiego,
